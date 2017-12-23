@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D406AC61FEE8B43004C1D08 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D406AC51FEE8B43004C1D08 /* LoginViewController.swift */; };
 		2D50933E1FEE4897000D2999 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D50933D1FEE4897000D2999 /* AppDelegate.swift */; };
 		2D5093401FEE4897000D2999 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D50933F1FEE4897000D2999 /* ViewController.swift */; };
 		2D5093431FEE4897000D2999 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D5093411FEE4897000D2999 /* Main.storyboard */; };
@@ -40,6 +41,7 @@
 		0C007F74C6EDE5A0ED60D28B /* Pods-DPE DashboardUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DPE DashboardUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DPE DashboardUITests/Pods-DPE DashboardUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		16F50BA4D5995BE248204EE0 /* Pods_DPE_Dashboard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DPE_Dashboard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1879BAF6F7967BB785E6BC14 /* Pods-DPE Dashboard.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DPE Dashboard.release.xcconfig"; path = "Pods/Target Support Files/Pods-DPE Dashboard/Pods-DPE Dashboard.release.xcconfig"; sourceTree = "<group>"; };
+		2D406AC51FEE8B43004C1D08 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		2D50933A1FEE4897000D2999 /* DPE Dashboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DPE Dashboard.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D50933D1FEE4897000D2999 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2D50933F1FEE4897000D2999 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -112,6 +114,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		2D406AC41FEE8B0B004C1D08 /* controllers */ = {
+			isa = PBXGroup;
+			children = (
+				2D406AC51FEE8B43004C1D08 /* LoginViewController.swift */,
+			);
+			path = controllers;
+			sourceTree = "<group>";
+		};
 		2D5093311FEE4897000D2999 = {
 			isa = PBXGroup;
 			children = (
@@ -137,6 +147,7 @@
 		2D50933C1FEE4897000D2999 /* DPE Dashboard */ = {
 			isa = PBXGroup;
 			children = (
+				2D406AC41FEE8B0B004C1D08 /* controllers */,
 				2D50933D1FEE4897000D2999 /* AppDelegate.swift */,
 				2D50933F1FEE4897000D2999 /* ViewController.swift */,
 				2D5093411FEE4897000D2999 /* Main.storyboard */,
@@ -455,6 +466,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D406AC61FEE8B43004C1D08 /* LoginViewController.swift in Sources */,
 				2D5093401FEE4897000D2999 /* ViewController.swift in Sources */,
 				2D50933E1FEE4897000D2999 /* AppDelegate.swift in Sources */,
 			);
