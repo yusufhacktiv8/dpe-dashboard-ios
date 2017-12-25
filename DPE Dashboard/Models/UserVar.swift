@@ -8,7 +8,5 @@
 
 import Foundation
 struct UserVar {
-    static var username = ""
-    static var userPassword = ""
-    static var headers: [String: String]?
+    static var token = ""
 }

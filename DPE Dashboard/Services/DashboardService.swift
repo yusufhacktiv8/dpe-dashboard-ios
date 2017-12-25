@@ -26,7 +26,9 @@ public struct DashboardService {
     public static func getChartsData(year: Int, myResponse: @escaping (ChartData) -> ()) {
         let urlString = DashboardConstant.BASE_URL + ResourcePath.ChartData(year: year).description
         
-        Alamofire.request(urlString, headers: UserVar.headers).responseJSON { response in
+        let headers = ["Authorization": "Basic \(UserVar.token)"]
+        
+        Alamofire.request(urlString, headers: headers).responseJSON { response in
             
             if let data = response.result.value {
                 

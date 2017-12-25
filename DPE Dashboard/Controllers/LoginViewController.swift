@@ -7,15 +7,28 @@
 //
 
 import UIKit
+import SwiftSpinner
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var loginBackground: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        initKeyboard()
         initTextFieldsStyling()
+    }
+    
+    private func initKeyboard() {
+        NotificationCenter.default.addObserver(self, selector: #selector(LoginViewController.keyboardWillShow(sender:)), name:NSNotification.Name.UIKeyboardWillShow, object: nil);
+        NotificationCenter.default.addObserver(self, selector: #selector(LoginViewController.keyboardWillHide(sender:)), name:NSNotification.Name.UIKeyboardWillHide, object: nil);
+        
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(LoginViewController.dismissKeyboard(gestureRecognizer:)))
+        
+        self.loginBackground.isUserInteractionEnabled = true
+        self.loginBackground.addGestureRecognizer(tapRecognizer)
     }
     
     private func initTextFieldsStyling() {
@@ -46,22 +59,72 @@ class LoginViewController: UIViewController {
         passwordTextField.leftView = imageView2;
         passwordTextField.leftViewMode = UITextFieldViewMode.always
         passwordTextField.leftViewMode = .always
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        passwordTextField.isSecureTextEntry = true
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    @IBAction func onSignInButtonDidTouch(_ sender: Any) {
+        if (self.emailTextField.text! == "" || self.passwordTextField.text! == "") {
+            let alertView = UIAlertController(title: "Login Problem",
+                                              message: "Wrong username or password." as String, preferredStyle:.alert)
+            let okAction = UIAlertAction(title: "Try Again", style: .default, handler: nil)
+            alertView.addAction(okAction)
+            self.present(alertView, animated: true, completion: nil)
+            return;
+        }else{
+            SwiftSpinner.show("Signing in...").addTapHandler({
+                SwiftSpinner.hide()
+            }, subtitle: "Tap to hide. This will affect only the current operation.")
+            LoginService.login(username: self.emailTextField.text!, password: self.passwordTextField.text!) { statusCode in
+                
+                SwiftSpinner.hide()
+                
+//                if(statusCode == 200 || statusCode == 304){
+//                    UserVar.username = self.usernameText.text!
+//                    UserVar.userpassword = self.passwordText.text!
+//                    self.usernameText.text = ""
+//                    self.passwordText.text = ""
+//
+//                    let credentialData = "\(UserVar.username):\(UserVar.userpassword)".dataUsingEncoding(NSUTF8StringEncoding)!
+//                    let base64Credentials = credentialData.base64EncodedStringWithOptions([])
+//                    let headers = ["Authorization": "Basic \(base64Credentials)"]
+//                    UserVar.headers = headers
+//
+//                    self.performSegueWithIdentifier("NavigationSegue", sender: self)
+//                }else if(statusCode == 401 || statusCode == -6003){
+//                    let alertView = UIAlertController(title: "Login Problem",
+//                                                      message: "Wrong username or password." as String, preferredStyle:.Alert)
+//                    let okAction = UIAlertAction(title: "Try Again", style: .Default, handler: nil)
+//                    alertView.addAction(okAction)
+//                    self.presentViewController(alertView, animated: true, completion: nil)
+//                }else{
+//                    let alertView = UIAlertController(title: "Network Problem",
+//                                                      message: "Network error." as String, preferredStyle:.Alert)
+//                    let okAction = UIAlertAction(title: "Try Again", style: .Default, handler: nil)
+//                    alertView.addAction(okAction)
+//                    self.presentViewController(alertView, animated: true, completion: nil)
+//                }
+                
+            }
+        }
     }
-    */
+    
+    
+    @objc func keyboardWillShow(sender: NSNotification) {
+        self.view.frame.origin.y = -180
+    }
+    
+    @objc func keyboardWillHide(sender: NSNotification) {
+        self.view.frame.origin.y = 0
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    @objc func dismissKeyboard(gestureRecognizer: UITapGestureRecognizer) {
+        view.endEditing(true)
+    }
 
 }

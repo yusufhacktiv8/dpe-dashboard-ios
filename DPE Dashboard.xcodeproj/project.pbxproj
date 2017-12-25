@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D2D7CE01FF167EA00A78299 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D2D7CDF1FF167EA00A78299 /* LoginService.swift */; };
 		2D406AC61FEE8B43004C1D08 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D406AC51FEE8B43004C1D08 /* LoginViewController.swift */; };
 		2D50933E1FEE4897000D2999 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D50933D1FEE4897000D2999 /* AppDelegate.swift */; };
 		2D5093401FEE4897000D2999 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D50933F1FEE4897000D2999 /* ViewController.swift */; };
@@ -49,6 +50,7 @@
 		0C007F74C6EDE5A0ED60D28B /* Pods-DPE DashboardUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DPE DashboardUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DPE DashboardUITests/Pods-DPE DashboardUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		16F50BA4D5995BE248204EE0 /* Pods_DPE_Dashboard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DPE_Dashboard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1879BAF6F7967BB785E6BC14 /* Pods-DPE Dashboard.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DPE Dashboard.release.xcconfig"; path = "Pods/Target Support Files/Pods-DPE Dashboard/Pods-DPE Dashboard.release.xcconfig"; sourceTree = "<group>"; };
+		2D2D7CDF1FF167EA00A78299 /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		2D406AC51FEE8B43004C1D08 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		2D50933A1FEE4897000D2999 /* DPE Dashboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DPE Dashboard.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D50933D1FEE4897000D2999 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 				2DD093861FF0A1DF00933610 /* DashboardService.swift */,
 				2DD093881FF0A22300933610 /* DashboardConstant.swift */,
 				2DD093931FF0A97500933610 /* JSONParser.swift */,
+				2D2D7CDF1FF167EA00A78299 /* LoginService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -402,11 +405,13 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-DPE Dashboard/Pods-DPE Dashboard-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftSpinner/SwiftSpinner.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftSpinner.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -526,6 +531,7 @@
 				2D5093401FEE4897000D2999 /* ViewController.swift in Sources */,
 				2DD0938E1FF0A60900933610 /* ChartData.swift in Sources */,
 				2DD093921FF0A7DC00933610 /* ChartDataItem.swift in Sources */,
+				2D2D7CE01FF167EA00A78299 /* LoginService.swift in Sources */,
 				2D50933E1FEE4897000D2999 /* AppDelegate.swift in Sources */,
 				2DD093891FF0A22300933610 /* DashboardConstant.swift in Sources */,
 				2DD093871FF0A1DF00933610 /* DashboardService.swift in Sources */,

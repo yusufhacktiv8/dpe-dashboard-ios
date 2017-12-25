@@ -8,5 +8,5 @@
 
 import Foundation
 struct DashboardConstant {
-    static let BASE_URL = "http://localhost:3000"
+    static let BASE_URL = "http://127.0.0.1:3300/api/"
 }

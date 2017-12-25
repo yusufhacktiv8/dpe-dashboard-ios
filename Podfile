@@ -8,6 +8,7 @@ target 'DPE Dashboard' do
   # Pods for DPE Dashboard
   pod 'Charts'
   pod 'Alamofire'
+  pod 'SwiftSpinner'
 
   target 'DPE DashboardTests' do
     inherit! :search_paths
