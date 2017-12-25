@@ -6,6 +6,8 @@ target 'DPE Dashboard' do
   use_frameworks!
 
   # Pods for DPE Dashboard
+  pod 'Charts'
+  pod 'Alamofire'
 
   target 'DPE DashboardTests' do
     inherit! :search_paths

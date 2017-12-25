@@ -15,6 +15,14 @@
 		2D5093481FEE4897000D2999 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D5093461FEE4897000D2999 /* LaunchScreen.storyboard */; };
 		2D5093531FEE4898000D2999 /* DPE_DashboardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5093521FEE4898000D2999 /* DPE_DashboardTests.swift */; };
 		2D50935E1FEE4898000D2999 /* DPE_DashboardUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D50935D1FEE4898000D2999 /* DPE_DashboardUITests.swift */; };
+		2DD0937E1FF0904300933610 /* DashboardChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD0937D1FF0904300933610 /* DashboardChart.swift */; };
+		2DD093821FF09C2A00933610 /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD093811FF09C2A00933610 /* ChartViewController.swift */; };
+		2DD093871FF0A1DF00933610 /* DashboardService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD093861FF0A1DF00933610 /* DashboardService.swift */; };
+		2DD093891FF0A22300933610 /* DashboardConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD093881FF0A22300933610 /* DashboardConstant.swift */; };
+		2DD0938C1FF0A29500933610 /* UserVar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD0938B1FF0A29500933610 /* UserVar.swift */; };
+		2DD0938E1FF0A60900933610 /* ChartData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD0938D1FF0A60900933610 /* ChartData.swift */; };
+		2DD093921FF0A7DC00933610 /* ChartDataItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD093911FF0A7DC00933610 /* ChartDataItem.swift */; };
+		2DD093941FF0A97500933610 /* JSONParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD093931FF0A97500933610 /* JSONParser.swift */; };
 		3A0B934C395A95789336CC8D /* Pods_DPE_DashboardUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB54062F9BAD642477274C69 /* Pods_DPE_DashboardUITests.framework */; };
 		4515ED5744FD0D167DE76121 /* Pods_DPE_DashboardTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76F43C68A1994EA8005F9790 /* Pods_DPE_DashboardTests.framework */; };
 		559DB56B8CAD3A45EF88F20E /* Pods_DPE_Dashboard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16F50BA4D5995BE248204EE0 /* Pods_DPE_Dashboard.framework */; };
@@ -55,6 +63,14 @@
 		2D5093591FEE4898000D2999 /* DPE DashboardUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "DPE DashboardUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D50935D1FEE4898000D2999 /* DPE_DashboardUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DPE_DashboardUITests.swift; sourceTree = "<group>"; };
 		2D50935F1FEE4898000D2999 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2DD0937D1FF0904300933610 /* DashboardChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardChart.swift; sourceTree = "<group>"; };
+		2DD093811FF09C2A00933610 /* ChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
+		2DD093861FF0A1DF00933610 /* DashboardService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardService.swift; sourceTree = "<group>"; };
+		2DD093881FF0A22300933610 /* DashboardConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardConstant.swift; sourceTree = "<group>"; };
+		2DD0938B1FF0A29500933610 /* UserVar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserVar.swift; sourceTree = "<group>"; };
+		2DD0938D1FF0A60900933610 /* ChartData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartData.swift; sourceTree = "<group>"; };
+		2DD093911FF0A7DC00933610 /* ChartDataItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartDataItem.swift; sourceTree = "<group>"; };
+		2DD093931FF0A97500933610 /* JSONParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONParser.swift; sourceTree = "<group>"; };
 		5B546F77CD935CFD62FA3C08 /* Pods-DPE DashboardUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DPE DashboardUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DPE DashboardUITests/Pods-DPE DashboardUITests.release.xcconfig"; sourceTree = "<group>"; };
 		76F43C68A1994EA8005F9790 /* Pods_DPE_DashboardTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DPE_DashboardTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB236254C9E7B6A89E37EBF4 /* Pods-DPE DashboardTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DPE DashboardTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DPE DashboardTests/Pods-DPE DashboardTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -114,12 +130,13 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		2D406AC41FEE8B0B004C1D08 /* controllers */ = {
+		2D406AC41FEE8B0B004C1D08 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				2D406AC51FEE8B43004C1D08 /* LoginViewController.swift */,
+				2DD093811FF09C2A00933610 /* ChartViewController.swift */,
 			);
-			path = controllers;
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		2D5093311FEE4897000D2999 = {
@@ -147,7 +164,10 @@
 		2D50933C1FEE4897000D2999 /* DPE Dashboard */ = {
 			isa = PBXGroup;
 			children = (
-				2D406AC41FEE8B0B004C1D08 /* controllers */,
+				2DD0938A1FF0A26700933610 /* Models */,
+				2DD093831FF0A08B00933610 /* Services */,
+				2DD0937C1FF0900200933610 /* Components */,
+				2D406AC41FEE8B0B004C1D08 /* Controllers */,
 				2D50933D1FEE4897000D2999 /* AppDelegate.swift */,
 				2D50933F1FEE4897000D2999 /* ViewController.swift */,
 				2D5093411FEE4897000D2999 /* Main.storyboard */,
@@ -174,6 +194,34 @@
 				2D50935F1FEE4898000D2999 /* Info.plist */,
 			);
 			path = "DPE DashboardUITests";
+			sourceTree = "<group>";
+		};
+		2DD0937C1FF0900200933610 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				2DD0937D1FF0904300933610 /* DashboardChart.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		2DD093831FF0A08B00933610 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				2DD093861FF0A1DF00933610 /* DashboardService.swift */,
+				2DD093881FF0A22300933610 /* DashboardConstant.swift */,
+				2DD093931FF0A97500933610 /* JSONParser.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		2DD0938A1FF0A26700933610 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				2DD0938B1FF0A29500933610 /* UserVar.swift */,
+				2DD0938D1FF0A60900933610 /* ChartData.swift */,
+				2DD093911FF0A7DC00933610 /* ChartDataItem.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -351,9 +399,14 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-DPE Dashboard/Pods-DPE Dashboard-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -466,9 +519,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2DD0938C1FF0A29500933610 /* UserVar.swift in Sources */,
 				2D406AC61FEE8B43004C1D08 /* LoginViewController.swift in Sources */,
+				2DD0937E1FF0904300933610 /* DashboardChart.swift in Sources */,
+				2DD093941FF0A97500933610 /* JSONParser.swift in Sources */,
 				2D5093401FEE4897000D2999 /* ViewController.swift in Sources */,
+				2DD0938E1FF0A60900933610 /* ChartData.swift in Sources */,
+				2DD093921FF0A7DC00933610 /* ChartDataItem.swift in Sources */,
 				2D50933E1FEE4897000D2999 /* AppDelegate.swift in Sources */,
+				2DD093891FF0A22300933610 /* DashboardConstant.swift in Sources */,
+				2DD093871FF0A1DF00933610 /* DashboardService.swift in Sources */,
+				2DD093821FF09C2A00933610 /* ChartViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -638,6 +699,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = U48P8SU85A;
 				INFOPLIST_FILE = "DPE Dashboard/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "id.co.wika.DPE-Dashboard";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -654,6 +716,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = U48P8SU85A;
 				INFOPLIST_FILE = "DPE Dashboard/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "id.co.wika.DPE-Dashboard";
 				PRODUCT_NAME = "$(TARGET_NAME)";
