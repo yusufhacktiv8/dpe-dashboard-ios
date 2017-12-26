@@ -66,7 +66,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBAction func onSignInButtonDidTouch(_ sender: Any) {
         if (self.emailTextField.text! == "" || self.passwordTextField.text! == "") {
             let alertView = UIAlertController(title: "Login Problem",
-                                              message: "Wrong username or password." as String, preferredStyle:.alert)
+                                              message: "Please innsert username and password." as String, preferredStyle:.alert)
             let okAction = UIAlertAction(title: "Try Again", style: .default, handler: nil)
             alertView.addAction(okAction)
             self.present(alertView, animated: true, completion: nil)
@@ -79,32 +79,21 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 
                 SwiftSpinner.hide()
                 
-//                if(statusCode == 200 || statusCode == 304){
-//                    UserVar.username = self.usernameText.text!
-//                    UserVar.userpassword = self.passwordText.text!
-//                    self.usernameText.text = ""
-//                    self.passwordText.text = ""
-//
-//                    let credentialData = "\(UserVar.username):\(UserVar.userpassword)".dataUsingEncoding(NSUTF8StringEncoding)!
-//                    let base64Credentials = credentialData.base64EncodedStringWithOptions([])
-//                    let headers = ["Authorization": "Basic \(base64Credentials)"]
-//                    UserVar.headers = headers
-//
-//                    self.performSegueWithIdentifier("NavigationSegue", sender: self)
-//                }else if(statusCode == 401 || statusCode == -6003){
-//                    let alertView = UIAlertController(title: "Login Problem",
-//                                                      message: "Wrong username or password." as String, preferredStyle:.Alert)
-//                    let okAction = UIAlertAction(title: "Try Again", style: .Default, handler: nil)
-//                    alertView.addAction(okAction)
-//                    self.presentViewController(alertView, animated: true, completion: nil)
-//                }else{
-//                    let alertView = UIAlertController(title: "Network Problem",
-//                                                      message: "Network error." as String, preferredStyle:.Alert)
-//                    let okAction = UIAlertAction(title: "Try Again", style: .Default, handler: nil)
-//                    alertView.addAction(okAction)
-//                    self.presentViewController(alertView, animated: true, completion: nil)
-//                }
-                
+                if(statusCode == 200 || statusCode == 304){
+                    self.performSegue(withIdentifier: "LoginSuccessSegue", sender: self)
+                }else if(statusCode == 403 || statusCode == -6003){
+                    let alertView = UIAlertController(title: "Login Problem",
+                                                      message: "Wrong username or password." as String, preferredStyle:.alert)
+                    let okAction = UIAlertAction(title: "Try Again", style: .default, handler: nil)
+                    alertView.addAction(okAction)
+                    self.present(alertView, animated: true, completion: nil)
+                }else{
+                    let alertView = UIAlertController(title: "Network Problem",
+                                                      message: "Network error." as String, preferredStyle:.alert)
+                    let okAction = UIAlertAction(title: "Try Again", style: .default, handler: nil)
+                    alertView.addAction(okAction)
+                    self.present(alertView, animated: true, completion: nil)
+                }
             }
         }
     }

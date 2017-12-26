@@ -21,17 +21,19 @@ public struct LoginService {
         Alamofire.request(urlString, method: .post, parameters: parameters)
             .validate()
             .responseJSON { response in
-                print(response)
-                if let data = response.result.value {
-                    guard let json = data as? [String : AnyObject] else {
-                        print("Failed to get expected response from webserver.")
-                        return
+                let statusCode = response.response?.statusCode
+                if (statusCode == 200) {
+                    if let data = response.result.value {
+                        guard let json = data as? [String : AnyObject] else {
+                            print("Failed to get expected response from webserver.")
+                            return
+                        }
+                        
+                        let token = json["token"] as? String ?? ""
+                        UserVar.token = token
                     }
-                    
-                    let token = json["token"] as? String ?? ""
-                    print("Token: " + token)
                 }
-                
+                myResponse(statusCode!)
 //                let headers = ["Authorization": "Basic \(token)"]
                 
         }

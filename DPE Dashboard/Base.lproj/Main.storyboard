@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="LQG-YE-vtx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="A4M-Xp-Ljl">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -119,11 +119,12 @@
                         <outlet property="emailTextField" destination="b7c-mO-nm9" id="Pgf-Il-0R1"/>
                         <outlet property="loginBackground" destination="hnk-Nv-crN" id="ERS-bZ-dEy"/>
                         <outlet property="passwordTextField" destination="S5x-8w-ahW" id="jVv-gB-UMF"/>
+                        <segue destination="A4M-Xp-Ljl" kind="show" identifier="LoginSuccessSegue" id="2Uw-Uu-JuN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dN6-nS-KIH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="670" y="758"/>
+            <point key="canvasLocation" x="670" y="767"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="MZY-Mh-WU4">
@@ -205,7 +206,7 @@
         <!--Dashboard-->
         <scene sceneID="G4w-JQ-qjW">
             <objects>
-                <viewController id="KwM-N3-GCj" sceneMemberID="viewController">
+                <viewController id="KwM-N3-GCj" customClass="MainViewController" customModule="DPE_Dashboard" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bmQ-wG-y56">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -214,12 +215,58 @@
                     </view>
                     <navigationItem key="navigationItem" title="Dashboard" id="MQq-8L-08h">
                         <barButtonItem key="leftBarButtonItem" systemItem="action" id="m7N-EM-m39"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="R6n-er-UhA"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="R6n-er-UhA">
+                            <connections>
+                                <action selector="searchButtonDidTouch:" destination="KwM-N3-GCj" id="bS7-vU-ehf"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="bDZ-Jv-EtI" kind="show" identifier="ShowMonthYearPickerSegue" id="6cJ-NS-bGP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xL6-t2-qvH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2356" y="767"/>
+        </scene>
+        <!--Filter-->
+        <scene sceneID="4zH-wO-0Z1">
+            <objects>
+                <viewController id="bDZ-Jv-EtI" customClass="MonthYearPickerViewController" customModule="DPE_Dashboard" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="QSA-iC-vsx">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WXN-Sk-UpV">
+                                <rect key="frame" x="0.0" y="64" width="375" height="300"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="0YT-gS-rPB"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="WXN-Sk-UpV" firstAttribute="leading" secondItem="2cg-hg-Q5n" secondAttribute="leading" id="6hM-mQ-jEU"/>
+                            <constraint firstItem="2cg-hg-Q5n" firstAttribute="trailing" secondItem="WXN-Sk-UpV" secondAttribute="trailing" id="PAE-fG-va7"/>
+                            <constraint firstItem="WXN-Sk-UpV" firstAttribute="top" secondItem="2cg-hg-Q5n" secondAttribute="top" id="gM7-fE-dFe"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="2cg-hg-Q5n"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Filter" id="CKu-wi-MiK">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="jKy-vJ-h6W">
+                            <connections>
+                                <action selector="selectMonthYear:" destination="bDZ-Jv-EtI" id="2vV-wK-zRp"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="monthYearPickerContainerView" destination="WXN-Sk-UpV" id="UB8-aS-7wN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qb8-9Z-p8v" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3175" y="767"/>
         </scene>
     </scenes>
     <resources>
