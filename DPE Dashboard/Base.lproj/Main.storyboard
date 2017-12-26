@@ -210,7 +210,34 @@
                     <view key="view" contentMode="scaleToFill" id="bmQ-wG-y56">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X4Y-36-jJY">
+                                <rect key="frame" x="0.0" y="64" width="375" height="35"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lhc-xU-Vix">
+                                        <rect key="frame" x="165" y="2.5" width="44" height="30"/>
+                                        <state key="normal" title="Month">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="monthYearButtonDidSelect:" destination="KwM-N3-GCj" eventType="touchUpInside" id="bb3-Qy-vII"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.22745098039215686" green="0.39215686274509803" blue="0.72941176470588232" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="Lhc-xU-Vix" firstAttribute="centerX" secondItem="X4Y-36-jJY" secondAttribute="centerX" id="R7e-8H-l0A"/>
+                                    <constraint firstAttribute="height" constant="35" id="SN6-IH-fPA"/>
+                                    <constraint firstItem="Lhc-xU-Vix" firstAttribute="centerY" secondItem="X4Y-36-jJY" secondAttribute="centerY" id="bMS-Mq-iuc"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="46Q-0A-cn2" firstAttribute="trailing" secondItem="X4Y-36-jJY" secondAttribute="trailing" id="d8k-9K-VJk"/>
+                            <constraint firstItem="X4Y-36-jJY" firstAttribute="leading" secondItem="46Q-0A-cn2" secondAttribute="leading" id="doK-PB-I8l"/>
+                            <constraint firstItem="X4Y-36-jJY" firstAttribute="top" secondItem="46Q-0A-cn2" secondAttribute="top" id="vJc-Cl-3XY"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="46Q-0A-cn2"/>
                     </view>
                     <navigationItem key="navigationItem" title="Dashboard" id="MQq-8L-08h">
@@ -222,6 +249,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="monthYearLabel" destination="Lhc-xU-Vix" id="4dm-Kb-2YX"/>
                         <segue destination="bDZ-Jv-EtI" kind="show" identifier="ShowMonthYearPickerSegue" id="6cJ-NS-bGP"/>
                     </connections>
                 </viewController>
