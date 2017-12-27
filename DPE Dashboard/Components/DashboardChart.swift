@@ -161,7 +161,7 @@ import Charts
         if self.detailsButton != nil {
             self.detailsButton?.removeFromSuperview()
         } else {
-            self.detailsButton = UIButton(frame: CGRect(x: 0, y: 0, width: 75, height: 27))
+            self.detailsButton = UIButton(frame: CGRect(x: 0, y: 0, width: 75, height: 20))
         }
         
         let detailsButton = self.detailsButton!

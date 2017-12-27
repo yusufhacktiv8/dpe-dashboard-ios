@@ -21,6 +21,8 @@ class ChartViewController: UIViewController {
     var omzetMonths: [String] = [String]()
     var planValues: [Double] = [Double]()
     var actualValues: [Double] = [Double]()
+    
+    // Omzet Kontrak, Penjualan, Laba Kotor, Laba Setelah Pajak
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,6 +75,47 @@ class ChartViewController: UIViewController {
         var months: [String] = [String]()
         var planValues: [Double] = [Double]()
         var actualValues: [Double] = [Double]()
+        
+        DashboardService.getChartsData(year: self.selectedYear) { chartData in
+            
+            for omzet in chartData.okData {
+                months.append(omzet.month)
+//                if let plan = omzet.plan {
+//                    planValues.append(plan)
+//                }
+//                if let actual = omzet.actual {
+//                    actualValues.append(actual)
+//                }
+                planValues.append(omzet.plan)
+                actualValues.append(omzet.actual)
+            }
+            
+            self.omzetMonths = months
+            self.planValues = planValues
+            self.actualValues = actualValues
+            
+            if(months.count > 0){
+                months.insert("", at: 0)
+                months.append("")
+            }
+            
+            if(planValues.count > 0){
+                planValues.insert(0.0, at: 0)
+            }
+            if(planValues.count >= 13){
+                planValues.append(planValues[planValues.count-1] + 0.01)
+            }
+            
+            if(actualValues.count > 0){
+                actualValues.insert(0.0, at: 0)
+            }
+            
+            if(actualValues.count >= 13){
+                actualValues.append(actualValues[actualValues.count-1] + 0.01)
+            }
+            
+            self.setDataChart1(months: months, plans: planValues, actuals: actualValues)
+        }
     
     }
     

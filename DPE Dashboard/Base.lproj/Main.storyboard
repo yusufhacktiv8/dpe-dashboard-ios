@@ -145,16 +145,16 @@
         <!--Chart View Controller-->
         <scene sceneID="Mj0-5d-vSt">
             <objects>
-                <viewController id="rsM-di-CLd" customClass="ChartViewController" customModule="DPE_Dashboard" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="chartViewController" id="rsM-di-CLd" customClass="ChartViewController" customModule="DPE_Dashboard" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FYU-Wn-5d6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="czu-0l-pty">
-                                <rect key="frame" x="0.0" y="20" width="375" height="10"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="10"/>
                                 <subviews>
-                                    <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="lln-VW-y1I">
-                                        <rect key="frame" x="296" y="-14" width="39" height="37"/>
+                                    <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="4" translatesAutoresizingMaskIntoConstraints="NO" id="lln-VW-y1I">
+                                        <rect key="frame" x="280" y="-14" width="55" height="37"/>
                                     </pageControl>
                                 </subviews>
                                 <color key="backgroundColor" red="0.22745098039215686" green="0.39215686274509803" blue="0.72941176470588232" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -164,8 +164,8 @@
                                     <constraint firstAttribute="trailing" secondItem="lln-VW-y1I" secondAttribute="trailing" constant="40" id="zlo-r6-8Ta"/>
                                 </constraints>
                             </view>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x2D-Bu-ZK9">
-                                <rect key="frame" x="0.0" y="30" width="375" height="270"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x2D-Bu-ZK9">
+                                <rect key="frame" x="0.0" y="10" width="375" height="270"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dRN-gI-9ke">
                                         <rect key="frame" x="0.0" y="0.0" width="1500" height="270"/>
@@ -185,12 +185,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="czu-0l-pty" firstAttribute="leading" secondItem="Xk8-Xh-Zfc" secondAttribute="leading" id="7im-K5-Zcz"/>
-                            <constraint firstItem="Xk8-Xh-Zfc" firstAttribute="trailing" secondItem="czu-0l-pty" secondAttribute="trailing" id="BZG-eC-Bqm"/>
-                            <constraint firstItem="czu-0l-pty" firstAttribute="top" secondItem="Xk8-Xh-Zfc" secondAttribute="top" id="LMa-bE-Dza"/>
+                            <constraint firstItem="czu-0l-pty" firstAttribute="leading" secondItem="FYU-Wn-5d6" secondAttribute="leading" id="7im-K5-Zcz"/>
+                            <constraint firstAttribute="trailing" secondItem="czu-0l-pty" secondAttribute="trailing" id="BZG-eC-Bqm"/>
                             <constraint firstItem="x2D-Bu-ZK9" firstAttribute="top" secondItem="czu-0l-pty" secondAttribute="bottom" id="Znq-E2-aRA"/>
-                            <constraint firstItem="x2D-Bu-ZK9" firstAttribute="leading" secondItem="Xk8-Xh-Zfc" secondAttribute="leading" id="cR2-hE-oqC"/>
-                            <constraint firstItem="Xk8-Xh-Zfc" firstAttribute="trailing" secondItem="x2D-Bu-ZK9" secondAttribute="trailing" id="eRo-JT-O7u"/>
+                            <constraint firstItem="x2D-Bu-ZK9" firstAttribute="leading" secondItem="FYU-Wn-5d6" secondAttribute="leading" id="cR2-hE-oqC"/>
+                            <constraint firstAttribute="trailing" secondItem="x2D-Bu-ZK9" secondAttribute="trailing" id="eRo-JT-O7u"/>
+                            <constraint firstItem="czu-0l-pty" firstAttribute="top" secondItem="FYU-Wn-5d6" secondAttribute="top" id="wWx-86-QfL"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Xk8-Xh-Zfc"/>
                     </view>
@@ -231,12 +231,47 @@
                                     <constraint firstItem="Lhc-xU-Vix" firstAttribute="centerY" secondItem="X4Y-36-jJY" secondAttribute="centerY" id="bMS-Mq-iuc"/>
                                 </constraints>
                             </view>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eWO-cc-gGX">
+                                <rect key="frame" x="0.0" y="99" width="375" height="568"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="weR-g1-bMK" userLabel="Scroll Page Container">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="560"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="952-r1-7ha">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="280"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="280" id="CO8-zP-dZA"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="952-r1-7ha" firstAttribute="leading" secondItem="weR-g1-bMK" secondAttribute="leading" id="0Fz-3B-mSK"/>
+                                            <constraint firstItem="952-r1-7ha" firstAttribute="top" secondItem="weR-g1-bMK" secondAttribute="top" id="6HL-4w-Vj0"/>
+                                            <constraint firstAttribute="trailing" secondItem="952-r1-7ha" secondAttribute="trailing" id="WLg-aD-JNY"/>
+                                            <constraint firstAttribute="height" constant="560" id="npO-pb-DtH"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="weR-g1-bMK" secondAttribute="bottom" id="AB8-q6-btC"/>
+                                    <constraint firstItem="weR-g1-bMK" firstAttribute="leading" secondItem="eWO-cc-gGX" secondAttribute="leading" id="Hfm-Zj-4Iw"/>
+                                    <constraint firstAttribute="trailing" secondItem="weR-g1-bMK" secondAttribute="trailing" id="Ig3-6o-LQf"/>
+                                    <constraint firstItem="weR-g1-bMK" firstAttribute="top" secondItem="eWO-cc-gGX" secondAttribute="top" id="Qq9-sW-9TO"/>
+                                    <constraint firstItem="weR-g1-bMK" firstAttribute="centerX" secondItem="eWO-cc-gGX" secondAttribute="centerX" id="eld-cJ-4HD"/>
+                                </constraints>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="46Q-0A-cn2" firstAttribute="trailing" secondItem="eWO-cc-gGX" secondAttribute="trailing" id="05C-Vk-WV7"/>
+                            <constraint firstItem="46Q-0A-cn2" firstAttribute="bottom" secondItem="eWO-cc-gGX" secondAttribute="bottom" id="F31-j9-Egq"/>
+                            <constraint firstItem="eWO-cc-gGX" firstAttribute="top" secondItem="X4Y-36-jJY" secondAttribute="bottom" id="cYc-Op-brw"/>
                             <constraint firstItem="46Q-0A-cn2" firstAttribute="trailing" secondItem="X4Y-36-jJY" secondAttribute="trailing" id="d8k-9K-VJk"/>
                             <constraint firstItem="X4Y-36-jJY" firstAttribute="leading" secondItem="46Q-0A-cn2" secondAttribute="leading" id="doK-PB-I8l"/>
                             <constraint firstItem="X4Y-36-jJY" firstAttribute="top" secondItem="46Q-0A-cn2" secondAttribute="top" id="vJc-Cl-3XY"/>
+                            <constraint firstItem="eWO-cc-gGX" firstAttribute="leading" secondItem="46Q-0A-cn2" secondAttribute="leading" id="w8G-BY-lGI"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="46Q-0A-cn2"/>
                     </view>
@@ -249,7 +284,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="chartContainer" destination="952-r1-7ha" id="WIY-Dp-vdl"/>
                         <outlet property="monthYearLabel" destination="Lhc-xU-Vix" id="4dm-Kb-2YX"/>
+                        <outlet property="scrollPageContainer" destination="weR-g1-bMK" id="pQW-Vt-55c"/>
                         <segue destination="bDZ-Jv-EtI" kind="show" identifier="ShowMonthYearPickerSegue" id="6cJ-NS-bGP"/>
                     </connections>
                 </viewController>

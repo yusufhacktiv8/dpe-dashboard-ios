@@ -18,7 +18,7 @@ public struct DashboardService {
         var description: String {
             switch self {
             case .SignIn: return "/signin"
-            case .ChartData(let year): return "/charts/\(year)"
+            case .ChartData(let year): return "/dashboard/charts/\(year)"
             }
         }
     }

@@ -14,6 +14,8 @@ class MainViewController: UIViewController, MonthYearPickerDelegate {
     var selectedYear: Int = Constant.defaultYear
     let SHOW_MONTH_YEAR_PICKER_SEGUE = "ShowMonthYearPickerSegue"
     
+    @IBOutlet weak var chartContainer: UIView!
+    @IBOutlet weak var scrollPageContainer: UIView!
     @IBOutlet weak var monthYearLabel: UIButton!
     
     let decimalFormatter = NumberFormatter()
@@ -23,6 +25,7 @@ class MainViewController: UIViewController, MonthYearPickerDelegate {
         super.viewDidLoad()
         initFormatter()
         initMonthYear()
+        initChartView()
     }
 
     private func showFilter() {
@@ -79,6 +82,18 @@ class MainViewController: UIViewController, MonthYearPickerDelegate {
         self.numberFormatter.maximumFractionDigits = 0
     }
     
+    private func initChartView() {
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        
+        let chartViewController = storyboard.instantiateViewController(withIdentifier: "chartViewController") 
+        
+        chartContainer.addSubview(chartViewController.view)
+//        chartViewController.view.frame = chartContainer.bounds
+        chartViewController.view.frame = CGRect(x: 0, y: 0, width: chartContainer.bounds.size.width, height: chartContainer.bounds.size.height)
+//        chartViewController.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        
+        chartViewController.didMove(toParentViewController: self)
+    }
 }
 
 extension UIViewController {
