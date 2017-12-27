@@ -15,6 +15,8 @@ class ChartViewController: UIViewController {
     @IBOutlet weak var chartStackView: UIStackView!
     private var omzetChartView: DashboardChart? = nil
     private var penjualanChartView: DashboardChart? = nil
+    private var labaKotorChartView: DashboardChart? = nil
+    private var lspChartView: DashboardChart? = nil
     
     var selectedMonth: Int! = 1
     var selectedYear: Int! = 2017
@@ -41,19 +43,23 @@ class ChartViewController: UIViewController {
         omzetChartView = chartView
         
         chartView = initChart2()
-        chartView.backgroundColor = UIColor.blue
         chartStackView.addArrangedSubview(chartView)
+        chartView.widthAnchor.constraint(equalTo: chartScrollView.widthAnchor).isActive = true
+        chartView.heightAnchor.constraint(equalTo: chartScrollView.heightAnchor).isActive = true
         penjualanChartView = chartView
         
-        chartView.widthAnchor.constraint(equalTo: chartScrollView.widthAnchor).isActive = true
-        chartView.heightAnchor.constraint(equalTo: chartScrollView.heightAnchor).isActive = true
-        
-        chartView = DashboardChart()
-        chartView.backgroundColor = UIColor.yellow
+        chartView = initChart3()
         chartStackView.addArrangedSubview(chartView)
-        
         chartView.widthAnchor.constraint(equalTo: chartScrollView.widthAnchor).isActive = true
         chartView.heightAnchor.constraint(equalTo: chartScrollView.heightAnchor).isActive = true
+        labaKotorChartView = chartView
+        
+        chartView = initChart4()
+        chartStackView.addArrangedSubview(chartView)
+        chartView.widthAnchor.constraint(equalTo: chartScrollView.widthAnchor).isActive = true
+        chartView.heightAnchor.constraint(equalTo: chartScrollView.heightAnchor).isActive = true
+        lspChartView = chartView
+        
     }
     
     private func initChart1() -> DashboardChart {
@@ -90,11 +96,47 @@ class ChartViewController: UIViewController {
         return chartView
     }
     
+    private func initChart3() -> DashboardChart {
+        let chartView = DashboardChart()
+        chartView.backgroundColor = UIColor(red:0.22, green:0.40, blue:0.71, alpha:1.0)
+        chartView.valueLabelColor = UIColor.white
+        chartView.circle1Color = UIColor.yellow
+        chartView.legend1Color = UIColor.white
+        chartView.circle2Color = UIColor.blue
+        chartView.legend2Color = UIColor.white
+        chartView.title = "Laba Kotor"
+        chartView.titleColor = UIColor.white
+        chartView.legend1 = "Realisasi"
+        chartView.legend1Color = UIColor.white
+        chartView.legend2 = "Rencana"
+        chartView.legend2Color = UIColor.white
+        return chartView
+    }
+    
+    private func initChart4() -> DashboardChart {
+        let chartView = DashboardChart()
+        chartView.backgroundColor = UIColor(red:0.22, green:0.40, blue:0.71, alpha:1.0)
+        chartView.valueLabelColor = UIColor.white
+        chartView.circle1Color = UIColor.yellow
+        chartView.legend1Color = UIColor.white
+        chartView.circle2Color = UIColor.blue
+        chartView.legend2Color = UIColor.white
+        chartView.title = "LSP"
+        chartView.titleColor = UIColor.white
+        chartView.legend1 = "Realisasi"
+        chartView.legend1Color = UIColor.white
+        chartView.legend2 = "Rencana"
+        chartView.legend2Color = UIColor.white
+        return chartView
+    }
+    
     private func getChartData() -> Void{
         DashboardService.getChartsData(year: self.selectedYear) { chartData in
             self.chartData = chartData
             self.fillChart1(chartData: chartData)
             self.fillChart2(chartData: chartData)
+            self.fillChart3(chartData: chartData)
+//            self.fillChart4(chartData: chartData)
         }
         
     }
@@ -144,7 +186,7 @@ class ChartViewController: UIViewController {
         var planValues: [Double] = [Double]()
         var actualValues: [Double] = [Double]()
         
-        for omzet in chartData.okData {
+        for omzet in chartData.opData {
             months.append(omzet.month)
             planValues.append(omzet.plan)
             actualValues.append(omzet.actual)
@@ -175,6 +217,84 @@ class ChartViewController: UIViewController {
         }
         
         self.setDataChart(months: months, plans: planValues, actuals: actualValues, dashboardChart: self.penjualanChartView!)
+    }
+    
+    private func fillChart3(chartData: ChartData) -> Void{
+        
+        var months: [String] = [String]()
+        var planValues: [Double] = [Double]()
+        var actualValues: [Double] = [Double]()
+        
+        for omzet in chartData.lkData {
+            months.append(omzet.month)
+            planValues.append(omzet.plan)
+            actualValues.append(omzet.actual)
+        }
+        
+        self.omzetMonths = months
+        self.planValues = planValues
+        self.actualValues = actualValues
+        
+        if(months.count > 0){
+            months.insert("", at: 0)
+            months.append("")
+        }
+        
+        if(planValues.count > 0){
+            planValues.insert(0.0, at: 0)
+        }
+        if(planValues.count >= 13){
+            planValues.append(planValues[planValues.count-1] + 0.01)
+        }
+        
+        if(actualValues.count > 0){
+            actualValues.insert(0.0, at: 0)
+        }
+        
+        if(actualValues.count >= 13){
+            actualValues.append(actualValues[actualValues.count-1] + 0.01)
+        }
+        
+        self.setDataChart(months: months, plans: planValues, actuals: actualValues, dashboardChart: self.labaKotorChartView!)
+    }
+    
+    private func fillChart4(chartData: ChartData) -> Void{
+        
+        var months: [String] = [String]()
+        var planValues: [Double] = [Double]()
+        var actualValues: [Double] = [Double]()
+        
+        for omzet in chartData.lspData {
+            months.append(omzet.month)
+            planValues.append(omzet.plan)
+            actualValues.append(omzet.actual)
+        }
+        
+        self.omzetMonths = months
+        self.planValues = planValues
+        self.actualValues = actualValues
+        
+        if(months.count > 0){
+            months.insert("", at: 0)
+            months.append("")
+        }
+        
+        if(planValues.count > 0){
+            planValues.insert(0.0, at: 0)
+        }
+        if(planValues.count >= 13){
+            planValues.append(planValues[planValues.count-1] + 0.01)
+        }
+        
+        if(actualValues.count > 0){
+            actualValues.insert(0.0, at: 0)
+        }
+        
+        if(actualValues.count >= 13){
+            actualValues.append(actualValues[actualValues.count-1] + 0.01)
+        }
+        
+        self.setDataChart(months: months, plans: planValues, actuals: actualValues, dashboardChart: self.lspChartView!)
     }
     
     private func setDataChart(months: [String], plans: [Double], actuals: [Double], dashboardChart: DashboardChart) {
