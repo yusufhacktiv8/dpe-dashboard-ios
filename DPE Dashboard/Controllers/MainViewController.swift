@@ -17,6 +17,7 @@ class MainViewController: UIViewController, MonthYearPickerDelegate, MonthSlider
     @IBOutlet weak var chartContainer: UIView!
     @IBOutlet weak var scrollPageContainer: UIView!
     @IBOutlet weak var monthYearLabel: UIButton!
+    @IBOutlet weak var monthScrollView: UIScrollView!
     @IBOutlet weak var monthSlider: MonthSlider!
     
     let decimalFormatter = NumberFormatter()
@@ -27,7 +28,8 @@ class MainViewController: UIViewController, MonthYearPickerDelegate, MonthSlider
         initFormatter()
         initMonthYear()
         initChartView()
-        initMonthSlider()
+        initMonthSlider(initMonth: self.selectedMonth)
+        updateDashboardState()
     }
 
     private func showFilter() {
@@ -45,14 +47,32 @@ class MainViewController: UIViewController, MonthYearPickerDelegate, MonthSlider
     func monthYearSelected(month: Int, year: Int) {
         self.selectedMonth = month
         self.selectedYear = year
-        setMonthYearLabel()
-
-//        loadTableData()
+        updateDashboardState()
     }
     
     func monthSelected(month: Int) {
         self.selectedMonth = month
+        updateDashboardState()
+    }
+    
+    func updateMonthScrollView() {
+        var currentPage = 1
+        if(self.selectedMonth > 6){
+            currentPage = 2
+        }
+        let x = CGFloat(currentPage - 1) * self.monthScrollView.frame.size.width
+        self.monthScrollView.setContentOffset(CGPoint(x: x, y: 0), animated: true)
+    }
+    
+    private func updateMonthSlider() {
+        monthSlider.selectMonth(month: self.selectedMonth)
+    }
+    
+    private func updateDashboardState() {
         setMonthYearLabel()
+        updateMonthScrollView()
+        updateMonthSlider()
+//        loadTableData()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -75,11 +95,9 @@ class MainViewController: UIViewController, MonthYearPickerDelegate, MonthSlider
         
         self.selectedMonth = month
         self.selectedYear = year
-        
-        setMonthYearLabel()
     }
     
-    private func initMonthSlider() {
+    private func initMonthSlider(initMonth: Int) {
         monthSlider.delegate = self
     }
     

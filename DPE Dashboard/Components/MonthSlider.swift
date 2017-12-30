@@ -31,13 +31,16 @@ class MonthSlider: UIStackView {
     }
     
     @objc func ratingButtonTapped(button: UIButton) {
-        resetBackgroundColors()
-        button.backgroundColor = UIColor(red:0.84, green:0.86, blue:0.87, alpha:1.0)
-        button.setTitleColor(UIColor.white, for: .normal)
-        
         if let delegate = self.delegate {
             delegate.monthSelected(month: button.tag)
         }
+    }
+    
+    func selectMonth(month: Int) {
+        resetBackgroundColors()
+        let selectedButton = monthButtons[month - 1]
+        selectedButton.backgroundColor = UIColor(red:0.00, green:0.49, blue:0.96, alpha:1.0)
+        selectedButton.setTitleColor(UIColor.white, for: .normal)
     }
     
     private func setupButtons() {

@@ -305,6 +305,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="chartContainer" destination="952-r1-7ha" id="WIY-Dp-vdl"/>
+                        <outlet property="monthScrollView" destination="ZW4-Dr-CGa" id="g3H-84-m2q"/>
                         <outlet property="monthSlider" destination="678-Aa-pxl" id="FOW-CZ-0wP"/>
                         <outlet property="monthYearLabel" destination="Lhc-xU-Vix" id="4dm-Kb-2YX"/>
                         <outlet property="scrollPageContainer" destination="weR-g1-bMK" id="pQW-Vt-55c"/>
