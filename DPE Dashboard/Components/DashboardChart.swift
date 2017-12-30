@@ -333,4 +333,8 @@ import Charts
         chart?.data = nil
         chart?.clear()
     }
+    
+    func zoom(xValue: Double, yValue: Double) -> Void{
+        chart?.zoomAndCenterViewAnimated(scaleX: 2.0, scaleY: 3.0, xValue: xValue, yValue: yValue, axis: YAxis.AxisDependency.left, duration: TimeInterval(1))
+    }
 }

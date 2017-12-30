@@ -130,7 +130,7 @@ class MainViewController: UIViewController, MonthYearPickerDelegate, MonthSlider
     
     private func updateChartViewController() {
         if let chartViewController = self.chartViewController {
-            chartViewController.loadData(year: self.selectedYear)
+            chartViewController.loadData(year: self.selectedYear, month: self.selectedMonth)
         }
     }
 }

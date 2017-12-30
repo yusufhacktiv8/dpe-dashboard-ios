@@ -132,18 +132,18 @@ class ChartViewController: UIViewController, UIScrollViewDelegate {
         return chartView
     }
     
-    func loadData(year: Int) -> Void{
+    func loadData(year: Int, month: Int) -> Void{
         DashboardService.getChartsData(year: year) { chartData in
             self.chartData = chartData
-            self.fillChart1(chartData: chartData)
-            self.fillChart2(chartData: chartData)
+            self.fillChart1(chartData: chartData, month: month)
+            self.fillChart2(chartData: chartData, month: month)
             self.fillChart3(chartData: chartData)
             self.fillChart4(chartData: chartData)
         }
         
     }
     
-    private func fillChart1(chartData: ChartData) -> Void{
+    private func fillChart1(chartData: ChartData, month: Int) -> Void{
         
         var months: [String] = [String]()
         var planValues: [Double] = [Double]()
@@ -176,12 +176,14 @@ class ChartViewController: UIViewController, UIScrollViewDelegate {
                 actualValues.append(actualValues[actualValues.count-1] + 0.01)
             }
             self.setDataChart(months: months, plans: planValues, actuals: actualValues, dashboardChart: self.omzetChartView!)
+            
+            self.omzetChartView!.zoom(xValue: Double(month - 1), yValue: actualValues[month])
         } else {
             self.omzetChartView!.clearChartData()
         }
     }
     
-    private func fillChart2(chartData: ChartData) -> Void{
+    private func fillChart2(chartData: ChartData, month: Int) -> Void{
         
         var months: [String] = [String]()
         var planValues: [Double] = [Double]()
@@ -215,6 +217,8 @@ class ChartViewController: UIViewController, UIScrollViewDelegate {
             }
             
             self.setDataChart(months: months, plans: planValues, actuals: actualValues, dashboardChart: self.penjualanChartView!)
+            
+            self.penjualanChartView!.zoom(xValue: Double(month), yValue: actualValues[month])
         } else {
             self.penjualanChartView!.clearChartData()
         }
@@ -365,5 +369,4 @@ class ChartViewController: UIViewController, UIScrollViewDelegate {
         let x = CGFloat(pageControl.currentPage) * chartScrollView.frame.size.width
         chartScrollView.setContentOffset(CGPoint(x: x, y: 0), animated: true)
     }
-
 }
