@@ -20,6 +20,8 @@ class MainViewController: UIViewController, MonthYearPickerDelegate, MonthSlider
     @IBOutlet weak var monthScrollView: UIScrollView!
     @IBOutlet weak var monthSlider: MonthSlider!
     
+    var chartViewController: ChartViewController?
+    
     let decimalFormatter = NumberFormatter()
     let numberFormatter = NumberFormatter()
     
@@ -72,7 +74,7 @@ class MainViewController: UIViewController, MonthYearPickerDelegate, MonthSlider
         setMonthYearLabel()
         updateMonthScrollView()
         updateMonthSlider()
-//        loadTableData()
+        updateChartViewController()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -114,7 +116,7 @@ class MainViewController: UIViewController, MonthYearPickerDelegate, MonthSlider
     private func initChartView() {
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         
-        let chartViewController = storyboard.instantiateViewController(withIdentifier: "chartViewController") 
+        let chartViewController = storyboard.instantiateViewController(withIdentifier: "chartViewController") as! ChartViewController
         
         chartContainer.addSubview(chartViewController.view)
 //        chartViewController.view.frame = chartContainer.bounds
@@ -122,6 +124,14 @@ class MainViewController: UIViewController, MonthYearPickerDelegate, MonthSlider
 //        chartViewController.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         
         chartViewController.didMove(toParentViewController: self)
+        
+        self.chartViewController = chartViewController
+    }
+    
+    private func updateChartViewController() {
+        if let chartViewController = self.chartViewController {
+            chartViewController.loadData(year: self.selectedYear)
+        }
     }
 }
 

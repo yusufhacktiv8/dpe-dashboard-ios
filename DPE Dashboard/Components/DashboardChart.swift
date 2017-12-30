@@ -328,4 +328,9 @@ import Charts
         chart?.xAxis.granularity = 1.0
         chart?.data = self.chartData!
     }
+    
+    func clearChartData() {
+        chart?.data = nil
+        chart?.clear()
+    }
 }

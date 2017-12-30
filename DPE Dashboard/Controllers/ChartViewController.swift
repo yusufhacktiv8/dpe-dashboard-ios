@@ -30,9 +30,7 @@ class ChartViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         initChartViews()
-        getChartData()
     }
 
     private func initChartViews() {
@@ -130,13 +128,13 @@ class ChartViewController: UIViewController {
         return chartView
     }
     
-    private func getChartData() -> Void{
-        DashboardService.getChartsData(year: self.selectedYear) { chartData in
+    func loadData(year: Int) -> Void{
+        DashboardService.getChartsData(year: year) { chartData in
             self.chartData = chartData
             self.fillChart1(chartData: chartData)
             self.fillChart2(chartData: chartData)
             self.fillChart3(chartData: chartData)
-//            self.fillChart4(chartData: chartData)
+            self.fillChart4(chartData: chartData)
         }
         
     }
@@ -147,37 +145,36 @@ class ChartViewController: UIViewController {
         var planValues: [Double] = [Double]()
         var actualValues: [Double] = [Double]()
         
-        for omzet in chartData.okData {
-            months.append(omzet.month)
-            planValues.append(omzet.plan)
-            actualValues.append(omzet.actual)
+        if (chartData.okData.count > 0) {
+            for theData in chartData.okData {
+                months.append(theData.month)
+                planValues.append(theData.plan)
+                actualValues.append(theData.actual)
+            }
+    
+            if(months.count > 0){
+                months.insert("", at: 0)
+                months.append("")
+            }
+            
+            if(planValues.count > 0){
+                planValues.insert(0.0, at: 0)
+            }
+            if(planValues.count >= 13){
+                planValues.append(planValues[planValues.count-1] + 0.01)
+            }
+            
+            if(actualValues.count > 0){
+                actualValues.insert(0.0, at: 0)
+            }
+            
+            if(actualValues.count >= 13){
+                actualValues.append(actualValues[actualValues.count-1] + 0.01)
+            }
+            self.setDataChart(months: months, plans: planValues, actuals: actualValues, dashboardChart: self.omzetChartView!)
+        } else {
+            self.omzetChartView!.clearChartData()
         }
-        
-        self.omzetMonths = months
-        self.planValues = planValues
-        self.actualValues = actualValues
-        
-        if(months.count > 0){
-            months.insert("", at: 0)
-            months.append("")
-        }
-        
-        if(planValues.count > 0){
-            planValues.insert(0.0, at: 0)
-        }
-        if(planValues.count >= 13){
-            planValues.append(planValues[planValues.count-1] + 0.01)
-        }
-        
-        if(actualValues.count > 0){
-            actualValues.insert(0.0, at: 0)
-        }
-        
-        if(actualValues.count >= 13){
-            actualValues.append(actualValues[actualValues.count-1] + 0.01)
-        }
-        
-        self.setDataChart(months: months, plans: planValues, actuals: actualValues, dashboardChart: self.omzetChartView!)
     }
     
     private func fillChart2(chartData: ChartData) -> Void{
@@ -186,37 +183,37 @@ class ChartViewController: UIViewController {
         var planValues: [Double] = [Double]()
         var actualValues: [Double] = [Double]()
         
-        for omzet in chartData.opData {
-            months.append(omzet.month)
-            planValues.append(omzet.plan)
-            actualValues.append(omzet.actual)
+        if (chartData.opData.count > 0) {
+            for theData in chartData.opData {
+                months.append(theData.month)
+                planValues.append(theData.plan)
+                actualValues.append(theData.actual)
+            }
+            
+            if(months.count > 0){
+                months.insert("", at: 0)
+                months.append("")
+            }
+            
+            if(planValues.count > 0){
+                planValues.insert(0.0, at: 0)
+            }
+            if(planValues.count >= 13){
+                planValues.append(planValues[planValues.count-1] + 0.01)
+            }
+            
+            if(actualValues.count > 0){
+                actualValues.insert(0.0, at: 0)
+            }
+            
+            if(actualValues.count >= 13){
+                actualValues.append(actualValues[actualValues.count-1] + 0.01)
+            }
+            
+            self.setDataChart(months: months, plans: planValues, actuals: actualValues, dashboardChart: self.penjualanChartView!)
+        } else {
+            self.penjualanChartView!.clearChartData()
         }
-        
-        self.omzetMonths = months
-        self.planValues = planValues
-        self.actualValues = actualValues
-        
-        if(months.count > 0){
-            months.insert("", at: 0)
-            months.append("")
-        }
-        
-        if(planValues.count > 0){
-            planValues.insert(0.0, at: 0)
-        }
-        if(planValues.count >= 13){
-            planValues.append(planValues[planValues.count-1] + 0.01)
-        }
-        
-        if(actualValues.count > 0){
-            actualValues.insert(0.0, at: 0)
-        }
-        
-        if(actualValues.count >= 13){
-            actualValues.append(actualValues[actualValues.count-1] + 0.01)
-        }
-        
-        self.setDataChart(months: months, plans: planValues, actuals: actualValues, dashboardChart: self.penjualanChartView!)
     }
     
     private func fillChart3(chartData: ChartData) -> Void{
@@ -225,37 +222,39 @@ class ChartViewController: UIViewController {
         var planValues: [Double] = [Double]()
         var actualValues: [Double] = [Double]()
         
-        for omzet in chartData.lkData {
-            months.append(omzet.month)
-            planValues.append(omzet.plan)
-            actualValues.append(omzet.actual)
+        if (chartData.lkData.count > 0) {
+            for theData in chartData.lkData {
+                months.append(theData.month)
+                planValues.append(theData.plan)
+                actualValues.append(theData.actual)
+            }
+            
+            if(months.count > 0){
+                months.insert("", at: 0)
+                months.append("")
+            }
+            
+            if(planValues.count > 0){
+                planValues.insert(0.0, at: 0)
+            }
+            if(planValues.count >= 13){
+                planValues.append(planValues[planValues.count-1] + 0.01)
+            }
+            
+            if(actualValues.count > 0){
+                actualValues.insert(0.0, at: 0)
+            }
+            
+            if(actualValues.count >= 13){
+                actualValues.append(actualValues[actualValues.count-1] + 0.01)
+            }
+            
+            self.setDataChart(months: months, plans: planValues, actuals: actualValues, dashboardChart: self.labaKotorChartView!)
+        } else {
+            self.labaKotorChartView!.clearChartData()
         }
         
-        self.omzetMonths = months
-        self.planValues = planValues
-        self.actualValues = actualValues
         
-        if(months.count > 0){
-            months.insert("", at: 0)
-            months.append("")
-        }
-        
-        if(planValues.count > 0){
-            planValues.insert(0.0, at: 0)
-        }
-        if(planValues.count >= 13){
-            planValues.append(planValues[planValues.count-1] + 0.01)
-        }
-        
-        if(actualValues.count > 0){
-            actualValues.insert(0.0, at: 0)
-        }
-        
-        if(actualValues.count >= 13){
-            actualValues.append(actualValues[actualValues.count-1] + 0.01)
-        }
-        
-        self.setDataChart(months: months, plans: planValues, actuals: actualValues, dashboardChart: self.labaKotorChartView!)
     }
     
     private func fillChart4(chartData: ChartData) -> Void{
@@ -264,37 +263,39 @@ class ChartViewController: UIViewController {
         var planValues: [Double] = [Double]()
         var actualValues: [Double] = [Double]()
         
-        for omzet in chartData.lspData {
-            months.append(omzet.month)
-            planValues.append(omzet.plan)
-            actualValues.append(omzet.actual)
+        if (chartData.lspData.count > 0) {
+            for theData in chartData.lspData {
+                months.append(theData.month)
+                planValues.append(theData.plan)
+                actualValues.append(theData.actual)
+            }
+            
+            if(months.count > 0){
+                months.insert("", at: 0)
+                months.append("")
+            }
+            
+            if(planValues.count > 0){
+                planValues.insert(0.0, at: 0)
+            }
+            if(planValues.count >= 13){
+                planValues.append(planValues[planValues.count-1] + 0.01)
+            }
+            
+            if(actualValues.count > 0){
+                actualValues.insert(0.0, at: 0)
+            }
+            
+            if(actualValues.count >= 13){
+                actualValues.append(actualValues[actualValues.count-1] + 0.01)
+            }
+            
+            self.setDataChart(months: months, plans: planValues, actuals: actualValues, dashboardChart: self.lspChartView!)
+        } else {
+            self.lspChartView!.clearChartData()
         }
         
-        self.omzetMonths = months
-        self.planValues = planValues
-        self.actualValues = actualValues
         
-        if(months.count > 0){
-            months.insert("", at: 0)
-            months.append("")
-        }
-        
-        if(planValues.count > 0){
-            planValues.insert(0.0, at: 0)
-        }
-        if(planValues.count >= 13){
-            planValues.append(planValues[planValues.count-1] + 0.01)
-        }
-        
-        if(actualValues.count > 0){
-            actualValues.insert(0.0, at: 0)
-        }
-        
-        if(actualValues.count >= 13){
-            actualValues.append(actualValues[actualValues.count-1] + 0.01)
-        }
-        
-        self.setDataChart(months: months, plans: planValues, actuals: actualValues, dashboardChart: self.lspChartView!)
     }
     
     private func setDataChart(months: [String], plans: [Double], actuals: [Double], dashboardChart: DashboardChart) {
