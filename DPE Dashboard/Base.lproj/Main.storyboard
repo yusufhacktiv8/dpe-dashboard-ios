@@ -244,13 +244,33 @@
                                                     <constraint firstAttribute="height" constant="280" id="CO8-zP-dZA"/>
                                                 </constraints>
                                             </view>
+                                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZW4-Dr-CGa">
+                                                <rect key="frame" x="0.0" y="280" width="375" height="40"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="678-Aa-pxl" customClass="MonthSlider" customModule="DPE_Dashboard" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="750" height="40"/>
+                                                    </stackView>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="In1-qS-ce8"/>
+                                                    <constraint firstItem="678-Aa-pxl" firstAttribute="width" secondItem="ZW4-Dr-CGa" secondAttribute="width" multiplier="2" id="OEA-c4-A0X"/>
+                                                    <constraint firstItem="678-Aa-pxl" firstAttribute="top" secondItem="ZW4-Dr-CGa" secondAttribute="top" id="RWJ-PV-azO"/>
+                                                    <constraint firstAttribute="trailing" secondItem="678-Aa-pxl" secondAttribute="trailing" id="fwu-YE-Nqm"/>
+                                                    <constraint firstAttribute="bottom" secondItem="678-Aa-pxl" secondAttribute="bottom" id="jym-GA-7uU"/>
+                                                    <constraint firstItem="678-Aa-pxl" firstAttribute="centerY" secondItem="ZW4-Dr-CGa" secondAttribute="centerY" id="pA1-0V-WlN"/>
+                                                    <constraint firstItem="678-Aa-pxl" firstAttribute="leading" secondItem="ZW4-Dr-CGa" secondAttribute="leading" id="qwO-Jn-g88"/>
+                                                </constraints>
+                                            </scrollView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="952-r1-7ha" firstAttribute="leading" secondItem="weR-g1-bMK" secondAttribute="leading" id="0Fz-3B-mSK"/>
                                             <constraint firstItem="952-r1-7ha" firstAttribute="top" secondItem="weR-g1-bMK" secondAttribute="top" id="6HL-4w-Vj0"/>
+                                            <constraint firstItem="ZW4-Dr-CGa" firstAttribute="top" secondItem="952-r1-7ha" secondAttribute="bottom" id="Bve-o1-1Zx"/>
                                             <constraint firstAttribute="trailing" secondItem="952-r1-7ha" secondAttribute="trailing" id="WLg-aD-JNY"/>
+                                            <constraint firstAttribute="trailing" secondItem="ZW4-Dr-CGa" secondAttribute="trailing" id="bv3-xy-wVk"/>
                                             <constraint firstAttribute="height" constant="560" id="npO-pb-DtH"/>
+                                            <constraint firstItem="ZW4-Dr-CGa" firstAttribute="leading" secondItem="weR-g1-bMK" secondAttribute="leading" id="shX-nh-gq2"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -285,6 +305,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="chartContainer" destination="952-r1-7ha" id="WIY-Dp-vdl"/>
+                        <outlet property="monthSlider" destination="678-Aa-pxl" id="FOW-CZ-0wP"/>
                         <outlet property="monthYearLabel" destination="Lhc-xU-Vix" id="4dm-Kb-2YX"/>
                         <outlet property="scrollPageContainer" destination="weR-g1-bMK" id="pQW-Vt-55c"/>
                         <segue destination="bDZ-Jv-EtI" kind="show" identifier="ShowMonthYearPickerSegue" id="6cJ-NS-bGP"/>

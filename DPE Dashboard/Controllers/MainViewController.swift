@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainViewController: UIViewController, MonthYearPickerDelegate {
+class MainViewController: UIViewController, MonthYearPickerDelegate, MonthSliderDelegate {
     
     var selectedMonth: Int = Constant.defaultMonth
     var selectedYear: Int = Constant.defaultYear
@@ -17,6 +17,7 @@ class MainViewController: UIViewController, MonthYearPickerDelegate {
     @IBOutlet weak var chartContainer: UIView!
     @IBOutlet weak var scrollPageContainer: UIView!
     @IBOutlet weak var monthYearLabel: UIButton!
+    @IBOutlet weak var monthSlider: MonthSlider!
     
     let decimalFormatter = NumberFormatter()
     let numberFormatter = NumberFormatter()
@@ -26,6 +27,7 @@ class MainViewController: UIViewController, MonthYearPickerDelegate {
         initFormatter()
         initMonthYear()
         initChartView()
+        initMonthSlider()
     }
 
     private func showFilter() {
@@ -46,6 +48,11 @@ class MainViewController: UIViewController, MonthYearPickerDelegate {
         setMonthYearLabel()
 
 //        loadTableData()
+    }
+    
+    func monthSelected(month: Int) {
+        self.selectedMonth = month
+        setMonthYearLabel()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -70,6 +77,10 @@ class MainViewController: UIViewController, MonthYearPickerDelegate {
         self.selectedYear = year
         
         setMonthYearLabel()
+    }
+    
+    private func initMonthSlider() {
+        monthSlider.delegate = self
     }
     
     private func initFormatter() {
