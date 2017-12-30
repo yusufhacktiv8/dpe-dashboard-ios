@@ -197,6 +197,7 @@
                     <connections>
                         <outlet property="chartScrollView" destination="x2D-Bu-ZK9" id="LPS-Io-kbt"/>
                         <outlet property="chartStackView" destination="dRN-gI-9ke" id="WWy-KE-Iil"/>
+                        <outlet property="pageControl" destination="lln-VW-y1I" id="sPi-N4-R9a"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uyx-Lg-GZ0" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -9,10 +9,12 @@
 import UIKit
 import Charts
 
-class ChartViewController: UIViewController {
+class ChartViewController: UIViewController, UIScrollViewDelegate {
     
     @IBOutlet weak var chartScrollView: UIScrollView!
     @IBOutlet weak var chartStackView: UIStackView!
+    @IBOutlet weak var pageControl: UIPageControl!
+    
     private var omzetChartView: DashboardChart? = nil
     private var penjualanChartView: DashboardChart? = nil
     private var labaKotorChartView: DashboardChart? = nil
@@ -31,6 +33,8 @@ class ChartViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initChartViews()
+        initChartScrollView()
+        initPageControl()
     }
 
     private func initChartViews() {
@@ -79,7 +83,7 @@ class ChartViewController: UIViewController {
     
     private func initChart2() -> DashboardChart {
         let chartView = DashboardChart()
-        chartView.backgroundColor = UIColor.yellow //UIColor(red:0.22, green:0.40, blue:0.71, alpha:1.0)
+        chartView.backgroundColor = UIColor(red:0.22, green:0.40, blue:0.71, alpha:1.0)
         chartView.valueLabelColor = UIColor.white
         chartView.circle1Color = UIColor.yellow
         chartView.legend1Color = UIColor.white
@@ -342,6 +346,24 @@ class ChartViewController: UIViewController {
         let omzetLineChartData = LineChartData(dataSets: dataSets)
         dashboardChart.setChartData(chartData: omzetLineChartData, xValues: months)
         
+    }
+    
+    private func initChartScrollView() {
+        self.chartScrollView.delegate = self
+    }
+    
+    private func initPageControl() {
+        pageControl.addTarget(self, action: #selector(self.changePage(_:)), for: UIControlEvents.valueChanged)
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        let pageNumber = round(scrollView.contentOffset.x / scrollView.frame.size.width)
+        pageControl.currentPage = Int(pageNumber)
+    }
+    
+    @objc func changePage(_ sender: AnyObject) -> () {
+        let x = CGFloat(pageControl.currentPage) * chartScrollView.frame.size.width
+        chartScrollView.setContentOffset(CGPoint(x: x, y: 0), animated: true)
     }
 
 }
