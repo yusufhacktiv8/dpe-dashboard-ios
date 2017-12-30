@@ -146,10 +146,15 @@ class MainViewController: UIViewController, MonthYearPickerDelegate, MonthSlider
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return 3
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        if (indexPath.row == 2) {
+            return 48.0
+        }
+        
         return 150.0
     }
     
@@ -158,12 +163,14 @@ class MainViewController: UIViewController, MonthYearPickerDelegate, MonthSlider
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         if (indexPath.row == 0) {
             let cell = tableView.dequeueReusableCell(withIdentifier: "FirstTableViewCell") as! FirstTableViewCell
             return cell
-        } else {
+        } else if (indexPath.row == 1) {
             let cell = tableView.dequeueReusableCell(withIdentifier: "SecondTableViewCell") as! SecondTableViewCell
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ThirdTableViewCell") as! ThirdTableViewCell
             return cell
         }
         
