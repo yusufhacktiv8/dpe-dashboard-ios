@@ -319,6 +319,10 @@ import Charts
         
         chart.leftAxis.enabled = false
         
+        let marker:BalloonMarker = BalloonMarker(color: UIColor.white, font: UIFont(name: "Helvetica", size: 12)!, textColor: UIColor.black, insets: UIEdgeInsets(top: 7.0, left: 7.0, bottom: 7.0, right: 7.0))
+        marker.minimumSize = CGSize(width: 75.0, height: 35.0)
+        chart.marker = marker
+        
         chart.setViewPortOffsets(left: 0, top: 15, right: 0, bottom: 5)
     }
     
