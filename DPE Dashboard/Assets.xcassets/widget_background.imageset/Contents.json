@@ -5,6 +5,20 @@
       "scale" : "1x"
     },
     {
+      "resizing" : {
+        "mode" : "9-part",
+        "center" : {
+          "mode" : "tile",
+          "width" : 1,
+          "height" : 1
+        },
+        "cap-insets" : {
+          "bottom" : 16,
+          "top" : 58,
+          "right" : 16,
+          "left" : 16
+        }
+      },
       "idiom" : "universal",
       "filename" : "widget_background.png",
       "scale" : "2x"

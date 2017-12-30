@@ -31,6 +31,7 @@
 		2DD29E5C1FF72CAC00FD15A7 /* MonthSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD29E5B1FF72CAC00FD15A7 /* MonthSlider.swift */; };
 		2DD29E5E1FF7992D00FD15A7 /* BalloonMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD29E5D1FF7992D00FD15A7 /* BalloonMarker.swift */; };
 		2DD29E601FF7A5E600FD15A7 /* FirstTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD29E5F1FF7A5E600FD15A7 /* FirstTableViewCell.swift */; };
+		2DD29E621FF7E03700FD15A7 /* SecondTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD29E611FF7E03700FD15A7 /* SecondTableViewCell.swift */; };
 		3A0B934C395A95789336CC8D /* Pods_DPE_DashboardUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB54062F9BAD642477274C69 /* Pods_DPE_DashboardUITests.framework */; };
 		4515ED5744FD0D167DE76121 /* Pods_DPE_DashboardTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76F43C68A1994EA8005F9790 /* Pods_DPE_DashboardTests.framework */; };
 		559DB56B8CAD3A45EF88F20E /* Pods_DPE_Dashboard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16F50BA4D5995BE248204EE0 /* Pods_DPE_Dashboard.framework */; };
@@ -87,6 +88,7 @@
 		2DD29E5B1FF72CAC00FD15A7 /* MonthSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthSlider.swift; sourceTree = "<group>"; };
 		2DD29E5D1FF7992D00FD15A7 /* BalloonMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalloonMarker.swift; sourceTree = "<group>"; };
 		2DD29E5F1FF7A5E600FD15A7 /* FirstTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstTableViewCell.swift; sourceTree = "<group>"; };
+		2DD29E611FF7E03700FD15A7 /* SecondTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondTableViewCell.swift; sourceTree = "<group>"; };
 		5B546F77CD935CFD62FA3C08 /* Pods-DPE DashboardUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DPE DashboardUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DPE DashboardUITests/Pods-DPE DashboardUITests.release.xcconfig"; sourceTree = "<group>"; };
 		76F43C68A1994EA8005F9790 /* Pods_DPE_DashboardTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DPE_DashboardTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB236254C9E7B6A89E37EBF4 /* Pods-DPE DashboardTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DPE DashboardTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DPE DashboardTests/Pods-DPE DashboardTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -223,6 +225,7 @@
 				2DD29E5B1FF72CAC00FD15A7 /* MonthSlider.swift */,
 				2DD29E5D1FF7992D00FD15A7 /* BalloonMarker.swift */,
 				2DD29E5F1FF7A5E600FD15A7 /* FirstTableViewCell.swift */,
+				2DD29E611FF7E03700FD15A7 /* SecondTableViewCell.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -556,6 +559,7 @@
 				2D5093401FEE4897000D2999 /* ViewController.swift in Sources */,
 				2D0832241FF29CF800925B06 /* MainViewController.swift in Sources */,
 				2DD0938E1FF0A60900933610 /* ChartData.swift in Sources */,
+				2DD29E621FF7E03700FD15A7 /* SecondTableViewCell.swift in Sources */,
 				2DD093921FF0A7DC00933610 /* ChartDataItem.swift in Sources */,
 				2DD29E5C1FF72CAC00FD15A7 /* MonthSlider.swift in Sources */,
 				2D2D7CE01FF167EA00A78299 /* LoginService.swift in Sources */,
