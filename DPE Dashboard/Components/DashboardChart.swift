@@ -297,7 +297,7 @@ import Charts
         
         addSubview(chart)
         chart.widthAnchor.constraint(equalTo: self.widthAnchor).isActive = true
-        chart.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: -8).isActive = true
+        chart.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: 0).isActive = true
         chart.topAnchor.constraint(equalTo: margins.topAnchor, constant: 90).isActive = true
         chart.bottomAnchor.constraint(equalTo: margins.bottomAnchor, constant: 8).isActive = true
         
@@ -319,7 +319,7 @@ import Charts
         
         chart.leftAxis.enabled = false
         
-        chart.setViewPortOffsets(left: 0, top: 15, right: 0, bottom: 0)
+        chart.setViewPortOffsets(left: 0, top: 15, right: 0, bottom: 5)
     }
     
     func setChartData(chartData: LineChartData, xValues: [String]) {

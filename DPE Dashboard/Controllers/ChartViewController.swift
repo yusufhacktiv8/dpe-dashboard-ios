@@ -81,7 +81,7 @@ class ChartViewController: UIViewController {
     
     private func initChart2() -> DashboardChart {
         let chartView = DashboardChart()
-        chartView.backgroundColor = UIColor(red:0.22, green:0.40, blue:0.71, alpha:1.0)
+        chartView.backgroundColor = UIColor.yellow //UIColor(red:0.22, green:0.40, blue:0.71, alpha:1.0)
         chartView.valueLabelColor = UIColor.white
         chartView.circle1Color = UIColor.yellow
         chartView.legend1Color = UIColor.white
