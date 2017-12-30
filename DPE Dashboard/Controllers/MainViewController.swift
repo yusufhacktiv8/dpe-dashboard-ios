@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainViewController: UIViewController, MonthYearPickerDelegate, MonthSliderDelegate {
+class MainViewController: UIViewController, MonthYearPickerDelegate, MonthSliderDelegate, UITableViewDelegate, UITableViewDataSource {
     
     var selectedMonth: Int = Constant.defaultMonth
     var selectedYear: Int = Constant.defaultYear
@@ -19,6 +19,7 @@ class MainViewController: UIViewController, MonthYearPickerDelegate, MonthSlider
     @IBOutlet weak var monthYearLabel: UIButton!
     @IBOutlet weak var monthScrollView: UIScrollView!
     @IBOutlet weak var monthSlider: MonthSlider!
+    @IBOutlet weak var tableView: UITableView!
     
     var chartViewController: ChartViewController?
     
@@ -31,6 +32,7 @@ class MainViewController: UIViewController, MonthYearPickerDelegate, MonthSlider
         initMonthYear()
         initChartView()
         initMonthSlider(initMonth: self.selectedMonth)
+        initTableView()
         updateDashboardState()
     }
 
@@ -132,6 +134,32 @@ class MainViewController: UIViewController, MonthYearPickerDelegate, MonthSlider
         if let chartViewController = self.chartViewController {
             chartViewController.loadData(year: self.selectedYear, month: self.selectedMonth)
         }
+    }
+    
+    private func initTableView() {
+        tableView.delegate = self
+        tableView.dataSource = self
+    }
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 44.0
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
+    
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "FirstTableViewCell") as! FirstTableViewCell
+        return cell
     }
 }
 

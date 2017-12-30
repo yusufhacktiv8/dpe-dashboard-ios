@@ -137,8 +137,8 @@ class ChartViewController: UIViewController, UIScrollViewDelegate {
             self.chartData = chartData
             self.fillChart1(chartData: chartData, month: month)
             self.fillChart2(chartData: chartData, month: month)
-            self.fillChart3(chartData: chartData)
-            self.fillChart4(chartData: chartData)
+            self.fillChart3(chartData: chartData, month: month)
+            self.fillChart4(chartData: chartData, month: month)
         }
         
     }
@@ -224,7 +224,7 @@ class ChartViewController: UIViewController, UIScrollViewDelegate {
         }
     }
     
-    private func fillChart3(chartData: ChartData) -> Void{
+    private func fillChart3(chartData: ChartData, month: Int) -> Void{
         
         var months: [String] = [String]()
         var planValues: [Double] = [Double]()
@@ -258,14 +258,13 @@ class ChartViewController: UIViewController, UIScrollViewDelegate {
             }
             
             self.setDataChart(months: months, plans: planValues, actuals: actualValues, dashboardChart: self.labaKotorChartView!)
+            self.labaKotorChartView!.zoom(xValue: Double(month), yValue: actualValues[month])
         } else {
             self.labaKotorChartView!.clearChartData()
         }
-        
-        
     }
     
-    private func fillChart4(chartData: ChartData) -> Void{
+    private func fillChart4(chartData: ChartData, month: Int) -> Void{
         
         var months: [String] = [String]()
         var planValues: [Double] = [Double]()
@@ -299,6 +298,7 @@ class ChartViewController: UIViewController, UIScrollViewDelegate {
             }
             
             self.setDataChart(months: months, plans: planValues, actuals: actualValues, dashboardChart: self.lspChartView!)
+            self.lspChartView!.zoom(xValue: Double(month), yValue: actualValues[month])
         } else {
             self.lspChartView!.clearChartData()
         }
@@ -317,6 +317,7 @@ class ChartViewController: UIViewController, UIScrollViewDelegate {
         let planLineChartDataSet = LineChartDataSet(values: planDataEntries, label: "Plans")
         
         planLineChartDataSet.mode = LineChartDataSet.Mode.cubicBezier
+//        planLineChartDataSet.mode = LineChartDataSet.Mode.linear
         planLineChartDataSet.drawCirclesEnabled = false
         planLineChartDataSet.drawFilledEnabled = true
         
@@ -335,6 +336,7 @@ class ChartViewController: UIViewController, UIScrollViewDelegate {
         let actualLineChartDataSet = LineChartDataSet(values: actualDataEntries, label: "Actuals")
         
         actualLineChartDataSet.mode = LineChartDataSet.Mode.cubicBezier
+//        actualLineChartDataSet.mode = LineChartDataSet.Mode.linear
         actualLineChartDataSet.drawCirclesEnabled = false
         actualLineChartDataSet.drawFilledEnabled = true
         
