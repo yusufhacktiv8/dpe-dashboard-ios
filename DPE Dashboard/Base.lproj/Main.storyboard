@@ -316,13 +316,21 @@
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dyy-LY-YM1">
+                                                                    <rect key="frame" x="110" y="44" width="42" height="21"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
                                                             </subviews>
                                                             <constraints>
                                                                 <constraint firstAttribute="trailing" secondItem="fxZ-A0-Qyz" secondAttribute="trailing" constant="8" id="1Fc-s9-LYQ"/>
                                                                 <constraint firstItem="t0A-oY-fao" firstAttribute="top" secondItem="bJU-aO-LhU" secondAttribute="top" constant="12" id="43I-Q3-cc2"/>
+                                                                <constraint firstItem="Dyy-LY-YM1" firstAttribute="leading" secondItem="Gos-Wm-PXB" secondAttribute="leading" id="8gl-ul-xfm"/>
                                                                 <constraint firstItem="vJE-Wq-kUy" firstAttribute="top" secondItem="bJU-aO-LhU" secondAttribute="topMargin" constant="36" id="AJk-vF-Hkf"/>
                                                                 <constraint firstItem="n0N-CG-c9K" firstAttribute="leading" secondItem="bJU-aO-LhU" secondAttribute="leadingMargin" constant="8" id="Aiq-2C-5Jz"/>
                                                                 <constraint firstItem="6nQ-Pd-Qns" firstAttribute="centerX" secondItem="bJU-aO-LhU" secondAttribute="centerX" multiplier="1.2" id="CX1-4E-vIh"/>
+                                                                <constraint firstItem="Dyy-LY-YM1" firstAttribute="centerY" secondItem="vJE-Wq-kUy" secondAttribute="centerY" id="Ivu-br-k3C"/>
                                                                 <constraint firstItem="Gos-Wm-PXB" firstAttribute="centerX" secondItem="bJU-aO-LhU" secondAttribute="centerX" multiplier="0.7" id="VA1-gn-Qpw"/>
                                                                 <constraint firstItem="dQZ-2d-79A" firstAttribute="leading" secondItem="bJU-aO-LhU" secondAttribute="leadingMargin" constant="8" id="X3B-ig-B5J"/>
                                                                 <constraint firstItem="dQZ-2d-79A" firstAttribute="top" secondItem="vJE-Wq-kUy" secondAttribute="bottom" constant="15" id="XaM-hp-DJP"/>
@@ -337,6 +345,9 @@
                                                             </constraints>
                                                         </tableViewCellContentView>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                        <connections>
+                                                            <outlet property="rkapOkLabel" destination="Dyy-LY-YM1" id="461-cn-uBb"/>
+                                                        </connections>
                                                     </tableViewCell>
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SecondTableViewCell" rowHeight="150" id="Lly-cb-2S2" customClass="SecondTableViewCell" customModule="DPE_Dashboard" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="178" width="375" height="150"/>
@@ -389,6 +400,9 @@
                                                             </constraints>
                                                         </tableViewCellContentView>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                        <connections>
+                                                            <outlet property="titleLabel" destination="tG1-Yo-aNe" id="7Le-XZ-ci2"/>
+                                                        </connections>
                                                     </tableViewCell>
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ThirdTableViewCell" rowHeight="48" id="JQv-nv-04O" customClass="ThirdTableViewCell" customModule="DPE_Dashboard" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="328" width="375" height="48"/>

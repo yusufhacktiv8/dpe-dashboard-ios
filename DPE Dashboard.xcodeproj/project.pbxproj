@@ -20,6 +20,7 @@
 		2D5093481FEE4897000D2999 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D5093461FEE4897000D2999 /* LaunchScreen.storyboard */; };
 		2D5093531FEE4898000D2999 /* DPE_DashboardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5093521FEE4898000D2999 /* DPE_DashboardTests.swift */; };
 		2D50935E1FEE4898000D2999 /* DPE_DashboardUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D50935D1FEE4898000D2999 /* DPE_DashboardUITests.swift */; };
+		2D59D6411FF892FD00E18AAA /* DashboardDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D59D6401FF892FD00E18AAA /* DashboardDetail.swift */; };
 		2DD0937E1FF0904300933610 /* DashboardChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD0937D1FF0904300933610 /* DashboardChart.swift */; };
 		2DD093821FF09C2A00933610 /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD093811FF09C2A00933610 /* ChartViewController.swift */; };
 		2DD093871FF0A1DF00933610 /* DashboardService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD093861FF0A1DF00933610 /* DashboardService.swift */; };
@@ -78,6 +79,7 @@
 		2D5093591FEE4898000D2999 /* DPE DashboardUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "DPE DashboardUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D50935D1FEE4898000D2999 /* DPE_DashboardUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DPE_DashboardUITests.swift; sourceTree = "<group>"; };
 		2D50935F1FEE4898000D2999 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2D59D6401FF892FD00E18AAA /* DashboardDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardDetail.swift; sourceTree = "<group>"; };
 		2DD0937D1FF0904300933610 /* DashboardChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardChart.swift; sourceTree = "<group>"; };
 		2DD093811FF09C2A00933610 /* ChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
 		2DD093861FF0A1DF00933610 /* DashboardService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardService.swift; sourceTree = "<group>"; };
@@ -250,6 +252,7 @@
 				2DD0938B1FF0A29500933610 /* UserVar.swift */,
 				2DD0938D1FF0A60900933610 /* ChartData.swift */,
 				2DD093911FF0A7DC00933610 /* ChartDataItem.swift */,
+				2D59D6401FF892FD00E18AAA /* DashboardDetail.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -562,6 +565,7 @@
 				2D5093401FEE4897000D2999 /* ViewController.swift in Sources */,
 				2D0832241FF29CF800925B06 /* MainViewController.swift in Sources */,
 				2DD0938E1FF0A60900933610 /* ChartData.swift in Sources */,
+				2D59D6411FF892FD00E18AAA /* DashboardDetail.swift in Sources */,
 				2DD29E621FF7E03700FD15A7 /* SecondTableViewCell.swift in Sources */,
 				2DD093921FF0A7DC00933610 /* ChartDataItem.swift in Sources */,
 				2DD29E5C1FF72CAC00FD15A7 /* MonthSlider.swift in Sources */,

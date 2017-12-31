@@ -25,6 +25,7 @@ class MainViewController: UIViewController, MonthYearPickerDelegate, MonthSlider
     
     let decimalFormatter = NumberFormatter()
     let numberFormatter = NumberFormatter()
+    var dashboardDetails = [DashboardDetail]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,6 +78,7 @@ class MainViewController: UIViewController, MonthYearPickerDelegate, MonthSlider
         updateMonthScrollView()
         updateMonthSlider()
         updateChartViewController()
+        updateDashboardDetails()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -136,6 +138,14 @@ class MainViewController: UIViewController, MonthYearPickerDelegate, MonthSlider
         }
     }
     
+    private func updateDashboardDetails() {
+        DashboardService.getDashboardDetailsData(year: self.selectedYear, month: self.selectedMonth) { dashboardDetails in
+            self.dashboardDetails.removeAll()
+            self.dashboardDetails = dashboardDetails
+            self.tableView.reloadData()
+        }
+    }
+    
     private func initTableView() {
         tableView.delegate = self
         tableView.dataSource = self
@@ -150,11 +160,9 @@ class MainViewController: UIViewController, MonthYearPickerDelegate, MonthSlider
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
         if (indexPath.row == 2) {
             return 48.0
         }
-        
         return 150.0
     }
     
@@ -166,15 +174,34 @@ class MainViewController: UIViewController, MonthYearPickerDelegate, MonthSlider
         switch indexPath.row {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: "FirstTableViewCell") as! FirstTableViewCell
+            if (dashboardDetails.count > 0) {
+                let dashboardDetail1 = dashboardDetails[0]
+                let rkapOk = dashboardDetail1.ok
+                cell.rkapOkLabel.text = decimalFormatter.string(from: NSNumber(value: rkapOk))
+            }
             return cell
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "SecondTableViewCell") as! SecondTableViewCell
+            cell.titleLabel.text = "Sisa"
             return cell
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: "ThirdTableViewCell") as! ThirdTableViewCell
             return cell
-        case 3, 4, 5, 6:
+        case 3:
             let cell = tableView.dequeueReusableCell(withIdentifier: "SecondTableViewCell") as! SecondTableViewCell
+            cell.titleLabel.text = "OK Lama"
+            return cell
+        case 4:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "SecondTableViewCell") as! SecondTableViewCell
+            cell.titleLabel.text = "OK Baru (Sudah Didapat)"
+            return cell
+        case 5:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "SecondTableViewCell") as! SecondTableViewCell
+            cell.titleLabel.text = "OK Baru (Dalam Pengusahaan)"
+            return cell
+        case 6:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "SecondTableViewCell") as! SecondTableViewCell
+            cell.titleLabel.text = "Lain - lain"
             return cell
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: "SecondTableViewCell") as! SecondTableViewCell

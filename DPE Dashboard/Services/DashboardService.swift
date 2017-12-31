@@ -14,11 +14,13 @@ public struct DashboardService {
     private enum ResourcePath: CustomStringConvertible {
         case SignIn
         case ChartData(year: Int)
+        case DetailsData(year: Int, month: Int)
         
         var description: String {
             switch self {
             case .SignIn: return "/signin"
             case .ChartData(let year): return "/dashboard/charts/\(year)"
+            case .DetailsData(let year, let month): return "/dashboard/data/\(year)/\(month)"
             }
         }
     }
@@ -68,6 +70,30 @@ public struct DashboardService {
                 }
                 
                 myResponse(ChartData(okData: okData, opData: opData, lkData: lkData, lspData: lspData))
+            }
+            
+        }
+    }
+    
+    public static func getDashboardDetailsData(year: Int, month: Int, myResponse: @escaping ([DashboardDetail]) -> ()) {
+        let urlString = DashboardConstant.BASE_URL + ResourcePath.DetailsData(year: year, month: month).description
+        
+        let headers = ["Authorization": "Basic \(UserVar.token)"]
+        
+        Alamofire.request(urlString, headers: headers).responseJSON { response in
+            
+            if let data = response.result.value {
+                guard let json = data as? [String : AnyObject] else {
+                    print("Failed to get expected response from webserver.")
+                    return
+                }
+                
+                let data1 = json["data1"]
+                var dashboardDetails = [DashboardDetail]()
+                var dashboardDetail = JSONParser.parseDashboardDetail(data: data1!)
+                dashboardDetails.append(dashboardDetail)
+                
+                myResponse(dashboardDetails)
             }
             
         }

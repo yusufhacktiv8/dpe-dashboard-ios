@@ -14,4 +14,12 @@ struct JSONParser {
         let actual = data["actual"] as? Double ?? nil
         return ChartDataItem(month: month, plan: plan!, actual: actual!)
     }
+    
+    static func parseDashboardDetail(data: AnyObject) -> DashboardDetail {
+        let ok = data["ok"] as? Double ?? nil
+        let op = data["op"] as? Double ?? nil
+        let lsp = data["lsp"] as? Double ?? nil
+        let lk = data["lk"] as? Double ?? nil
+        return DashboardDetail(ok: ok!, op: op!, lsp: lsp!, lk: lk!)
+    }
 }

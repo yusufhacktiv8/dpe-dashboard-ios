@@ -10,6 +10,8 @@ import UIKit
 
 class FirstTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var rkapOkLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
