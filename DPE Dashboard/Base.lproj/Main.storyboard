@@ -203,18 +203,18 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uyx-Lg-GZ0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2356" y="-88"/>
+            <point key="canvasLocation" x="3174" y="62"/>
         </scene>
         <!--Dashboard-->
         <scene sceneID="G4w-JQ-qjW">
             <objects>
                 <viewController id="KwM-N3-GCj" customClass="MainViewController" customModule="DPE_Dashboard" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bmQ-wG-y56">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="1000"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="1500"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="main_bg" translatesAutoresizingMaskIntoConstraints="NO" id="7sF-79-Tgv">
-                                <rect key="frame" x="0.0" y="64" width="375" height="936"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="1436"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X4Y-36-jJY">
                                 <rect key="frame" x="0.0" y="64" width="375" height="35"/>
@@ -237,10 +237,10 @@
                                 </constraints>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eWO-cc-gGX">
-                                <rect key="frame" x="0.0" y="99" width="375" height="901"/>
+                                <rect key="frame" x="0.0" y="99" width="375" height="1401"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="weR-g1-bMK" userLabel="Scroll Page Container">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="760"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1280"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="952-r1-7ha">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="280"/>
@@ -267,11 +267,8 @@
                                                 </constraints>
                                             </scrollView>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="oKj-Zp-92X">
-                                                <rect key="frame" x="0.0" y="320" width="375" height="400"/>
+                                                <rect key="frame" x="0.0" y="328" width="375" height="952"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="400" id="QdZ-wE-MuX"/>
-                                                </constraints>
                                                 <prototypes>
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FirstTableViewCell" rowHeight="150" id="XRJ-dn-0uj" customClass="FirstTableViewCell" customModule="DPE_Dashboard" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="28" width="375" height="150"/>
@@ -351,8 +348,8 @@
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="widget_background" translatesAutoresizingMaskIntoConstraints="NO" id="BeO-iu-gdR">
                                                                     <rect key="frame" x="8" y="8" width="359" height="134"/>
                                                                 </imageView>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sisa" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tG1-Yo-aNe">
-                                                                    <rect key="frame" x="171.5" y="12" width="32" height="21"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tG1-Yo-aNe">
+                                                                    <rect key="frame" x="166.5" y="12" width="42" height="21"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -426,14 +423,15 @@
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="952-r1-7ha" firstAttribute="leading" secondItem="weR-g1-bMK" secondAttribute="leading" id="0Fz-3B-mSK"/>
-                                            <constraint firstItem="oKj-Zp-92X" firstAttribute="top" secondItem="ZW4-Dr-CGa" secondAttribute="bottom" id="4RB-Uy-jeX"/>
+                                            <constraint firstItem="oKj-Zp-92X" firstAttribute="top" secondItem="ZW4-Dr-CGa" secondAttribute="bottom" constant="8" id="4RB-Uy-jeX"/>
                                             <constraint firstItem="952-r1-7ha" firstAttribute="top" secondItem="weR-g1-bMK" secondAttribute="top" id="6HL-4w-Vj0"/>
                                             <constraint firstItem="ZW4-Dr-CGa" firstAttribute="top" secondItem="952-r1-7ha" secondAttribute="bottom" id="Bve-o1-1Zx"/>
                                             <constraint firstAttribute="trailing" secondItem="oKj-Zp-92X" secondAttribute="trailing" id="KQc-Wm-xOr"/>
                                             <constraint firstItem="oKj-Zp-92X" firstAttribute="leading" secondItem="weR-g1-bMK" secondAttribute="leading" id="UIc-4y-aRz"/>
                                             <constraint firstAttribute="trailing" secondItem="952-r1-7ha" secondAttribute="trailing" id="WLg-aD-JNY"/>
                                             <constraint firstAttribute="trailing" secondItem="ZW4-Dr-CGa" secondAttribute="trailing" id="bv3-xy-wVk"/>
-                                            <constraint firstAttribute="height" constant="760" id="npO-pb-DtH"/>
+                                            <constraint firstAttribute="height" constant="1280" id="npO-pb-DtH"/>
+                                            <constraint firstAttribute="bottom" secondItem="oKj-Zp-92X" secondAttribute="bottom" id="q3R-4H-9bq"/>
                                             <constraint firstItem="ZW4-Dr-CGa" firstAttribute="leading" secondItem="weR-g1-bMK" secondAttribute="leading" id="shX-nh-gq2"/>
                                         </constraints>
                                     </view>
@@ -472,7 +470,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <size key="freeformSize" width="375" height="1000"/>
+                    <size key="freeformSize" width="375" height="1500"/>
                     <connections>
                         <outlet property="chartContainer" destination="952-r1-7ha" id="WIY-Dp-vdl"/>
                         <outlet property="monthScrollView" destination="ZW4-Dr-CGa" id="g3H-84-m2q"/>
