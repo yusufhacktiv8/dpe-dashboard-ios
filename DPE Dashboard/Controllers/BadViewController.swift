@@ -112,7 +112,7 @@ class BadViewController: UIViewController, MonthYearPickerDelegate {
         let groupSpace = 0.3
         let barSpace = 0.05
         let barWidth = 0.3
-        let groupCount = 2
+        let groupCount = 1
         let start = 0
         
         barChartData.barWidth = barWidth;
@@ -128,17 +128,19 @@ class BadViewController: UIViewController, MonthYearPickerDelegate {
         badChart.xAxis.labelPosition = .top
         badChart.chartDescription?.text = ""
         badChart.pinchZoomEnabled = true
-        
+
         badChart.drawBordersEnabled = false
         badChart.rightAxis.enabled = false
-        
+
         badChart.xAxis.gridColor = UIColor.lightGray
         badChart.legend.enabled = false
-        
+
         badChart.xAxis.labelTextColor = UIColor.white
         badChart.xAxis.drawAxisLineEnabled = false
-        
+
         badChart.leftAxis.enabled = false
+        
+        badChart.leftAxis.valueFormatter = BarChartFormatter()
         
         badChart.setViewPortOffsets(left: 20, top: 15, right: 20, bottom: 0)
         
