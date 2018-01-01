@@ -28,13 +28,20 @@ class ChartViewController: UIViewController, UIScrollViewDelegate {
     var planValues: [Double] = [Double]()
     var actualValues: [Double] = [Double]()
     
-    // Omzet Kontrak, Penjualan, Laba Kotor, Laba Setelah Pajak
+    let decimalFormatter = NumberFormatter()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        initFormatter()
         initChartViews()
         initChartScrollView()
         initPageControl()
+    }
+    
+    private func initFormatter() {
+        self.decimalFormatter.numberStyle = NumberFormatter.Style.decimal
+        self.decimalFormatter.minimumFractionDigits = 2
+        self.decimalFormatter.maximumFractionDigits = 2
     }
 
     private func initChartViews() {
@@ -178,6 +185,7 @@ class ChartViewController: UIViewController, UIScrollViewDelegate {
             self.setDataChart(months: months, plans: planValues, actuals: actualValues, dashboardChart: self.omzetChartView!)
             
             self.omzetChartView!.zoom(xValue: Double(month - 1), yValue: actualValues[month])
+            self.omzetChartView!.setValueCaption(caption: decimalFormatter.string(from: NSNumber(value: actualValues[month]))!)
         } else {
             self.omzetChartView!.clearChartData()
         }
@@ -219,6 +227,7 @@ class ChartViewController: UIViewController, UIScrollViewDelegate {
             self.setDataChart(months: months, plans: planValues, actuals: actualValues, dashboardChart: self.penjualanChartView!)
             
             self.penjualanChartView!.zoom(xValue: Double(month), yValue: actualValues[month])
+            self.penjualanChartView!.setValueCaption(caption: decimalFormatter.string(from: NSNumber(value: actualValues[month]))!)
         } else {
             self.penjualanChartView!.clearChartData()
         }
@@ -259,6 +268,7 @@ class ChartViewController: UIViewController, UIScrollViewDelegate {
             
             self.setDataChart(months: months, plans: planValues, actuals: actualValues, dashboardChart: self.labaKotorChartView!)
             self.labaKotorChartView!.zoom(xValue: Double(month), yValue: actualValues[month])
+            self.labaKotorChartView!.setValueCaption(caption: decimalFormatter.string(from: NSNumber(value: actualValues[month]))!)
         } else {
             self.labaKotorChartView!.clearChartData()
         }
@@ -299,6 +309,7 @@ class ChartViewController: UIViewController, UIScrollViewDelegate {
             
             self.setDataChart(months: months, plans: planValues, actuals: actualValues, dashboardChart: self.lspChartView!)
             self.lspChartView!.zoom(xValue: Double(month), yValue: actualValues[month])
+            self.lspChartView!.setValueCaption(caption: decimalFormatter.string(from: NSNumber(value: actualValues[month]))!)
         } else {
             self.lspChartView!.clearChartData()
         }

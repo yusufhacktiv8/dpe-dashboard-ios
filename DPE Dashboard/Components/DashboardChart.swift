@@ -122,15 +122,17 @@ import Charts
         valueLabel.text = valueLabelText
         valueLabel.textColor = valueLabelColor
         valueLabel.font = UIFont.systemFont(ofSize: 36.0, weight: UIFont.Weight.ultraLight)
+        valueLabel.adjustsFontSizeToFitWidth = true
+        valueLabel.minimumScaleFactor = 0.5
         
         valueLabel.translatesAutoresizingMaskIntoConstraints = false
         valueLabel.heightAnchor.constraint(equalToConstant: 30.0).isActive = true
-        valueLabel.widthAnchor.constraint(equalToConstant: 105.0).isActive = true
+        valueLabel.widthAnchor.constraint(equalToConstant: 120.0).isActive = true
         let margins = self.layoutMarginsGuide
         
         addSubview(valueLabel)
         
-        valueLabel.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: 30).isActive = true
+        valueLabel.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: 25).isActive = true
         valueLabel.topAnchor.constraint(equalTo: margins.topAnchor, constant: 1).isActive = true
     }
     
@@ -152,7 +154,7 @@ import Charts
         
         addSubview(titleLabel)
         
-        titleLabel.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: 30).isActive = true
+        titleLabel.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: 25).isActive = true
         titleLabel.topAnchor.constraint(equalTo: margins.topAnchor, constant: 31).isActive = true
     }
     
@@ -338,7 +340,11 @@ import Charts
         chart?.clear()
     }
     
-    func zoom(xValue: Double, yValue: Double) -> Void{
+    func zoom(xValue: Double, yValue: Double) -> Void {
         chart?.zoomAndCenterViewAnimated(scaleX: 2.0, scaleY: 3.0, xValue: xValue, yValue: yValue, axis: YAxis.AxisDependency.left, duration: TimeInterval(1))
+    }
+    
+    func setValueCaption(caption: String) {
+        valueLabel?.text = caption
     }
 }
