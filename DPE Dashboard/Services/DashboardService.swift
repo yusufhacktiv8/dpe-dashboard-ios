@@ -87,11 +87,14 @@ public struct DashboardService {
                     print("Failed to get expected response from webserver.")
                     return
                 }
-                
-                let data1 = json["data1"]
+            
                 var dashboardDetails = [DashboardDetail]()
-                var dashboardDetail = JSONParser.parseDashboardDetail(data: data1!)
-                dashboardDetails.append(dashboardDetail)
+                dashboardDetails.append(JSONParser.parseDashboardDetail(data: json["data1"]!))
+                dashboardDetails.append(JSONParser.parseDashboardDetail(data: json["data2"]!))
+                dashboardDetails.append(JSONParser.parseDashboardDetail(data: json["data3"]!))
+                dashboardDetails.append(JSONParser.parseDashboardDetail(data: json["data4"]!))
+                dashboardDetails.append(JSONParser.parseDashboardDetail(data: json["data5"]!))
+                dashboardDetails.append(JSONParser.parseDashboardDetail(data: json["data6"]!))
                 
                 myResponse(dashboardDetails)
             }

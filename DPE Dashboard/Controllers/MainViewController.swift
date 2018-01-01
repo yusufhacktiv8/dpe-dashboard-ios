@@ -188,29 +188,69 @@ class MainViewController: UIViewController, MonthYearPickerDelegate, MonthSlider
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "SecondTableViewCell") as! SecondTableViewCell
             cell.titleLabel.text = "Sisa"
+            var dashboardDetail2: DashboardDetail?
+            if (dashboardDetails.count > 1) {
+                dashboardDetail2 = dashboardDetails[1]
+            }
+            setDetailLabels(dashboardDetail: dashboardDetail2, cell: cell)
             return cell
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: "ThirdTableViewCell") as! ThirdTableViewCell
             return cell
         case 3:
             let cell = tableView.dequeueReusableCell(withIdentifier: "SecondTableViewCell") as! SecondTableViewCell
+            var dashboardDetail3: DashboardDetail?
+            if (dashboardDetails.count > 2) {
+                dashboardDetail3 = dashboardDetails[2]
+            }
+            setDetailLabels(dashboardDetail: dashboardDetail3, cell: cell)
             cell.titleLabel.text = "OK Lama"
             return cell
         case 4:
             let cell = tableView.dequeueReusableCell(withIdentifier: "SecondTableViewCell") as! SecondTableViewCell
             cell.titleLabel.text = "OK Baru (Sudah Didapat)"
+            var dashboardDetail4: DashboardDetail?
+            if (dashboardDetails.count > 3) {
+                dashboardDetail4 = dashboardDetails[3]
+            }
+            setDetailLabels(dashboardDetail: dashboardDetail4, cell: cell)
             return cell
         case 5:
             let cell = tableView.dequeueReusableCell(withIdentifier: "SecondTableViewCell") as! SecondTableViewCell
             cell.titleLabel.text = "OK Baru (Dalam Pengusahaan)"
+            var dashboardDetail5: DashboardDetail?
+            if (dashboardDetails.count > 4) {
+                dashboardDetail5 = dashboardDetails[4]
+            }
+            setDetailLabels(dashboardDetail: dashboardDetail5, cell: cell)
             return cell
         case 6:
             let cell = tableView.dequeueReusableCell(withIdentifier: "SecondTableViewCell") as! SecondTableViewCell
             cell.titleLabel.text = "Lain - lain"
+            var dashboardDetail6: DashboardDetail?
+            if (dashboardDetails.count > 5) {
+                dashboardDetail6 = dashboardDetails[5]
+            }
+            setDetailLabels(dashboardDetail: dashboardDetail6, cell: cell)
             return cell
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: "SecondTableViewCell") as! SecondTableViewCell
             return cell
+        }
+    }
+    
+    private func setDetailLabels(dashboardDetail: DashboardDetail?, cell: SecondTableViewCell) {
+        if let detail = dashboardDetail {
+            let ok = detail.ok
+            let op = detail.op
+            let lsp = detail.lsp
+            cell.okLabel.text = decimalFormatter.string(from: NSNumber(value: ok))
+            cell.opLabel.text = decimalFormatter.string(from: NSNumber(value: op))
+            cell.lspLabel.text = decimalFormatter.string(from: NSNumber(value: lsp))
+        } else {
+            cell.okLabel.text = "-"
+            cell.opLabel.text = "-"
+            cell.lspLabel.text = "-"
         }
     }
 }

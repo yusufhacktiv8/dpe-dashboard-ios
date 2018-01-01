@@ -11,6 +11,9 @@ import UIKit
 class SecondTableViewCell: UITableViewCell {
 
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var okLabel: UILabel!
+    @IBOutlet weak var opLabel: UILabel!
+    @IBOutlet weak var lspLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
