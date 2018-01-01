@@ -18,9 +18,11 @@ class BadViewController: UIViewController, MonthYearPickerDelegate {
     let decimalFormatter = NumberFormatter()
     @IBOutlet weak var badChart: BarChartView!
     @IBOutlet weak var monthYearLabel: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initFormatter()
+        initChart()
         updateDashboardState()
     }
 
@@ -36,6 +38,10 @@ class BadViewController: UIViewController, MonthYearPickerDelegate {
         self.decimalFormatter.numberStyle = NumberFormatter.Style.decimal
         self.decimalFormatter.minimumFractionDigits = 2
         self.decimalFormatter.maximumFractionDigits = 2
+    }
+    
+    private func initChart() {
+        badChart.backgroundColor = UIColor(red:0.22, green:0.40, blue:0.71, alpha:1.0)
     }
 
     @IBAction func monthYearLabelDidTouch(_ sender: Any) {
@@ -69,48 +75,80 @@ class BadViewController: UIViewController, MonthYearPickerDelegate {
             var projectNames = [String]()
             var tagihanBrutoValues = [Double]()
             var piutangUsahaValues = [Double]()
+            var piutangRetensiValues = [Double]()
+            var pdpValues = [Double]()
+            var badValues = [Double]()
             for badData in badDatas {
                 projectNames.append(badData.projectName)
                 tagihanBrutoValues.append(badData.tagihanBruto)
                 piutangUsahaValues.append(badData.piutangUsaha)
+                piutangRetensiValues.append(badData.piutangRetensi)
+                pdpValues.append(badData.pdp)
+                badValues.append(badData.bad)
             }
             
-            self.setDataChart(months: Constant.months, projectNames: projectNames, tagihanBrutoValues: tagihanBrutoValues, piutangUsahaValues: piutangUsahaValues)
+            self.setDataChart(months: Constant.months, projectNames: projectNames, tagihanBrutoValues: tagihanBrutoValues, piutangUsahaValues: piutangUsahaValues, piutangRetensiValues: piutangRetensiValues, pdpValues: pdpValues, badValues: badValues)
         }
     }
     
-    private func setDataChart(months: [String], projectNames: [String], tagihanBrutoValues: [Double], piutangUsahaValues: [Double]) {
+    private func setDataChart(months: [String], projectNames: [String], tagihanBrutoValues: [Double], piutangUsahaValues: [Double], piutangRetensiValues: [Double], pdpValues: [Double], badValues: [Double]) {
         
         var tagihanBrutoDataEntries: [BarChartDataEntry] = []
-        
         for i in 0..<tagihanBrutoValues.count {
             tagihanBrutoDataEntries.append(BarChartDataEntry(x: Double(i), y: tagihanBrutoValues[i]))
         }
-        
         let tagihanBrutoDataSet = BarChartDataSet(values: tagihanBrutoDataEntries, label: "Tagihan Bruto")
-        
         tagihanBrutoDataSet.drawValuesEnabled = false
         
         var piutangUsahaDataEntries: [BarChartDataEntry] = []
-        
         for i in 0..<piutangUsahaValues.count {
             piutangUsahaDataEntries.append(BarChartDataEntry(x: Double(i), y: piutangUsahaValues[i]))
         }
-        
         let piutangUsahaDataSet = BarChartDataSet(values: piutangUsahaDataEntries, label: "Piutang Usaha")
         piutangUsahaDataSet.drawValuesEnabled = false
         piutangUsahaDataSet.setColor(UIColor(red:0.49, green:0.83, blue:0.13, alpha:1.0))
         
+        var piutangRetensiDataEntries: [BarChartDataEntry] = []
+        for i in 0..<piutangRetensiValues.count {
+            piutangRetensiDataEntries.append(BarChartDataEntry(x: Double(i), y: piutangRetensiValues[i]))
+        }
+        let piutangRetensiDataSet = BarChartDataSet(values: piutangRetensiDataEntries, label: "Piutang Retensi")
+        piutangRetensiDataSet.drawValuesEnabled = false
+        piutangRetensiDataSet.setColor(UIColor(red:0.29, green:0.63, blue:0.13, alpha:1.0))
+        
+        var pdpDataEntries: [BarChartDataEntry] = []
+        for i in 0..<pdpValues.count {
+            pdpDataEntries.append(BarChartDataEntry(x: Double(i), y: pdpValues[i]))
+        }
+        let pdpDataSet = BarChartDataSet(values: pdpDataEntries, label: "PDP")
+        pdpDataSet.drawValuesEnabled = false
+        pdpDataSet.setColor(UIColor(red:0.59, green:0.13, blue:0.13, alpha:1.0))
+        
+        var badDataEntries: [BarChartDataEntry] = []
+        for i in 0..<badValues.count {
+            badDataEntries.append(BarChartDataEntry(x: Double(i), y: badValues[i]))
+        }
+        let badDataSet = BarChartDataSet(values: badDataEntries, label: "BAD")
+        badDataSet.drawValuesEnabled = false
+        badDataSet.setColor(UIColor(red:0.59, green:0.63, blue:0.43, alpha:1.0))
+        
         var dataSets : [BarChartDataSet] = [BarChartDataSet]()
         dataSets.append(tagihanBrutoDataSet)
         dataSets.append(piutangUsahaDataSet)
+        dataSets.append(piutangRetensiDataSet)
+        dataSets.append(pdpDataSet)
+        dataSets.append(badDataSet)
         
         let barChartData = BarChartData(dataSets: dataSets)
         
-        let groupSpace = 0.3
-        let barSpace = 0.05
-        let barWidth = 0.3
-        let groupCount = 1
+//        let groupSpace = 0.3
+//        let barSpace = 0.05
+//        let barWidth = 0.3
+        
+        let groupSpace = 0.05
+        let barSpace = 0.02
+        let barWidth = 0.17
+        let groupCount = projectNames.count
         let start = 0
         
         barChartData.barWidth = barWidth;
@@ -143,7 +181,7 @@ class BadViewController: UIViewController, MonthYearPickerDelegate {
         leftAxis.enabled = false
 //        leftAxis.spaceBottom = 1
 //        leftAxis.spaceTop = 30.0
-        leftAxis.axisMinimum = -0.01
+//        leftAxis.axisMinimum = -0.01
 //        leftAxis.valueFormatter = BarChartFormatter()
         
         rightAxis.enabled = false
