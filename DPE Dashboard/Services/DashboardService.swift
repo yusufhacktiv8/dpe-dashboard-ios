@@ -95,6 +95,8 @@ public struct DashboardService {
                 dashboardDetails.append(JSONParser.parseDashboardDetail(data: json["data4"]!))
                 dashboardDetails.append(JSONParser.parseDashboardDetail(data: json["data5"]!))
                 dashboardDetails.append(JSONParser.parseDashboardDetail(data: json["data6"]!))
+                dashboardDetails.append(JSONParser.parseDashboardDetail(data: json["data7"]!))
+                dashboardDetails.append(JSONParser.parseDashboardDetail(data: json["data8"]!))
                 
                 myResponse(dashboardDetails)
             }
