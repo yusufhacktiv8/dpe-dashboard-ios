@@ -24,11 +24,13 @@ struct JSONParser {
     }
     
     static func parseBad(data: AnyObject) -> BadData {
+        let project = data["Project"] as AnyObject
+        let projectName = project["name"] as? String ?? ""
         let piutangUsaha = data["piutangUsaha"] as? Double ?? nil
         let tagihanBruto = data["tagihanBruto"] as? Double ?? nil
         let piutangRetensi = data["piutangRetensi"] as? Double ?? nil
         let pdp = data["pdp"] as? Double ?? nil
         let bad = data["bad"] as? Double ?? nil
-        return BadData(piutangUsaha: piutangUsaha!, tagihanBruto: tagihanBruto!, piutangRetensi: piutangRetensi!, pdp: pdp!, bad: bad!)
+        return BadData(projectName: projectName, piutangUsaha: piutangUsaha!, tagihanBruto: tagihanBruto!, piutangRetensi: piutangRetensi!, pdp: pdp!, bad: bad!)
     }
 }

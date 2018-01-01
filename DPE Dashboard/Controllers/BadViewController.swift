@@ -65,18 +65,22 @@ class BadViewController: UIViewController, MonthYearPickerDelegate {
     
     private func updateChartData() {
         DashboardService.getBadData(year: self.selectedYear!, month: self.selectedMonth!) { badDatas in
+            
+            var projectNames = [String]()
             var tagihanBrutoValues = [Double]()
             var piutangUsahaValues = [Double]()
             for badData in badDatas {
+                projectNames.append(badData.projectName)
                 tagihanBrutoValues.append(badData.tagihanBruto)
                 piutangUsahaValues.append(badData.piutangUsaha)
             }
             
-            self.setDataChart(months: Constant.months, tagihanBrutoValues: tagihanBrutoValues, piutangUsahaValues: piutangUsahaValues)
+            self.setDataChart(months: Constant.months, projectNames: projectNames, tagihanBrutoValues: tagihanBrutoValues, piutangUsahaValues: piutangUsahaValues)
         }
     }
     
-    private func setDataChart(months: [String], tagihanBrutoValues: [Double], piutangUsahaValues: [Double]) {
+    private func setDataChart(months: [String], projectNames: [String], tagihanBrutoValues: [Double], piutangUsahaValues: [Double]) {
+        
         var tagihanBrutoDataEntries: [BarChartDataEntry] = []
         
         for i in 0..<tagihanBrutoValues.count {
@@ -134,7 +138,7 @@ class BadViewController: UIViewController, MonthYearPickerDelegate {
         
         xAxis.granularity = 1.0
         xAxis.centerAxisLabelsEnabled = true
-        xAxis.valueFormatter = BarChartFormatter()
+        xAxis.valueFormatter = BarChartFormatter(projectNames: projectNames)
         
         leftAxis.enabled = false
 //        leftAxis.spaceBottom = 1
@@ -143,6 +147,10 @@ class BadViewController: UIViewController, MonthYearPickerDelegate {
 //        leftAxis.valueFormatter = BarChartFormatter()
         
         rightAxis.enabled = false
+        
+        let marker:BalloonMarker = BalloonMarker(color: UIColor.white, font: UIFont(name: "Helvetica", size: 12)!, textColor: UIColor.black, insets: UIEdgeInsets(top: 7.0, left: 7.0, bottom: 7.0, right: 7.0))
+        marker.minimumSize = CGSize(width: 75.0, height: 35.0)
+        badChart.marker = marker
         
         badChart.data = barChartData
     }
