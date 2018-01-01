@@ -177,7 +177,12 @@ class MainViewController: UIViewController, MonthYearPickerDelegate, MonthSlider
             if (dashboardDetails.count > 0) {
                 let dashboardDetail1 = dashboardDetails[0]
                 let rkapOk = dashboardDetail1.ok
+                let rkapOp = dashboardDetail1.op
                 cell.rkapOkLabel.text = decimalFormatter.string(from: NSNumber(value: rkapOk))
+                cell.rkapOpLabel.text = decimalFormatter.string(from: NSNumber(value: rkapOp))
+            } else {
+                cell.rkapOkLabel.text = "-"
+                cell.rkapOpLabel.text = "-"
             }
             return cell
         case 1:
