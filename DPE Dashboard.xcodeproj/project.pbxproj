@@ -34,6 +34,7 @@
 		2DD29E601FF7A5E600FD15A7 /* FirstTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD29E5F1FF7A5E600FD15A7 /* FirstTableViewCell.swift */; };
 		2DD29E621FF7E03700FD15A7 /* SecondTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD29E611FF7E03700FD15A7 /* SecondTableViewCell.swift */; };
 		2DD29E641FF7E53D00FD15A7 /* ThirdTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD29E631FF7E53D00FD15A7 /* ThirdTableViewCell.swift */; };
+		2DEA27541FF9EDDC003093FD /* BadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEA27531FF9EDDC003093FD /* BadViewController.swift */; };
 		3A0B934C395A95789336CC8D /* Pods_DPE_DashboardUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB54062F9BAD642477274C69 /* Pods_DPE_DashboardUITests.framework */; };
 		4515ED5744FD0D167DE76121 /* Pods_DPE_DashboardTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76F43C68A1994EA8005F9790 /* Pods_DPE_DashboardTests.framework */; };
 		559DB56B8CAD3A45EF88F20E /* Pods_DPE_Dashboard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16F50BA4D5995BE248204EE0 /* Pods_DPE_Dashboard.framework */; };
@@ -93,6 +94,7 @@
 		2DD29E5F1FF7A5E600FD15A7 /* FirstTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstTableViewCell.swift; sourceTree = "<group>"; };
 		2DD29E611FF7E03700FD15A7 /* SecondTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondTableViewCell.swift; sourceTree = "<group>"; };
 		2DD29E631FF7E53D00FD15A7 /* ThirdTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdTableViewCell.swift; sourceTree = "<group>"; };
+		2DEA27531FF9EDDC003093FD /* BadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadViewController.swift; sourceTree = "<group>"; };
 		5B546F77CD935CFD62FA3C08 /* Pods-DPE DashboardUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DPE DashboardUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DPE DashboardUITests/Pods-DPE DashboardUITests.release.xcconfig"; sourceTree = "<group>"; };
 		76F43C68A1994EA8005F9790 /* Pods_DPE_DashboardTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DPE_DashboardTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB236254C9E7B6A89E37EBF4 /* Pods-DPE DashboardTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DPE DashboardTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DPE DashboardTests/Pods-DPE DashboardTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 				2DD093811FF09C2A00933610 /* ChartViewController.swift */,
 				2D08321F1FF29A5B00925B06 /* MonthYearPickerViewController.swift */,
 				2D0832231FF29CF800925B06 /* MainViewController.swift */,
+				2DEA27531FF9EDDC003093FD /* BadViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -559,6 +562,7 @@
 				2D406AC61FEE8B43004C1D08 /* LoginViewController.swift in Sources */,
 				2D0832221FF29A8B00925B06 /* Constant.swift in Sources */,
 				2DD29E5E1FF7992D00FD15A7 /* BalloonMarker.swift in Sources */,
+				2DEA27541FF9EDDC003093FD /* BadViewController.swift in Sources */,
 				2DD0937E1FF0904300933610 /* DashboardChart.swift in Sources */,
 				2DD093941FF0A97500933610 /* JSONParser.swift in Sources */,
 				2D0832201FF29A5B00925B06 /* MonthYearPickerViewController.swift in Sources */,

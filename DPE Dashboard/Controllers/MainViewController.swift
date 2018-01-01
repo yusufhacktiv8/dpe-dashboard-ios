@@ -13,6 +13,7 @@ class MainViewController: UIViewController, MonthYearPickerDelegate, MonthSlider
     var selectedMonth: Int = Constant.defaultMonth
     var selectedYear: Int = Constant.defaultYear
     let SHOW_MONTH_YEAR_PICKER_SEGUE = "ShowMonthYearPickerSegue"
+    let BAD_SEGUE = "BadSegue"
     
     @IBOutlet weak var chartContainer: UIView!
     @IBOutlet weak var scrollPageContainer: UIView!
@@ -82,10 +83,16 @@ class MainViewController: UIViewController, MonthYearPickerDelegate, MonthSlider
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let destinationVC  = segue.destination as? MonthYearPickerViewController
-        destinationVC?.selectedYear = self.selectedYear
-        destinationVC?.selectedMonth = self.selectedMonth
-        destinationVC?.delegate = self
+        if (segue.identifier == SHOW_MONTH_YEAR_PICKER_SEGUE) {
+            let destinationVC  = segue.destination as? MonthYearPickerViewController
+            destinationVC?.selectedYear = self.selectedYear
+            destinationVC?.selectedMonth = self.selectedMonth
+            destinationVC?.delegate = self
+        } else if (segue.identifier == BAD_SEGUE) {
+            let destinationVC  = segue.destination as? BadViewController
+            destinationVC?.selectedYear = self.selectedYear
+            destinationVC?.selectedMonth = self.selectedMonth
+        }
     }
     
     @IBAction func monthYearButtonDidSelect(_ sender: Any) {
@@ -280,6 +287,10 @@ class MainViewController: UIViewController, MonthYearPickerDelegate, MonthSlider
             cell.lspLabel.text = "-"
         }
     }
+    @IBAction func onMenuButtonDidTouch(_ sender: Any) {
+        performSegue(withIdentifier: "BadSegue", sender: self)
+    }
+    
 }
 
 extension UIViewController {

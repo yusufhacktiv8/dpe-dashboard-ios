@@ -203,7 +203,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uyx-Lg-GZ0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3174" y="62"/>
+            <point key="canvasLocation" x="3148" y="64"/>
         </scene>
         <!--Dashboard-->
         <scene sceneID="G4w-JQ-qjW">
@@ -612,7 +612,11 @@
                         <viewLayoutGuide key="safeArea" id="46Q-0A-cn2"/>
                     </view>
                     <navigationItem key="navigationItem" title="Dashboard" id="MQq-8L-08h">
-                        <barButtonItem key="leftBarButtonItem" systemItem="action" id="m7N-EM-m39"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="action" id="m7N-EM-m39">
+                            <connections>
+                                <action selector="onMenuButtonDidTouch:" destination="KwM-N3-GCj" id="2SI-R5-sLO"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="search" id="R6n-er-UhA">
                             <connections>
                                 <action selector="searchButtonDidTouch:" destination="KwM-N3-GCj" id="bS7-vU-ehf"/>
@@ -628,6 +632,7 @@
                         <outlet property="scrollPageContainer" destination="weR-g1-bMK" id="pQW-Vt-55c"/>
                         <outlet property="tableView" destination="oKj-Zp-92X" id="vUL-UX-SLh"/>
                         <segue destination="bDZ-Jv-EtI" kind="show" identifier="ShowMonthYearPickerSegue" id="6cJ-NS-bGP"/>
+                        <segue destination="3zN-uq-S8t" kind="show" identifier="BadSegue" id="Q8B-8d-C31"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xL6-t2-qvH" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -671,7 +676,66 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qb8-9Z-p8v" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3175" y="767"/>
+            <point key="canvasLocation" x="3148" y="767"/>
+        </scene>
+        <!--Piutang & BAD-->
+        <scene sceneID="pzn-wV-jtS">
+            <objects>
+                <viewController id="3zN-uq-S8t" customClass="BadViewController" customModule="DPE_Dashboard" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Yav-4X-UXH">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d6u-Ic-ZIp">
+                                <rect key="frame" x="0.0" y="64" width="375" height="35"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kw3-T4-B9U">
+                                        <rect key="frame" x="165.5" y="2.5" width="44" height="30"/>
+                                        <state key="normal" title="Month">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="monthYearLabelDidTouch:" destination="3zN-uq-S8t" eventType="touchUpInside" id="1WX-jH-z56"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.22745098039215686" green="0.39215686274509803" blue="0.72941176470588232" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="6YZ-36-MlG"/>
+                                    <constraint firstItem="Kw3-T4-B9U" firstAttribute="centerY" secondItem="d6u-Ic-ZIp" secondAttribute="centerY" id="GhI-Wp-Wl9"/>
+                                    <constraint firstItem="Kw3-T4-B9U" firstAttribute="centerX" secondItem="d6u-Ic-ZIp" secondAttribute="centerX" id="OuU-Qp-tWq"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5qQ-GM-G1s" customClass="BarChartView" customModule="Charts">
+                                <rect key="frame" x="0.0" y="99" width="375" height="270"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="270" id="rUs-90-FYo"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="gr2-mr-yaK" firstAttribute="trailing" secondItem="5qQ-GM-G1s" secondAttribute="trailing" id="4IB-xw-Xpk"/>
+                            <constraint firstItem="d6u-Ic-ZIp" firstAttribute="top" secondItem="gr2-mr-yaK" secondAttribute="top" id="ChA-p1-hyS"/>
+                            <constraint firstItem="d6u-Ic-ZIp" firstAttribute="leading" secondItem="gr2-mr-yaK" secondAttribute="leading" id="SqU-vg-tPq"/>
+                            <constraint firstItem="5qQ-GM-G1s" firstAttribute="centerX" secondItem="Yav-4X-UXH" secondAttribute="centerX" id="bzD-U2-N6C"/>
+                            <constraint firstItem="gr2-mr-yaK" firstAttribute="trailing" secondItem="d6u-Ic-ZIp" secondAttribute="trailing" id="mD9-lR-dew"/>
+                            <constraint firstItem="5qQ-GM-G1s" firstAttribute="top" secondItem="d6u-Ic-ZIp" secondAttribute="bottom" id="nQR-5J-iFg"/>
+                            <constraint firstItem="5qQ-GM-G1s" firstAttribute="leading" secondItem="gr2-mr-yaK" secondAttribute="leading" id="xCZ-ax-6r4"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="gr2-mr-yaK"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Piutang &amp; BAD" id="Baa-FJ-aW0"/>
+                    <connections>
+                        <outlet property="badChart" destination="5qQ-GM-G1s" id="cYz-8N-2eq"/>
+                        <outlet property="monthYearLabel" destination="Kw3-T4-B9U" id="Opv-uy-aUQ"/>
+                        <segue destination="bDZ-Jv-EtI" kind="show" identifier="ShowMonthYearPickerSegue" id="AQX-Dm-Bvl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fxK-GK-26g" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3148" y="1525"/>
         </scene>
     </scenes>
     <resources>
@@ -681,4 +745,7 @@
         <image name="widget_background" width="16" height="37"/>
         <image name="widget_background_header" width="345" height="29"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="AQX-Dm-Bvl"/>
+    </inferredMetricsTieBreakers>
 </document>

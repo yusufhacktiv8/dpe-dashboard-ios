@@ -280,7 +280,7 @@ import Charts
         let circlePath = UIBezierPath(arcCenter: CGPoint(x: 0,y: 0), radius: CGFloat(5), startAngle: CGFloat(0), endAngle:CGFloat(Double.pi * 2), clockwise: true)
         let shapeLayer = CAShapeLayer()
         shapeLayer.path = circlePath.cgPath
-        shapeLayer.fillColor = circle2Color.cgColor
+        shapeLayer.fillColor = UIColor(red:0.49, green:0.87, blue:0.96, alpha:1.0).cgColor // circle2Color.cgColor
         legend2Circle.layer.addSublayer(shapeLayer)
     }
     
