@@ -80,23 +80,17 @@ class BadViewController: UIViewController, MonthYearPickerDelegate {
         var tagihanBrutoDataEntries: [BarChartDataEntry] = []
         
         for i in 0..<tagihanBrutoValues.count {
-            if (i < tagihanBrutoValues.count) {
-                tagihanBrutoDataEntries.append(BarChartDataEntry(x: Double(i), y: tagihanBrutoValues[i]))
-            }
+            tagihanBrutoDataEntries.append(BarChartDataEntry(x: Double(i), y: tagihanBrutoValues[i]))
         }
         
         let tagihanBrutoDataSet = BarChartDataSet(values: tagihanBrutoDataEntries, label: "Tagihan Bruto")
         
         tagihanBrutoDataSet.drawValuesEnabled = false
         
-        //        tagihanBrutoDataSet.barSpace = 0.5
-        
         var piutangUsahaDataEntries: [BarChartDataEntry] = []
         
         for i in 0..<piutangUsahaValues.count {
-            if(i < piutangUsahaValues.count){
-                piutangUsahaDataEntries.append(BarChartDataEntry(x: Double(i), y: piutangUsahaValues[i]))
-            }
+            piutangUsahaDataEntries.append(BarChartDataEntry(x: Double(i), y: piutangUsahaValues[i]))
         }
         
         let piutangUsahaDataSet = BarChartDataSet(values: piutangUsahaDataEntries, label: "Piutang Usaha")
@@ -116,36 +110,39 @@ class BadViewController: UIViewController, MonthYearPickerDelegate {
         let start = 0
         
         barChartData.barWidth = barWidth;
-        badChart.xAxis.axisMinimum = Double(start)
-        let gg = barChartData.groupWidth(groupSpace: groupSpace, barSpace: barSpace)
-        print("Groupspace: \(gg)")
-        badChart.xAxis.axisMaximum = Double(start) + gg * Double(groupCount)
-        
         barChartData.groupBars(fromX: Double(start), groupSpace: groupSpace, barSpace: barSpace)
         
-        badChart.leftAxis.spaceBottom = 1
-        
-        badChart.xAxis.labelPosition = .top
         badChart.chartDescription?.text = ""
         badChart.pinchZoomEnabled = true
-
         badChart.drawBordersEnabled = false
-        badChart.rightAxis.enabled = false
-
-        badChart.xAxis.gridColor = UIColor.lightGray
         badChart.legend.enabled = false
-
-        badChart.xAxis.labelTextColor = UIColor.white
-        badChart.xAxis.drawAxisLineEnabled = false
-
-        badChart.leftAxis.enabled = false
-        
-        badChart.leftAxis.valueFormatter = BarChartFormatter()
-        
+        badChart.drawBarShadowEnabled = false
+        badChart.backgroundColor = UIColor(red:0.22, green:0.40, blue:0.71, alpha:1.0)
         badChart.setViewPortOffsets(left: 20, top: 15, right: 20, bottom: 0)
         
-        //        badChart.leftAxis.axisMaxValue = 1000
-        badChart.drawBarShadowEnabled = false
+        let xAxis = badChart.xAxis
+        let leftAxis = badChart.leftAxis
+        let rightAxis = badChart.rightAxis
+        
+        xAxis.axisMinimum = Double(start)
+        let gg = barChartData.groupWidth(groupSpace: groupSpace, barSpace: barSpace)
+        xAxis.axisMaximum = Double(start) + gg * Double(groupCount)
+        xAxis.labelPosition = .topInside
+        xAxis.gridColor = UIColor.lightGray
+        xAxis.labelTextColor = UIColor.white
+        xAxis.drawAxisLineEnabled = false
+        
+        xAxis.granularity = 1.0
+        xAxis.centerAxisLabelsEnabled = true
+        xAxis.valueFormatter = BarChartFormatter()
+        
+        leftAxis.enabled = false
+//        leftAxis.spaceBottom = 1
+//        leftAxis.spaceTop = 30.0
+        leftAxis.axisMinimum = -0.01
+//        leftAxis.valueFormatter = BarChartFormatter()
+        
+        rightAxis.enabled = false
         
         badChart.data = barChartData
     }

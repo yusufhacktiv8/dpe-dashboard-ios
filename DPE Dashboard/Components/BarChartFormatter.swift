@@ -16,6 +16,6 @@ public class BarChartFormatter: NSObject, IAxisValueFormatter{
     
     
     public func stringForValue(_ value: Double, axis: AxisBase?) -> String {
-        return months[Int(value)]
+        return "xxxx" //months[Int(value)]
     }
 }
