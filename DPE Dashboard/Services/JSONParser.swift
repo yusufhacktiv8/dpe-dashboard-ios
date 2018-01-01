@@ -22,4 +22,13 @@ struct JSONParser {
         let lk = data["lk"] as? Double ?? nil
         return DashboardDetail(ok: ok!, op: op!, lsp: lsp!, lk: lk!)
     }
+    
+    static func parseBad(data: AnyObject) -> BadData {
+        let piutangUsaha = data["piutangUsaha"] as? Double ?? nil
+        let tagihanBruto = data["tagihanBruto"] as? Double ?? nil
+        let piutangRetensi = data["piutangRetensi"] as? Double ?? nil
+        let pdp = data["pdp"] as? Double ?? nil
+        let bad = data["bad"] as? Double ?? nil
+        return BadData(piutangUsaha: piutangUsaha!, tagihanBruto: tagihanBruto!, piutangRetensi: piutangRetensi!, pdp: pdp!, bad: bad!)
+    }
 }

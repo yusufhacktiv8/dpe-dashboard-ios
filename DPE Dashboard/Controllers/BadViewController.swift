@@ -64,13 +64,22 @@ class BadViewController: UIViewController, MonthYearPickerDelegate {
     }
     
     private func updateChartData() {
-        
+        DashboardService.getBadData(year: self.selectedYear!, month: self.selectedMonth!) { badDatas in
+            var tagihanBrutoValues = [Double]()
+            var piutangUsahaValues = [Double]()
+            for badData in badDatas {
+                tagihanBrutoValues.append(badData.tagihanBruto)
+                piutangUsahaValues.append(badData.piutangUsaha)
+            }
+            
+            self.setDataChart(months: Constant.months, tagihanBrutoValues: tagihanBrutoValues, piutangUsahaValues: piutangUsahaValues)
+        }
     }
     
     private func setDataChart(months: [String], tagihanBrutoValues: [Double], piutangUsahaValues: [Double]) {
         var tagihanBrutoDataEntries: [BarChartDataEntry] = []
         
-        for i in 0..<months.count {
+        for i in 0..<tagihanBrutoValues.count {
             if (i < tagihanBrutoValues.count) {
                 tagihanBrutoDataEntries.append(BarChartDataEntry(x: Double(i), y: tagihanBrutoValues[i]))
             }
@@ -84,7 +93,7 @@ class BadViewController: UIViewController, MonthYearPickerDelegate {
         
         var piutangUsahaDataEntries: [BarChartDataEntry] = []
         
-        for i in 0..<months.count {
+        for i in 0..<piutangUsahaValues.count {
             if(i < piutangUsahaValues.count){
                 piutangUsahaDataEntries.append(BarChartDataEntry(x: Double(i), y: piutangUsahaValues[i]))
             }
@@ -98,14 +107,28 @@ class BadViewController: UIViewController, MonthYearPickerDelegate {
         dataSets.append(tagihanBrutoDataSet)
         dataSets.append(piutangUsahaDataSet)
         
-        let barChartData = BarChartData(dataSets: dataSets) // BarChartData(xVals: months, dataSets: dataSets)
+        let barChartData = BarChartData(dataSets: dataSets)
+        
+        let groupSpace = 0.3
+        let barSpace = 0.05
+        let barWidth = 0.3
+        let groupCount = 2
+        let start = 0
+        
+        barChartData.barWidth = barWidth;
+        badChart.xAxis.axisMinimum = Double(start)
+        let gg = barChartData.groupWidth(groupSpace: groupSpace, barSpace: barSpace)
+        print("Groupspace: \(gg)")
+        badChart.xAxis.axisMaximum = Double(start) + gg * Double(groupCount)
+        
+        barChartData.groupBars(fromX: Double(start), groupSpace: groupSpace, barSpace: barSpace)
         
         badChart.leftAxis.spaceBottom = 1
         
-        //        badChart.xAxis.labelPosition = .Top
+        badChart.xAxis.labelPosition = .top
         badChart.chartDescription?.text = ""
         badChart.pinchZoomEnabled = true
-        //
+        
         badChart.drawBordersEnabled = false
         badChart.rightAxis.enabled = false
         

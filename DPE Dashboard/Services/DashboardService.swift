@@ -15,12 +15,14 @@ public struct DashboardService {
         case SignIn
         case ChartData(year: Int)
         case DetailsData(year: Int, month: Int)
+        case BadData(year: Int, month: Int)
         
         var description: String {
             switch self {
             case .SignIn: return "/signin"
             case .ChartData(let year): return "/dashboard/charts/\(year)"
             case .DetailsData(let year, let month): return "/dashboard/data/\(year)/\(month)"
+            case .BadData(let year, let month): return "/bads/all/\(year)/\(month)"
             }
         }
     }
@@ -101,6 +103,29 @@ public struct DashboardService {
                 myResponse(dashboardDetails)
             }
             
+        }
+    }
+    
+    public static func getBadData(year: Int, month: Int, myResponse: @escaping ([BadData]) -> ()) {
+        let urlString = DashboardConstant.BASE_URL + ResourcePath.BadData(year: year, month: month).description
+        
+        let headers = ["Authorization": "Basic \(UserVar.token)"]
+        
+        Alamofire.request(urlString, headers: headers).responseJSON { response in
+            if let data = response.result.value {
+                guard let json = (data as? NSArray) as Array<AnyObject>? else {
+                    print("Failed to get expected response from webserver.")
+                    return
+                }
+                
+                var badDatas = [BadData]()
+                for badData in json {
+                    badDatas.append(JSONParser.parseBad(data: badData))
+                }
+                
+                myResponse(badDatas)
+            }
+
         }
     }
     
