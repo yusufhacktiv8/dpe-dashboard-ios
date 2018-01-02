@@ -634,6 +634,7 @@
                         <outlet property="tableView" destination="oKj-Zp-92X" id="vUL-UX-SLh"/>
                         <segue destination="bDZ-Jv-EtI" kind="show" identifier="ShowMonthYearPickerSegue" id="6cJ-NS-bGP"/>
                         <segue destination="3zN-uq-S8t" kind="show" identifier="BadSegue" id="Q8B-8d-C31"/>
+                        <segue destination="kZp-EX-vt6" kind="show" identifier="UmurPiutangSegue" id="m2p-MD-ewy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xL6-t2-qvH" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -933,7 +934,55 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fxK-GK-26g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3148" y="1631"/>
+            <point key="canvasLocation" x="3148" y="2069"/>
+        </scene>
+        <!--Umur Piutang-->
+        <scene sceneID="gMg-Kz-Nhl">
+            <objects>
+                <viewController id="kZp-EX-vt6" customClass="UmurPiutangViewController" customModule="DPE_Dashboard" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="s9b-mO-xuD">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Nh-Vn-geg">
+                                <rect key="frame" x="0.0" y="64" width="375" height="35"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NOf-fE-sKN">
+                                        <rect key="frame" x="165.5" y="2" width="44" height="30"/>
+                                        <state key="normal" title="Month">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="monthYearLabelDidTouch:" destination="kZp-EX-vt6" eventType="touchUpInside" id="FXf-ld-eVT"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.22745098039215686" green="0.39215686274509803" blue="0.72941176470588232" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="0qi-rI-wgr"/>
+                                    <constraint firstItem="NOf-fE-sKN" firstAttribute="centerY" secondItem="3Nh-Vn-geg" secondAttribute="centerY" id="JDz-d6-BDK"/>
+                                    <constraint firstItem="NOf-fE-sKN" firstAttribute="centerX" secondItem="3Nh-Vn-geg" secondAttribute="centerX" id="ZUW-c4-53D"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="3Nh-Vn-geg" firstAttribute="top" secondItem="ugn-ST-K8a" secondAttribute="top" id="Upq-Rp-3Vl"/>
+                            <constraint firstItem="ugn-ST-K8a" firstAttribute="trailing" secondItem="3Nh-Vn-geg" secondAttribute="trailing" id="azD-xW-ksV"/>
+                            <constraint firstItem="3Nh-Vn-geg" firstAttribute="leading" secondItem="ugn-ST-K8a" secondAttribute="leading" id="mG7-vZ-bA3"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ugn-ST-K8a"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Umur Piutang" id="nYi-Ty-sxP"/>
+                    <connections>
+                        <outlet property="monthYearLabel" destination="NOf-fE-sKN" id="1hL-nZ-5Ak"/>
+                        <outlet property="view" destination="s9b-mO-xuD" id="51H-6D-QQb"/>
+                        <segue destination="bDZ-Jv-EtI" kind="show" identifier="ShowMonthYearPickerSegue" id="TQf-1M-13q"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sFe-73-MlX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4110" y="1914"/>
         </scene>
     </scenes>
     <resources>
@@ -944,6 +993,6 @@
         <image name="widget_background_header" width="345" height="29"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="AQX-Dm-Bvl"/>
+        <segue reference="TQf-1M-13q"/>
     </inferredMetricsTieBreakers>
 </document>

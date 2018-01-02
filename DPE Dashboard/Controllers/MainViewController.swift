@@ -14,6 +14,7 @@ class MainViewController: UIViewController, MonthYearPickerDelegate, MonthSlider
     var selectedYear: Int = Constant.defaultYear
     let SHOW_MONTH_YEAR_PICKER_SEGUE = "ShowMonthYearPickerSegue"
     let BAD_SEGUE = "BadSegue"
+    let UMUR_PIUTANG_SEGUE = "UmurPiutangSegue"
     
     @IBOutlet weak var chartContainer: UIView!
     @IBOutlet weak var scrollPageContainer: UIView!
@@ -90,6 +91,10 @@ class MainViewController: UIViewController, MonthYearPickerDelegate, MonthSlider
             destinationVC?.delegate = self
         } else if (segue.identifier == BAD_SEGUE) {
             let destinationVC  = segue.destination as? BadViewController
+            destinationVC?.selectedYear = self.selectedYear
+            destinationVC?.selectedMonth = self.selectedMonth
+        } else if (segue.identifier == UMUR_PIUTANG_SEGUE) {
+            let destinationVC  = segue.destination as? UmurPiutangViewController
             destinationVC?.selectedYear = self.selectedYear
             destinationVC?.selectedMonth = self.selectedMonth
         }
@@ -288,7 +293,8 @@ class MainViewController: UIViewController, MonthYearPickerDelegate, MonthSlider
         }
     }
     @IBAction func onMenuButtonDidTouch(_ sender: Any) {
-        performSegue(withIdentifier: "BadSegue", sender: self)
+//        performSegue(withIdentifier: "BadSegue", sender: self)
+        performSegue(withIdentifier: UMUR_PIUTANG_SEGUE, sender: self)
     }
     
 }

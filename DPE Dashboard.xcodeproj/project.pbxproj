@@ -13,6 +13,7 @@
 		2D0832241FF29CF800925B06 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0832231FF29CF800925B06 /* MainViewController.swift */; };
 		2D2D7CE01FF167EA00A78299 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D2D7CDF1FF167EA00A78299 /* LoginService.swift */; };
 		2D35F01E1FFBC47C00E4770E /* BadTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D35F01D1FFBC47C00E4770E /* BadTableViewCell.swift */; };
+		2D35F0201FFBD3D000E4770E /* UmurPiutangViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D35F01F1FFBD3D000E4770E /* UmurPiutangViewController.swift */; };
 		2D406AC61FEE8B43004C1D08 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D406AC51FEE8B43004C1D08 /* LoginViewController.swift */; };
 		2D50933E1FEE4897000D2999 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D50933D1FEE4897000D2999 /* AppDelegate.swift */; };
 		2D5093401FEE4897000D2999 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D50933F1FEE4897000D2999 /* ViewController.swift */; };
@@ -70,6 +71,7 @@
 		2D0832231FF29CF800925B06 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		2D2D7CDF1FF167EA00A78299 /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		2D35F01D1FFBC47C00E4770E /* BadTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadTableViewCell.swift; sourceTree = "<group>"; };
+		2D35F01F1FFBD3D000E4770E /* UmurPiutangViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmurPiutangViewController.swift; sourceTree = "<group>"; };
 		2D406AC51FEE8B43004C1D08 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		2D50933A1FEE4897000D2999 /* DPE Dashboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DPE Dashboard.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D50933D1FEE4897000D2999 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 				2D08321F1FF29A5B00925B06 /* MonthYearPickerViewController.swift */,
 				2D0832231FF29CF800925B06 /* MainViewController.swift */,
 				2DEA27531FF9EDDC003093FD /* BadViewController.swift */,
+				2D35F01F1FFBD3D000E4770E /* UmurPiutangViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -581,6 +584,7 @@
 				2DD0938E1FF0A60900933610 /* ChartData.swift in Sources */,
 				2D59D6411FF892FD00E18AAA /* DashboardDetail.swift in Sources */,
 				2DD29E621FF7E03700FD15A7 /* SecondTableViewCell.swift in Sources */,
+				2D35F0201FFBD3D000E4770E /* UmurPiutangViewController.swift in Sources */,
 				2DD093921FF0A7DC00933610 /* ChartDataItem.swift in Sources */,
 				2DD29E5C1FF72CAC00FD15A7 /* MonthSlider.swift in Sources */,
 				2D2D7CE01FF167EA00A78299 /* LoginService.swift in Sources */,
