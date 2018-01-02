@@ -241,7 +241,13 @@ class BadViewController: UIViewController, MonthYearPickerDelegate, MonthSliderD
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "BadTableViewCell") as! BadTableViewCell
-        cell.projectName.text = self.bads[indexPath.row].projectName
+        let bad = self.bads[indexPath.row]
+        cell.projectName.text = bad.projectName
+        cell.piutangUsahaLabel.text = self.decimalFormatter.string(from: NSNumber(value: bad.piutangUsaha))
+        cell.tagihanBrutoLabel.text = self.decimalFormatter.string(from: NSNumber(value: bad.tagihanBruto))
+        cell.piutangRetensiLabel.text = self.decimalFormatter.string(from: NSNumber(value: bad.piutangRetensi))
+        cell.pdpLabel.text = self.decimalFormatter.string(from: NSNumber(value: bad.pdp))
+        cell.badLabel.text = self.decimalFormatter.string(from: NSNumber(value: bad.bad))
         return cell
     }
 }
