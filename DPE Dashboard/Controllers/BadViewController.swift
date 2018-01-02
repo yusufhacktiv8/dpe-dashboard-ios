@@ -57,6 +57,15 @@ class BadViewController: UIViewController, MonthYearPickerDelegate, MonthSliderD
         monthSlider.selectMonth(month: self.selectedMonth!)
     }
     
+    func updateMonthScrollView() {
+        var currentPage = 1
+        if(self.selectedMonth! > 6){
+            currentPage = 2
+        }
+        let x = CGFloat(currentPage - 1) * self.monthScrollView.frame.size.width
+        self.monthScrollView.setContentOffset(CGPoint(x: x, y: 0), animated: true)
+    }
+    
     func monthSelected(month: Int) {
         self.selectedMonth = month
         updateDashboardState()
@@ -79,6 +88,7 @@ class BadViewController: UIViewController, MonthYearPickerDelegate, MonthSliderD
     private func updateDashboardState() {
         setMonthYearLabel()
         updateChartData()
+        updateMonthScrollView()
         updateMonthSlider()
 //        updateDashboardDetails()
     }
