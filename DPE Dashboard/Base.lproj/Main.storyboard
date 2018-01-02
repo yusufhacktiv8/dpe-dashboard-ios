@@ -686,6 +686,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="main_bg" translatesAutoresizingMaskIntoConstraints="NO" id="DBR-gj-WGG">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d6u-Ic-ZIp">
                                 <rect key="frame" x="0.0" y="64" width="375" height="35"/>
                                 <subviews>
@@ -706,30 +709,81 @@
                                     <constraint firstItem="Kw3-T4-B9U" firstAttribute="centerX" secondItem="d6u-Ic-ZIp" secondAttribute="centerX" id="OuU-Qp-tWq"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5qQ-GM-G1s" customClass="BarChartView" customModule="Charts">
-                                <rect key="frame" x="0.0" y="99" width="375" height="270"/>
-                                <color key="backgroundColor" red="0.22745098039215686" green="0.39215686274509803" blue="0.72941176470588232" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9dr-U3-vZY">
+                                <rect key="frame" x="0.0" y="99" width="375" height="568"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qWR-y7-rtw">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="568"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5qQ-GM-G1s" customClass="BarChartView" customModule="Charts">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="270"/>
+                                                <color key="backgroundColor" red="0.22745098039215686" green="0.39215686274509803" blue="0.72941176470588232" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="270" id="rUs-90-FYo"/>
+                                                </constraints>
+                                            </view>
+                                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xlt-MF-HMo">
+                                                <rect key="frame" x="0.0" y="270" width="375" height="40"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="sN6-bW-h4c" customClass="MonthSlider" customModule="DPE_Dashboard" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="750" height="40"/>
+                                                    </stackView>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="sN6-bW-h4c" secondAttribute="trailing" id="GaO-hS-ieo"/>
+                                                    <constraint firstAttribute="height" constant="40" id="JBR-l1-R1B"/>
+                                                    <constraint firstItem="sN6-bW-h4c" firstAttribute="leading" secondItem="Xlt-MF-HMo" secondAttribute="leading" id="K5z-eN-NEO"/>
+                                                    <constraint firstItem="sN6-bW-h4c" firstAttribute="centerY" secondItem="Xlt-MF-HMo" secondAttribute="centerY" id="O0W-2b-h2C"/>
+                                                    <constraint firstItem="sN6-bW-h4c" firstAttribute="top" secondItem="Xlt-MF-HMo" secondAttribute="top" id="RrZ-Ft-MTF"/>
+                                                    <constraint firstItem="sN6-bW-h4c" firstAttribute="width" secondItem="Xlt-MF-HMo" secondAttribute="width" multiplier="2" id="nQG-H9-aRa"/>
+                                                    <constraint firstAttribute="bottom" secondItem="sN6-bW-h4c" secondAttribute="bottom" id="stz-iW-nPZ"/>
+                                                </constraints>
+                                            </scrollView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="5qQ-GM-G1s" secondAttribute="trailing" id="7NS-sB-I6u"/>
+                                            <constraint firstItem="5qQ-GM-G1s" firstAttribute="top" secondItem="qWR-y7-rtw" secondAttribute="top" id="Kae-7v-PxR"/>
+                                            <constraint firstItem="5qQ-GM-G1s" firstAttribute="leading" secondItem="qWR-y7-rtw" secondAttribute="leading" id="LaE-60-wOs"/>
+                                            <constraint firstItem="Xlt-MF-HMo" firstAttribute="leading" secondItem="qWR-y7-rtw" secondAttribute="leading" id="Tlw-Ih-kJh"/>
+                                            <constraint firstAttribute="trailing" secondItem="Xlt-MF-HMo" secondAttribute="trailing" id="jSi-YJ-Glo"/>
+                                            <constraint firstItem="Xlt-MF-HMo" firstAttribute="top" secondItem="5qQ-GM-G1s" secondAttribute="bottom" id="ncf-Ss-NDh"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="270" id="rUs-90-FYo"/>
+                                    <constraint firstItem="qWR-y7-rtw" firstAttribute="leading" secondItem="9dr-U3-vZY" secondAttribute="leading" id="8dE-r2-08V"/>
+                                    <constraint firstAttribute="trailing" secondItem="qWR-y7-rtw" secondAttribute="trailing" id="EKf-ZB-Kzu"/>
+                                    <constraint firstItem="qWR-y7-rtw" firstAttribute="top" secondItem="9dr-U3-vZY" secondAttribute="top" id="mwQ-55-P8p"/>
+                                    <constraint firstItem="qWR-y7-rtw" firstAttribute="height" secondItem="9dr-U3-vZY" secondAttribute="height" id="n9r-tf-zkY"/>
+                                    <constraint firstItem="qWR-y7-rtw" firstAttribute="centerX" secondItem="9dr-U3-vZY" secondAttribute="centerX" id="nIW-AY-BRz"/>
+                                    <constraint firstAttribute="bottom" secondItem="qWR-y7-rtw" secondAttribute="bottom" id="zNS-iU-K1Y"/>
                                 </constraints>
-                            </view>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="gr2-mr-yaK" firstAttribute="trailing" secondItem="5qQ-GM-G1s" secondAttribute="trailing" id="4IB-xw-Xpk"/>
+                            <constraint firstItem="gr2-mr-yaK" firstAttribute="trailing" secondItem="9dr-U3-vZY" secondAttribute="trailing" id="11f-oh-7wo"/>
+                            <constraint firstItem="gr2-mr-yaK" firstAttribute="trailing" secondItem="DBR-gj-WGG" secondAttribute="trailing" id="6RY-Fd-Bnt"/>
+                            <constraint firstItem="DBR-gj-WGG" firstAttribute="leading" secondItem="gr2-mr-yaK" secondAttribute="leading" id="6jv-A2-E3O"/>
+                            <constraint firstItem="9dr-U3-vZY" firstAttribute="top" secondItem="d6u-Ic-ZIp" secondAttribute="bottom" id="BlU-1g-gPG"/>
                             <constraint firstItem="d6u-Ic-ZIp" firstAttribute="top" secondItem="gr2-mr-yaK" secondAttribute="top" id="ChA-p1-hyS"/>
+                            <constraint firstItem="DBR-gj-WGG" firstAttribute="top" secondItem="d6u-Ic-ZIp" secondAttribute="top" id="Ig5-mE-QoN"/>
+                            <constraint firstItem="9dr-U3-vZY" firstAttribute="leading" secondItem="gr2-mr-yaK" secondAttribute="leading" id="Q6v-1n-EQu"/>
                             <constraint firstItem="d6u-Ic-ZIp" firstAttribute="leading" secondItem="gr2-mr-yaK" secondAttribute="leading" id="SqU-vg-tPq"/>
-                            <constraint firstItem="5qQ-GM-G1s" firstAttribute="centerX" secondItem="Yav-4X-UXH" secondAttribute="centerX" id="bzD-U2-N6C"/>
                             <constraint firstItem="gr2-mr-yaK" firstAttribute="trailing" secondItem="d6u-Ic-ZIp" secondAttribute="trailing" id="mD9-lR-dew"/>
-                            <constraint firstItem="5qQ-GM-G1s" firstAttribute="top" secondItem="d6u-Ic-ZIp" secondAttribute="bottom" id="nQR-5J-iFg"/>
-                            <constraint firstItem="5qQ-GM-G1s" firstAttribute="leading" secondItem="gr2-mr-yaK" secondAttribute="leading" id="xCZ-ax-6r4"/>
+                            <constraint firstItem="gr2-mr-yaK" firstAttribute="bottom" secondItem="DBR-gj-WGG" secondAttribute="bottom" id="qxZ-oo-zrB"/>
+                            <constraint firstItem="gr2-mr-yaK" firstAttribute="bottom" secondItem="9dr-U3-vZY" secondAttribute="bottom" id="w2e-bn-CZB"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="gr2-mr-yaK"/>
                     </view>
                     <navigationItem key="navigationItem" title="Piutang &amp; BAD" id="Baa-FJ-aW0"/>
                     <connections>
                         <outlet property="badChart" destination="5qQ-GM-G1s" id="cYz-8N-2eq"/>
+                        <outlet property="monthScrollView" destination="Xlt-MF-HMo" id="xqw-1d-3Sp"/>
+                        <outlet property="monthSlider" destination="sN6-bW-h4c" id="iBK-bZ-oAr"/>
                         <outlet property="monthYearLabel" destination="Kw3-T4-B9U" id="Opv-uy-aUQ"/>
+                        <outlet property="scrollPageContainer" destination="qWR-y7-rtw" id="yak-I4-JTk"/>
                         <segue destination="bDZ-Jv-EtI" kind="show" identifier="ShowMonthYearPickerSegue" id="AQX-Dm-Bvl"/>
                     </connections>
                 </viewController>

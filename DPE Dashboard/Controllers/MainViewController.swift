@@ -106,8 +106,8 @@ class MainViewController: UIViewController, MonthYearPickerDelegate, MonthSlider
         let year = calendar.component(.year, from: date)
         let month = calendar.component(.month, from: date)
         
-        self.selectedMonth = month
-        self.selectedYear = year
+        self.selectedMonth = 11 // month
+        self.selectedYear = 2017 // year
     }
     
     private func initMonthSlider(initMonth: Int) {

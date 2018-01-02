@@ -9,7 +9,7 @@
 import UIKit
 import Charts
 
-class BadViewController: UIViewController, MonthYearPickerDelegate {
+class BadViewController: UIViewController, MonthYearPickerDelegate, MonthSliderDelegate {
     
     var selectedMonth: Int?
     var selectedYear: Int?
@@ -19,9 +19,14 @@ class BadViewController: UIViewController, MonthYearPickerDelegate {
     @IBOutlet weak var badChart: BarChartView!
     @IBOutlet weak var monthYearLabel: UIButton!
     
+    @IBOutlet weak var scrollPageContainer: UIView!
+    @IBOutlet weak var monthScrollView: UIScrollView!
+    @IBOutlet weak var monthSlider: MonthSlider!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initFormatter()
+        initMonthSlider(initMonth: self.selectedMonth!)
         initChart()
         updateDashboardState()
     }
@@ -38,6 +43,19 @@ class BadViewController: UIViewController, MonthYearPickerDelegate {
         self.decimalFormatter.numberStyle = NumberFormatter.Style.decimal
         self.decimalFormatter.minimumFractionDigits = 2
         self.decimalFormatter.maximumFractionDigits = 2
+    }
+    
+    private func initMonthSlider(initMonth: Int) {
+        monthSlider.delegate = self
+    }
+    
+    private func updateMonthSlider() {
+        monthSlider.selectMonth(month: self.selectedMonth!)
+    }
+    
+    func monthSelected(month: Int) {
+        self.selectedMonth = month
+        updateDashboardState()
     }
     
     private func initChart() {
@@ -57,6 +75,7 @@ class BadViewController: UIViewController, MonthYearPickerDelegate {
     private func updateDashboardState() {
         setMonthYearLabel()
         updateChartData()
+        updateMonthSlider()
 //        updateDashboardDetails()
     }
     
