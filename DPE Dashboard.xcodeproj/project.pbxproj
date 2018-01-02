@@ -12,6 +12,7 @@
 		2D0832221FF29A8B00925B06 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0832211FF29A8B00925B06 /* Constant.swift */; };
 		2D0832241FF29CF800925B06 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0832231FF29CF800925B06 /* MainViewController.swift */; };
 		2D2D7CE01FF167EA00A78299 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D2D7CDF1FF167EA00A78299 /* LoginService.swift */; };
+		2D35F01E1FFBC47C00E4770E /* BadTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D35F01D1FFBC47C00E4770E /* BadTableViewCell.swift */; };
 		2D406AC61FEE8B43004C1D08 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D406AC51FEE8B43004C1D08 /* LoginViewController.swift */; };
 		2D50933E1FEE4897000D2999 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D50933D1FEE4897000D2999 /* AppDelegate.swift */; };
 		2D5093401FEE4897000D2999 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D50933F1FEE4897000D2999 /* ViewController.swift */; };
@@ -68,6 +69,7 @@
 		2D0832211FF29A8B00925B06 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		2D0832231FF29CF800925B06 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		2D2D7CDF1FF167EA00A78299 /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
+		2D35F01D1FFBC47C00E4770E /* BadTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadTableViewCell.swift; sourceTree = "<group>"; };
 		2D406AC51FEE8B43004C1D08 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		2D50933A1FEE4897000D2999 /* DPE Dashboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DPE Dashboard.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D50933D1FEE4897000D2999 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -239,6 +241,7 @@
 				2DD29E611FF7E03700FD15A7 /* SecondTableViewCell.swift */,
 				2DD29E631FF7E53D00FD15A7 /* ThirdTableViewCell.swift */,
 				2DEA27571FFA5933003093FD /* BarChartFormatter.swift */,
+				2D35F01D1FFBC47C00E4770E /* BadTableViewCell.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -564,6 +567,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2DD0938C1FF0A29500933610 /* UserVar.swift in Sources */,
+				2D35F01E1FFBC47C00E4770E /* BadTableViewCell.swift in Sources */,
 				2DD29E601FF7A5E600FD15A7 /* FirstTableViewCell.swift in Sources */,
 				2D406AC61FEE8B43004C1D08 /* LoginViewController.swift in Sources */,
 				2D0832221FF29A8B00925B06 /* Constant.swift in Sources */,

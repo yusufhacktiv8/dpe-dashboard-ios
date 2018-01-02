@@ -9,7 +9,7 @@
 import UIKit
 import Charts
 
-class BadViewController: UIViewController, MonthYearPickerDelegate, MonthSliderDelegate {
+class BadViewController: UIViewController, MonthYearPickerDelegate, MonthSliderDelegate, UITableViewDelegate, UITableViewDataSource {
     
     var selectedMonth: Int?
     var selectedYear: Int?
@@ -23,11 +23,15 @@ class BadViewController: UIViewController, MonthYearPickerDelegate, MonthSliderD
     @IBOutlet weak var monthScrollView: UIScrollView!
     @IBOutlet weak var monthSlider: MonthSlider!
     
+    @IBOutlet weak var badTableView: UITableView!
+    var bads = [BadData]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initFormatter()
         initMonthSlider(initMonth: self.selectedMonth!)
         initChart()
+        initTableView()
         updateDashboardState()
     }
 
@@ -91,6 +95,8 @@ class BadViewController: UIViewController, MonthYearPickerDelegate, MonthSliderD
     private func updateChartData() {
         DashboardService.getBadData(year: self.selectedYear!, month: self.selectedMonth!) { badDatas in
             
+            self.bads = badDatas
+            self.badTableView.reloadData()
             var projectNames = [String]()
             var tagihanBrutoValues = [Double]()
             var piutangUsahaValues = [Double]()
@@ -210,5 +216,32 @@ class BadViewController: UIViewController, MonthYearPickerDelegate, MonthSliderD
         badChart.marker = marker
         
         badChart.data = barChartData
+    }
+    
+    private func initTableView() {
+        badTableView.delegate = self
+        badTableView.dataSource = self
+    }
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.bads.count
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100.0
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
+        
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "BadTableViewCell") as! BadTableViewCell
+        cell.projectName.text = self.bads[indexPath.row].projectName
+        return cell
     }
 }

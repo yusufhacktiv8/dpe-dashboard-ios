@@ -14,6 +14,7 @@
     <customFonts key="customFonts">
         <array key="AvenirNext.ttc">
             <string>AvenirNext-DemiBold</string>
+            <string>AvenirNext-Regular</string>
         </array>
     </customFonts>
     <scenes>
@@ -683,11 +684,11 @@
             <objects>
                 <viewController id="3zN-uq-S8t" customClass="BadViewController" customModule="DPE_Dashboard" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Yav-4X-UXH">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="1012"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="main_bg" translatesAutoresizingMaskIntoConstraints="NO" id="DBR-gj-WGG">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="main_bg" translatesAutoresizingMaskIntoConstraints="NO" id="DBR-gj-WGG">
+                                <rect key="frame" x="0.0" y="64" width="375" height="948"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d6u-Ic-ZIp">
                                 <rect key="frame" x="0.0" y="64" width="375" height="35"/>
@@ -710,10 +711,10 @@
                                 </constraints>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9dr-U3-vZY">
-                                <rect key="frame" x="0.0" y="99" width="375" height="568"/>
+                                <rect key="frame" x="0.0" y="99" width="375" height="913"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qWR-y7-rtw">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="568"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="913"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5qQ-GM-G1s" customClass="BarChartView" customModule="Charts">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="270"/>
@@ -739,13 +740,46 @@
                                                     <constraint firstAttribute="bottom" secondItem="sN6-bW-h4c" secondAttribute="bottom" id="stz-iW-nPZ"/>
                                                 </constraints>
                                             </scrollView>
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="afk-fk-3UM">
+                                                <rect key="frame" x="0.0" y="310" width="375" height="603"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <prototypes>
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="BadTableViewCell" rowHeight="100" id="xGz-9Q-oSu" customClass="BadTableViewCell" customModule="DPE_Dashboard" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="28" width="375" height="100"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
+                                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xGz-9Q-oSu" id="mDd-hI-NBg">
+                                                            <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aOV-lc-bHQ">
+                                                                    <rect key="frame" x="8" y="8" width="43" height="23.5"/>
+                                                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                            <constraints>
+                                                                <constraint firstItem="aOV-lc-bHQ" firstAttribute="top" secondItem="mDd-hI-NBg" secondAttribute="top" constant="8" id="AZy-26-mpY"/>
+                                                                <constraint firstItem="aOV-lc-bHQ" firstAttribute="leading" secondItem="mDd-hI-NBg" secondAttribute="leading" constant="8" id="CUs-Op-mJn"/>
+                                                            </constraints>
+                                                        </tableViewCellContentView>
+                                                        <connections>
+                                                            <outlet property="projectName" destination="aOV-lc-bHQ" id="6iQ-sU-QTO"/>
+                                                        </connections>
+                                                    </tableViewCell>
+                                                </prototypes>
+                                            </tableView>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="5qQ-GM-G1s" secondAttribute="trailing" id="7NS-sB-I6u"/>
+                                            <constraint firstItem="afk-fk-3UM" firstAttribute="leading" secondItem="qWR-y7-rtw" secondAttribute="leading" id="KUR-sF-nsR"/>
                                             <constraint firstItem="5qQ-GM-G1s" firstAttribute="top" secondItem="qWR-y7-rtw" secondAttribute="top" id="Kae-7v-PxR"/>
                                             <constraint firstItem="5qQ-GM-G1s" firstAttribute="leading" secondItem="qWR-y7-rtw" secondAttribute="leading" id="LaE-60-wOs"/>
+                                            <constraint firstAttribute="bottom" secondItem="afk-fk-3UM" secondAttribute="bottom" id="NOX-ku-OMm"/>
+                                            <constraint firstAttribute="height" constant="913" id="PT1-8K-ILX"/>
                                             <constraint firstItem="Xlt-MF-HMo" firstAttribute="leading" secondItem="qWR-y7-rtw" secondAttribute="leading" id="Tlw-Ih-kJh"/>
+                                            <constraint firstItem="afk-fk-3UM" firstAttribute="top" secondItem="Xlt-MF-HMo" secondAttribute="bottom" id="cjx-yr-MxK"/>
+                                            <constraint firstAttribute="trailing" secondItem="afk-fk-3UM" secondAttribute="trailing" id="gAS-gn-grn"/>
                                             <constraint firstAttribute="trailing" secondItem="Xlt-MF-HMo" secondAttribute="trailing" id="jSi-YJ-Glo"/>
                                             <constraint firstItem="Xlt-MF-HMo" firstAttribute="top" secondItem="5qQ-GM-G1s" secondAttribute="bottom" id="ncf-Ss-NDh"/>
                                         </constraints>
@@ -778,8 +812,10 @@
                         <viewLayoutGuide key="safeArea" id="gr2-mr-yaK"/>
                     </view>
                     <navigationItem key="navigationItem" title="Piutang &amp; BAD" id="Baa-FJ-aW0"/>
+                    <size key="freeformSize" width="375" height="1012"/>
                     <connections>
                         <outlet property="badChart" destination="5qQ-GM-G1s" id="cYz-8N-2eq"/>
+                        <outlet property="badTableView" destination="afk-fk-3UM" id="WP1-Y1-dap"/>
                         <outlet property="monthScrollView" destination="Xlt-MF-HMo" id="xqw-1d-3Sp"/>
                         <outlet property="monthSlider" destination="sN6-bW-h4c" id="iBK-bZ-oAr"/>
                         <outlet property="monthYearLabel" destination="Kw3-T4-B9U" id="Opv-uy-aUQ"/>
@@ -789,7 +825,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fxK-GK-26g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3148" y="1525"/>
+            <point key="canvasLocation" x="3148" y="1631"/>
         </scene>
     </scenes>
     <resources>
