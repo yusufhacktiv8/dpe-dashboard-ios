@@ -11,6 +11,11 @@ import UIKit
 class BadTableViewCell: UITableViewCell {
 
     @IBOutlet weak var projectName: UILabel!
+    @IBOutlet weak var piutangUsahaLabel: UILabel!
+    @IBOutlet weak var tagihanBrutoLabel: UILabel!
+    @IBOutlet weak var piutangRetensiLabel: UILabel!
+    @IBOutlet weak var pdpLabel: UILabel!
+    @IBOutlet weak var badLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

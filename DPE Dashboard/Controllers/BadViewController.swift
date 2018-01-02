@@ -232,7 +232,7 @@ class BadViewController: UIViewController, MonthYearPickerDelegate, MonthSliderD
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100.0
+        return 210.0
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
