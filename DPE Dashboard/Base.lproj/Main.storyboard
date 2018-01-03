@@ -1017,6 +1017,7 @@
                     <navigationItem key="navigationItem" title="Umur Piutang" id="nYi-Ty-sxP"/>
                     <connections>
                         <outlet property="monthYearLabel" destination="NOf-fE-sKN" id="1hL-nZ-5Ak"/>
+                        <outlet property="upChart" destination="e7J-EB-DxY" id="SbQ-Ob-5tj"/>
                         <outlet property="view" destination="s9b-mO-xuD" id="51H-6D-QQb"/>
                         <segue destination="bDZ-Jv-EtI" kind="show" identifier="ShowMonthYearPickerSegue" id="TQf-1M-13q"/>
                     </connections>

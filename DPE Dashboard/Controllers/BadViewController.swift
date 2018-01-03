@@ -90,7 +90,6 @@ class BadViewController: UIViewController, MonthYearPickerDelegate, MonthSliderD
         updateChartData()
         updateMonthScrollView()
         updateMonthSlider()
-//        updateDashboardDetails()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

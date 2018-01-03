@@ -39,6 +39,8 @@
 		2DEA27541FF9EDDC003093FD /* BadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEA27531FF9EDDC003093FD /* BadViewController.swift */; };
 		2DEA27561FFA2FF7003093FD /* BadData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEA27551FFA2FF7003093FD /* BadData.swift */; };
 		2DEA27581FFA5934003093FD /* BarChartFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEA27571FFA5933003093FD /* BarChartFormatter.swift */; };
+		2DEA84B31FFD13440044BCF2 /* UpData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEA84B21FFD13440044BCF2 /* UpData.swift */; };
+		2DEA84B51FFD14240044BCF2 /* UpChartFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEA84B41FFD14240044BCF2 /* UpChartFormatter.swift */; };
 		3A0B934C395A95789336CC8D /* Pods_DPE_DashboardUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB54062F9BAD642477274C69 /* Pods_DPE_DashboardUITests.framework */; };
 		4515ED5744FD0D167DE76121 /* Pods_DPE_DashboardTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76F43C68A1994EA8005F9790 /* Pods_DPE_DashboardTests.framework */; };
 		559DB56B8CAD3A45EF88F20E /* Pods_DPE_Dashboard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16F50BA4D5995BE248204EE0 /* Pods_DPE_Dashboard.framework */; };
@@ -103,6 +105,8 @@
 		2DEA27531FF9EDDC003093FD /* BadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadViewController.swift; sourceTree = "<group>"; };
 		2DEA27551FFA2FF7003093FD /* BadData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadData.swift; sourceTree = "<group>"; };
 		2DEA27571FFA5933003093FD /* BarChartFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChartFormatter.swift; sourceTree = "<group>"; };
+		2DEA84B21FFD13440044BCF2 /* UpData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpData.swift; sourceTree = "<group>"; };
+		2DEA84B41FFD14240044BCF2 /* UpChartFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpChartFormatter.swift; sourceTree = "<group>"; };
 		5B546F77CD935CFD62FA3C08 /* Pods-DPE DashboardUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DPE DashboardUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DPE DashboardUITests/Pods-DPE DashboardUITests.release.xcconfig"; sourceTree = "<group>"; };
 		76F43C68A1994EA8005F9790 /* Pods_DPE_DashboardTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DPE_DashboardTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB236254C9E7B6A89E37EBF4 /* Pods-DPE DashboardTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DPE DashboardTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DPE DashboardTests/Pods-DPE DashboardTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -245,6 +249,7 @@
 				2DD29E631FF7E53D00FD15A7 /* ThirdTableViewCell.swift */,
 				2DEA27571FFA5933003093FD /* BarChartFormatter.swift */,
 				2D35F01D1FFBC47C00E4770E /* BadTableViewCell.swift */,
+				2DEA84B41FFD14240044BCF2 /* UpChartFormatter.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -268,6 +273,7 @@
 				2DD093911FF0A7DC00933610 /* ChartDataItem.swift */,
 				2D59D6401FF892FD00E18AAA /* DashboardDetail.swift */,
 				2DEA27551FFA2FF7003093FD /* BadData.swift */,
+				2DEA84B21FFD13440044BCF2 /* UpData.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -571,6 +577,7 @@
 			files = (
 				2DD0938C1FF0A29500933610 /* UserVar.swift in Sources */,
 				2D35F01E1FFBC47C00E4770E /* BadTableViewCell.swift in Sources */,
+				2DEA84B31FFD13440044BCF2 /* UpData.swift in Sources */,
 				2DD29E601FF7A5E600FD15A7 /* FirstTableViewCell.swift in Sources */,
 				2D406AC61FEE8B43004C1D08 /* LoginViewController.swift in Sources */,
 				2D0832221FF29A8B00925B06 /* Constant.swift in Sources */,
@@ -591,6 +598,7 @@
 				2DEA27581FFA5934003093FD /* BarChartFormatter.swift in Sources */,
 				2DEA27561FFA2FF7003093FD /* BadData.swift in Sources */,
 				2D08321E1FF299AC00925B06 /* MonthYearPickerView.swift in Sources */,
+				2DEA84B51FFD14240044BCF2 /* UpChartFormatter.swift in Sources */,
 				2D50933E1FEE4897000D2999 /* AppDelegate.swift in Sources */,
 				2DD093891FF0A22300933610 /* DashboardConstant.swift in Sources */,
 				2DD093871FF0A1DF00933610 /* DashboardService.swift in Sources */,

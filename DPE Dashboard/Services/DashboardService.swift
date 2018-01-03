@@ -16,6 +16,7 @@ public struct DashboardService {
         case ChartData(year: Int)
         case DetailsData(year: Int, month: Int)
         case BadData(year: Int, month: Int)
+        case UmurPiutangData(year: Int, month: Int)
         
         var description: String {
             switch self {
@@ -23,6 +24,7 @@ public struct DashboardService {
             case .ChartData(let year): return "/dashboard/charts/\(year)"
             case .DetailsData(let year, let month): return "/dashboard/data/\(year)/\(month)"
             case .BadData(let year, let month): return "/bads/all/\(year)/\(month)"
+            case .UmurPiutangData(let year, let month): return "/piutangs/piutang/\(year)/\(month)"
             }
         }
     }
@@ -126,6 +128,29 @@ public struct DashboardService {
                 myResponse(badDatas)
             }
 
+        }
+    }
+    
+    public static func getUmurPiutangData(year: Int, month: Int, myResponse: @escaping ([UpData]) -> ()) {
+        let urlString = DashboardConstant.BASE_URL + ResourcePath.UmurPiutangData(year: year, month: month).description
+        
+        let headers = ["Authorization": "Basic \(UserVar.token)"]
+        
+        Alamofire.request(urlString, headers: headers).responseJSON { response in
+            if let data = response.result.value {
+                guard let json = (data as? NSArray) as Array<AnyObject>? else {
+                    print("Failed to get expected response from webserver.")
+                    return
+                }
+                
+                var upDatas = [UpData]()
+                for upData in json {
+                    upDatas.append(JSONParser.parseUmurPiutang(data: upData))
+                }
+                
+                myResponse(upDatas)
+            }
+            
         }
     }
     
