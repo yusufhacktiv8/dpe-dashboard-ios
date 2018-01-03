@@ -964,11 +964,52 @@
                                     <constraint firstItem="NOf-fE-sKN" firstAttribute="centerX" secondItem="3Nh-Vn-geg" secondAttribute="centerX" id="ZUW-c4-53D"/>
                                 </constraints>
                             </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="main_bg" translatesAutoresizingMaskIntoConstraints="NO" id="EMh-Kp-epC">
+                                <rect key="frame" x="0.0" y="99" width="375" height="568"/>
+                            </imageView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aoq-Lx-cHy">
+                                <rect key="frame" x="0.0" y="99" width="375" height="568"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hOr-wA-DU1">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="913"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e7J-EB-DxY" customClass="BarChartView" customModule="Charts">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="270"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="270" id="V2y-JX-B2L"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="e7J-EB-DxY" firstAttribute="top" secondItem="hOr-wA-DU1" secondAttribute="top" id="Jsf-gp-QFe"/>
+                                            <constraint firstAttribute="trailing" secondItem="e7J-EB-DxY" secondAttribute="trailing" id="OeG-WD-MsO"/>
+                                            <constraint firstItem="e7J-EB-DxY" firstAttribute="leading" secondItem="hOr-wA-DU1" secondAttribute="leading" id="c3y-eG-hQr"/>
+                                            <constraint firstAttribute="height" constant="913" id="iqc-yw-mi5"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="hOr-wA-DU1" secondAttribute="bottom" id="2fv-Oa-1AK"/>
+                                    <constraint firstAttribute="trailing" secondItem="hOr-wA-DU1" secondAttribute="trailing" id="EC1-FB-Tbe"/>
+                                    <constraint firstItem="hOr-wA-DU1" firstAttribute="top" secondItem="aoq-Lx-cHy" secondAttribute="top" id="Wph-ae-T4C"/>
+                                    <constraint firstItem="hOr-wA-DU1" firstAttribute="width" secondItem="aoq-Lx-cHy" secondAttribute="width" id="wyc-Xy-pbv"/>
+                                    <constraint firstItem="hOr-wA-DU1" firstAttribute="leading" secondItem="aoq-Lx-cHy" secondAttribute="leading" id="z4l-5E-afm"/>
+                                </constraints>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="aoq-Lx-cHy" firstAttribute="leading" secondItem="ugn-ST-K8a" secondAttribute="leading" id="3nB-cK-TF6"/>
+                            <constraint firstItem="EMh-Kp-epC" firstAttribute="top" secondItem="3Nh-Vn-geg" secondAttribute="bottom" id="7T9-wJ-aNi"/>
+                            <constraint firstItem="aoq-Lx-cHy" firstAttribute="top" secondItem="3Nh-Vn-geg" secondAttribute="bottom" id="Blc-k8-MPP"/>
+                            <constraint firstItem="ugn-ST-K8a" firstAttribute="bottom" secondItem="aoq-Lx-cHy" secondAttribute="bottom" id="DU4-XI-Ee2"/>
+                            <constraint firstItem="ugn-ST-K8a" firstAttribute="trailing" secondItem="EMh-Kp-epC" secondAttribute="trailing" id="FhT-7z-6TA"/>
+                            <constraint firstItem="ugn-ST-K8a" firstAttribute="trailing" secondItem="aoq-Lx-cHy" secondAttribute="trailing" id="I7B-YJ-vkH"/>
+                            <constraint firstItem="ugn-ST-K8a" firstAttribute="bottom" secondItem="EMh-Kp-epC" secondAttribute="bottom" id="MZN-cE-Asc"/>
                             <constraint firstItem="3Nh-Vn-geg" firstAttribute="top" secondItem="ugn-ST-K8a" secondAttribute="top" id="Upq-Rp-3Vl"/>
                             <constraint firstItem="ugn-ST-K8a" firstAttribute="trailing" secondItem="3Nh-Vn-geg" secondAttribute="trailing" id="azD-xW-ksV"/>
+                            <constraint firstItem="EMh-Kp-epC" firstAttribute="leading" secondItem="ugn-ST-K8a" secondAttribute="leading" id="f6v-KD-Ctv"/>
                             <constraint firstItem="3Nh-Vn-geg" firstAttribute="leading" secondItem="ugn-ST-K8a" secondAttribute="leading" id="mG7-vZ-bA3"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ugn-ST-K8a"/>
