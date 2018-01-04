@@ -169,6 +169,24 @@ class UmurPiutangViewController: UIViewController, MonthYearPickerDelegate, Mont
             self.totalPdp3 = totalPdp3
             self.totalPdp4 = totalPdp4
             self.totalPdp5 = totalPdp5
+            
+            self.totalTagihanBruto1 = totalTagihanBruto1
+            self.totalTagihanBruto2 = totalTagihanBruto2
+            self.totalTagihanBruto3 = totalTagihanBruto3
+            self.totalTagihanBruto4 = totalTagihanBruto4
+            self.totalTagihanBruto5 = totalTagihanBruto5
+            
+            self.totalPiutangUsaha1 = totalPiutangUsaha1
+            self.totalPiutangUsaha2 = totalPiutangUsaha2
+            self.totalPiutangUsaha3 = totalPiutangUsaha3
+            self.totalPiutangUsaha4 = totalPiutangUsaha4
+            self.totalPiutangUsaha5 = totalPiutangUsaha5
+            
+            self.totalPiutangRetensi1 = totalPiutangRetensi1
+            self.totalPiutangRetensi2 = totalPiutangRetensi2
+            self.totalPiutangRetensi3 = totalPiutangRetensi3
+            self.totalPiutangRetensi4 = totalPiutangRetensi4
+            self.totalPiutangRetensi5 = totalPiutangRetensi5
             self.tableView.reloadData()
             
             firstDataEntries.append(totalPdp1)
@@ -363,10 +381,31 @@ class UmurPiutangViewController: UIViewController, MonthYearPickerDelegate, Mont
             cell.totalLabel.text = decimalFormatter.string(from: NSNumber(value: totalPdp))
         case 1:
             cell.titleLabel.text = "Tagihan Bruto"
+            let totalTagihanBruto = self.totalTagihanBruto1 + self.totalTagihanBruto2 + self.totalTagihanBruto3 + self.totalTagihanBruto4 + self.totalTagihanBruto5
+            cell.label1.text = decimalFormatter.string(from: NSNumber(value: self.totalTagihanBruto1))
+            cell.label2.text = decimalFormatter.string(from: NSNumber(value: self.totalTagihanBruto2))
+            cell.label3.text = decimalFormatter.string(from: NSNumber(value: self.totalTagihanBruto3))
+            cell.label4.text = decimalFormatter.string(from: NSNumber(value: self.totalTagihanBruto4))
+            cell.label5.text = decimalFormatter.string(from: NSNumber(value: self.totalTagihanBruto5))
+            cell.totalLabel.text = decimalFormatter.string(from: NSNumber(value: totalTagihanBruto))
         case 2:
             cell.titleLabel.text = "Piutang Usaha"
+            let totalPiutangUsaha = self.totalPiutangUsaha1 + self.totalPiutangUsaha2 + self.totalPiutangUsaha3 + self.totalPiutangUsaha4 + self.totalPiutangUsaha5
+            cell.label1.text = decimalFormatter.string(from: NSNumber(value: self.totalPiutangUsaha1))
+            cell.label2.text = decimalFormatter.string(from: NSNumber(value: self.totalPiutangUsaha2))
+            cell.label3.text = decimalFormatter.string(from: NSNumber(value: self.totalPiutangUsaha3))
+            cell.label4.text = decimalFormatter.string(from: NSNumber(value: self.totalPiutangUsaha4))
+            cell.label5.text = decimalFormatter.string(from: NSNumber(value: self.totalPiutangUsaha5))
+            cell.totalLabel.text = decimalFormatter.string(from: NSNumber(value: totalPiutangUsaha))
         case 3:
             cell.titleLabel.text = "Piutang Retensi"
+            let totalPiutangRetensi = self.totalPiutangRetensi1 + self.totalPiutangRetensi2 + self.totalPiutangRetensi3 + self.totalPiutangRetensi4 + self.totalPiutangRetensi5
+            cell.label1.text = decimalFormatter.string(from: NSNumber(value: self.totalPiutangRetensi1))
+            cell.label2.text = decimalFormatter.string(from: NSNumber(value: self.totalPiutangRetensi2))
+            cell.label3.text = decimalFormatter.string(from: NSNumber(value: self.totalPiutangRetensi3))
+            cell.label4.text = decimalFormatter.string(from: NSNumber(value: self.totalPiutangRetensi4))
+            cell.label5.text = decimalFormatter.string(from: NSNumber(value: self.totalPiutangRetensi5))
+            cell.totalLabel.text = decimalFormatter.string(from: NSNumber(value: totalPiutangRetensi))
         default:
             cell.titleLabel.text = "-"
         }
