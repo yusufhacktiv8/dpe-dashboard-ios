@@ -635,6 +635,7 @@
                         <segue destination="bDZ-Jv-EtI" kind="show" identifier="ShowMonthYearPickerSegue" id="6cJ-NS-bGP"/>
                         <segue destination="3zN-uq-S8t" kind="show" identifier="BadSegue" id="Q8B-8d-C31"/>
                         <segue destination="kZp-EX-vt6" kind="show" identifier="UmurPiutangSegue" id="m2p-MD-ewy"/>
+                        <segue destination="4gc-Qa-UTt" kind="show" identifier="CashFlowSegue" id="wib-mZ-hTt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xL6-t2-qvH" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1261,7 +1262,50 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sFe-73-MlX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4103" y="2069"/>
+            <point key="canvasLocation" x="4102" y="2204"/>
+        </scene>
+        <!--Cash Flow-->
+        <scene sceneID="ify-tW-367">
+            <objects>
+                <viewController id="4gc-Qa-UTt" customClass="CashFlowViewController" customModule="DPE_Dashboard" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="IwL-iO-vgk">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7xi-mn-45V">
+                                <rect key="frame" x="0.0" y="64" width="375" height="35"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mA7-qE-4WD">
+                                        <rect key="frame" x="165" y="2" width="44" height="30"/>
+                                        <state key="normal" title="Month">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.22745098039215686" green="0.39215686274509803" blue="0.72941176470588232" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="mA7-qE-4WD" firstAttribute="centerY" secondItem="7xi-mn-45V" secondAttribute="centerY" id="17U-KE-DFB"/>
+                                    <constraint firstItem="mA7-qE-4WD" firstAttribute="centerX" secondItem="7xi-mn-45V" secondAttribute="centerX" id="Ph6-fp-9Gu"/>
+                                    <constraint firstAttribute="height" constant="35" id="Q3Y-VH-pov"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="7xi-mn-45V" firstAttribute="top" secondItem="MLa-uN-XDj" secondAttribute="top" id="2ox-Dh-m69"/>
+                            <constraint firstItem="7xi-mn-45V" firstAttribute="leading" secondItem="MLa-uN-XDj" secondAttribute="leading" id="fR7-B8-DRa"/>
+                            <constraint firstItem="MLa-uN-XDj" firstAttribute="trailing" secondItem="7xi-mn-45V" secondAttribute="trailing" id="g2l-c1-3UV"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="MLa-uN-XDj"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Cash Flow" id="JwR-Aj-D8P"/>
+                    <connections>
+                        <outlet property="monthYearLabel" destination="mA7-qE-4WD" id="cGO-px-jtI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RuJ-nl-5TF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5074" y="1914"/>
         </scene>
     </scenes>
     <resources>
@@ -1272,6 +1316,6 @@
         <image name="widget_background_header" width="345" height="29"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="AQX-Dm-Bvl"/>
+        <segue reference="TQf-1M-13q"/>
     </inferredMetricsTieBreakers>
 </document>
