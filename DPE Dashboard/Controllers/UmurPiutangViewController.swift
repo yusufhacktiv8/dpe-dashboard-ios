@@ -174,10 +174,24 @@ class UmurPiutangViewController: UIViewController {
         fifthDataEntries.append(BarChartDataEntry(x: Double(4), y: fourthDataValues[4]))
         
         let firstDataSet = BarChartDataSet(values: firstDataEntries, label: "First")
+        firstDataSet.drawValuesEnabled = false
+        firstDataSet.setColor(UIColor(red:0.49, green:0.83, blue:0.13, alpha:1.0))
+        
         let secondDataSet = BarChartDataSet(values: secondDataEntries, label: "Second")
+        secondDataSet.drawValuesEnabled = false
+        secondDataSet.setColor(UIColor(red:0.57, green:0.91, blue:1.00, alpha:1.0))
+        
         let thirdDataSet = BarChartDataSet(values: thirdDataEntries, label: "Third")
+        thirdDataSet.drawValuesEnabled = false
+        thirdDataSet.setColor(UIColor(red:0.58, green:0.22, blue:1.00, alpha:1.0))
+        
         let fourthDataSet = BarChartDataSet(values: fourthDataEntries, label: "Fourth")
+        fourthDataSet.drawValuesEnabled = false
+        fourthDataSet.setColor(UIColor(red:0.45, green:0.22, blue:1.00, alpha:1.0))
+        
         let fifthDataSet = BarChartDataSet(values: fifthDataEntries, label: "Fifth")
+        fifthDataSet.drawValuesEnabled = false
+        fifthDataSet.setColor(UIColor(red:0.13, green:0.10, blue:1.00, alpha:1.0))
         
         var dataSets : [BarChartDataSet] = [BarChartDataSet]()
         dataSets.append(firstDataSet)
@@ -222,6 +236,9 @@ class UmurPiutangViewController: UIViewController {
         xAxis.valueFormatter = UpChartFormatter()
         
         leftAxis.enabled = false
+        leftAxis.spaceBottom = 1
+//        leftAxis.spaceTop = 30.0
+        leftAxis.axisMinimum = -0.01
         
         rightAxis.enabled = false
         
