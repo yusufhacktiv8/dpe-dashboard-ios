@@ -166,6 +166,10 @@ class UmurPiutangViewController: UIViewController, MonthYearPickerDelegate, Mont
             
             self.totalPdp1 = totalPdp1
             self.totalPdp2 = totalPdp2
+            self.totalPdp3 = totalPdp3
+            self.totalPdp4 = totalPdp4
+            self.totalPdp5 = totalPdp5
+            self.tableView.reloadData()
             
             firstDataEntries.append(totalPdp1)
             firstDataEntries.append(totalPdp2)
@@ -337,7 +341,7 @@ class UmurPiutangViewController: UIViewController, MonthYearPickerDelegate, Mont
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 250.0
+        return 290.0
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
@@ -350,8 +354,13 @@ class UmurPiutangViewController: UIViewController, MonthYearPickerDelegate, Mont
         switch (indexPath.row) {
         case 0:
             cell.titleLabel.text = "PDP"
+            let totalPdp = self.totalPdp1 + self.totalPdp2 + self.totalPdp3 + self.totalPdp4 + self.totalPdp5
             cell.label1.text = decimalFormatter.string(from: NSNumber(value: self.totalPdp1))
             cell.label2.text = decimalFormatter.string(from: NSNumber(value: self.totalPdp2))
+            cell.label3.text = decimalFormatter.string(from: NSNumber(value: self.totalPdp3))
+            cell.label4.text = decimalFormatter.string(from: NSNumber(value: self.totalPdp4))
+            cell.label5.text = decimalFormatter.string(from: NSNumber(value: self.totalPdp5))
+            cell.totalLabel.text = decimalFormatter.string(from: NSNumber(value: totalPdp))
         case 1:
             cell.titleLabel.text = "Tagihan Bruto"
         case 2:
