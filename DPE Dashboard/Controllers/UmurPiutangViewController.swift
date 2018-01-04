@@ -9,7 +9,7 @@
 import UIKit
 import Charts
 
-class UmurPiutangViewController: UIViewController {
+class UmurPiutangViewController: UIViewController, MonthYearPickerDelegate, MonthSliderDelegate {
     
     var selectedMonth: Int?
     var selectedYear: Int?
@@ -19,9 +19,14 @@ class UmurPiutangViewController: UIViewController {
 
     @IBOutlet weak var upChart: BarChartView!
     @IBOutlet weak var monthYearLabel: UIButton!
+    
+    @IBOutlet weak var monthScrollView: UIScrollView!
+    @IBOutlet weak var monthSlider: MonthSlider!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initFormatter()
+        initMonthSlider(initMonth: self.selectedMonth!)
         updateDashboardState()
     }
     
@@ -31,9 +36,33 @@ class UmurPiutangViewController: UIViewController {
         self.decimalFormatter.maximumFractionDigits = 2
     }
     
+    private func initMonthSlider(initMonth: Int) {
+        monthSlider.delegate = self
+    }
+    
+    func monthSelected(month: Int) {
+        self.selectedMonth = month
+        updateDashboardState()
+    }
+    
+    private func updateMonthSlider() {
+        monthSlider.selectMonth(month: self.selectedMonth!)
+    }
+    
+    func updateMonthScrollView() {
+        var currentPage = 1
+        if(self.selectedMonth! > 6){
+            currentPage = 2
+        }
+        let x = CGFloat(currentPage - 1) * self.monthScrollView.frame.size.width
+        self.monthScrollView.setContentOffset(CGPoint(x: x, y: 0), animated: true)
+    }
+    
     private func updateDashboardState() {
         setMonthYearLabel()
         updateChartData()
+        updateMonthSlider()
+        updateMonthScrollView()
     }
     
     private func setMonthYearLabel() {
@@ -238,7 +267,7 @@ class UmurPiutangViewController: UIViewController {
         leftAxis.enabled = false
         leftAxis.spaceBottom = 1
 //        leftAxis.spaceTop = 30.0
-        leftAxis.axisMinimum = -0.01
+        leftAxis.axisMinimum = 0.0
         
         rightAxis.enabled = false
         
@@ -247,6 +276,21 @@ class UmurPiutangViewController: UIViewController {
         upChart.marker = marker
         
         upChart.data = barChartData
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == SHOW_MONTH_YEAR_PICKER_SEGUE) {
+            let destinationVC  = segue.destination as? MonthYearPickerViewController
+            destinationVC?.selectedYear = self.selectedYear
+            destinationVC?.selectedMonth = self.selectedMonth
+            destinationVC?.delegate = self
+        }
+    }
+    
+    func monthYearSelected(month: Int, year: Int) {
+        self.selectedMonth = month
+        self.selectedYear = year
+        updateDashboardState()
     }
 
 }

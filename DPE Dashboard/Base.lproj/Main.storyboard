@@ -980,12 +980,32 @@
                                                     <constraint firstAttribute="height" constant="270" id="V2y-JX-B2L"/>
                                                 </constraints>
                                             </view>
+                                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bhg-w4-fNE">
+                                                <rect key="frame" x="0.0" y="270" width="375" height="40"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="8yT-X8-DLQ" customClass="MonthSlider" customModule="DPE_Dashboard" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="750" height="40"/>
+                                                    </stackView>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="8yT-X8-DLQ" firstAttribute="width" secondItem="bhg-w4-fNE" secondAttribute="width" multiplier="2" id="4XP-Yv-aRP"/>
+                                                    <constraint firstAttribute="trailing" secondItem="8yT-X8-DLQ" secondAttribute="trailing" id="HrS-0W-G0J"/>
+                                                    <constraint firstAttribute="bottom" secondItem="8yT-X8-DLQ" secondAttribute="bottom" id="I7x-0D-ZjA"/>
+                                                    <constraint firstItem="8yT-X8-DLQ" firstAttribute="leading" secondItem="bhg-w4-fNE" secondAttribute="leading" id="XLA-05-Fng"/>
+                                                    <constraint firstAttribute="height" constant="40" id="g4h-RK-xPg"/>
+                                                    <constraint firstItem="8yT-X8-DLQ" firstAttribute="height" secondItem="bhg-w4-fNE" secondAttribute="height" id="oI6-5a-3G6"/>
+                                                    <constraint firstItem="8yT-X8-DLQ" firstAttribute="top" secondItem="bhg-w4-fNE" secondAttribute="top" id="z3M-xT-9VP"/>
+                                                </constraints>
+                                            </scrollView>
                                         </subviews>
                                         <constraints>
+                                            <constraint firstItem="bhg-w4-fNE" firstAttribute="leading" secondItem="hOr-wA-DU1" secondAttribute="leading" id="JPh-rL-NyH"/>
                                             <constraint firstItem="e7J-EB-DxY" firstAttribute="top" secondItem="hOr-wA-DU1" secondAttribute="top" id="Jsf-gp-QFe"/>
                                             <constraint firstAttribute="trailing" secondItem="e7J-EB-DxY" secondAttribute="trailing" id="OeG-WD-MsO"/>
                                             <constraint firstItem="e7J-EB-DxY" firstAttribute="leading" secondItem="hOr-wA-DU1" secondAttribute="leading" id="c3y-eG-hQr"/>
+                                            <constraint firstAttribute="trailing" secondItem="bhg-w4-fNE" secondAttribute="trailing" id="ela-fl-jd0"/>
                                             <constraint firstAttribute="height" constant="913" id="iqc-yw-mi5"/>
+                                            <constraint firstItem="bhg-w4-fNE" firstAttribute="top" secondItem="e7J-EB-DxY" secondAttribute="bottom" id="mpJ-dx-QYI"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -1016,6 +1036,8 @@
                     </view>
                     <navigationItem key="navigationItem" title="Umur Piutang" id="nYi-Ty-sxP"/>
                     <connections>
+                        <outlet property="monthScrollView" destination="bhg-w4-fNE" id="0Td-Af-nok"/>
+                        <outlet property="monthSlider" destination="8yT-X8-DLQ" id="MDH-in-7X2"/>
                         <outlet property="monthYearLabel" destination="NOf-fE-sKN" id="1hL-nZ-5Ak"/>
                         <outlet property="upChart" destination="e7J-EB-DxY" id="SbQ-Ob-5tj"/>
                         <outlet property="view" destination="s9b-mO-xuD" id="51H-6D-QQb"/>
@@ -1035,6 +1057,6 @@
         <image name="widget_background_header" width="345" height="29"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="TQf-1M-13q"/>
+        <segue reference="AQX-Dm-Bvl"/>
     </inferredMetricsTieBreakers>
 </document>
