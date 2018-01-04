@@ -25,6 +25,30 @@ class UmurPiutangViewController: UIViewController, MonthYearPickerDelegate, Mont
     
     @IBOutlet weak var tableView: UITableView!
     
+    var totalPdp1 = 0.0
+    var totalPdp2 = 0.0
+    var totalPdp3 = 0.0
+    var totalPdp4 = 0.0
+    var totalPdp5 = 0.0
+    
+    var totalTagihanBruto1 = 0.0
+    var totalTagihanBruto2 = 0.0
+    var totalTagihanBruto3 = 0.0
+    var totalTagihanBruto4 = 0.0
+    var totalTagihanBruto5 = 0.0
+    
+    var totalPiutangUsaha1 = 0.0
+    var totalPiutangUsaha2 = 0.0
+    var totalPiutangUsaha3 = 0.0
+    var totalPiutangUsaha4 = 0.0
+    var totalPiutangUsaha5 = 0.0
+    
+    var totalPiutangRetensi1 = 0.0
+    var totalPiutangRetensi2 = 0.0
+    var totalPiutangRetensi3 = 0.0
+    var totalPiutangRetensi4 = 0.0
+    var totalPiutangRetensi5 = 0.0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initFormatter()
@@ -139,6 +163,9 @@ class UmurPiutangViewController: UIViewController, MonthYearPickerDelegate, Mont
                 totalPiutangRetensi4 += upData.piutangRetensi4
                 totalPiutangRetensi5 += upData.piutangRetensi5
             }
+            
+            self.totalPdp1 = totalPdp1
+            self.totalPdp2 = totalPdp2
             
             firstDataEntries.append(totalPdp1)
             firstDataEntries.append(totalPdp2)
@@ -310,7 +337,7 @@ class UmurPiutangViewController: UIViewController, MonthYearPickerDelegate, Mont
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60.0
+        return 250.0
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
@@ -319,6 +346,21 @@ class UmurPiutangViewController: UIViewController, MonthYearPickerDelegate, Mont
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UmurPiutangTableViewCell") as! UmurPiutangTableViewCell
+        
+        switch (indexPath.row) {
+        case 0:
+            cell.titleLabel.text = "PDP"
+            cell.label1.text = decimalFormatter.string(from: NSNumber(value: self.totalPdp1))
+            cell.label2.text = decimalFormatter.string(from: NSNumber(value: self.totalPdp2))
+        case 1:
+            cell.titleLabel.text = "Tagihan Bruto"
+        case 2:
+            cell.titleLabel.text = "Piutang Usaha"
+        case 3:
+            cell.titleLabel.text = "Piutang Retensi"
+        default:
+            cell.titleLabel.text = "-"
+        }
         
         return cell
     }
