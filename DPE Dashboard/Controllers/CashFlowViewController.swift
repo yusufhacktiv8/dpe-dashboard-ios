@@ -11,26 +11,31 @@ import UIKit
 class CashFlowViewController: UIViewController {
 
     @IBOutlet weak var monthYearLabel: UIButton!
+    
+    var selectedMonth: Int?
+    var selectedYear: Int?
+    let SHOW_MONTH_YEAR_PICKER_SEGUE = "ShowMonthYearPickerSegue"
+    
+    let decimalFormatter = NumberFormatter()
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        initFormatter()
+        updateDashboardState()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    private func initFormatter() {
+        self.decimalFormatter.numberStyle = NumberFormatter.Style.decimal
+        self.decimalFormatter.minimumFractionDigits = 2
+        self.decimalFormatter.maximumFractionDigits = 2
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    private func setMonthYearLabel() {
+        self.monthYearLabel.setTitle("\(Constant.months[self.selectedMonth! - 1]), \(self.selectedYear!)", for: .normal)
     }
-    */
+    
+    private func updateDashboardState() {
+        setMonthYearLabel()
+//        updateTableData()
+    }
 
 }
