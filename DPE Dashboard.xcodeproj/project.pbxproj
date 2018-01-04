@@ -23,6 +23,7 @@
 		2D5093531FEE4898000D2999 /* DPE_DashboardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5093521FEE4898000D2999 /* DPE_DashboardTests.swift */; };
 		2D50935E1FEE4898000D2999 /* DPE_DashboardUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D50935D1FEE4898000D2999 /* DPE_DashboardUITests.swift */; };
 		2D59D6411FF892FD00E18AAA /* DashboardDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D59D6401FF892FD00E18AAA /* DashboardDetail.swift */; };
+		2DAF52001FFE6A3900D69E49 /* UmurPiutangTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DAF51FF1FFE6A3900D69E49 /* UmurPiutangTableViewCell.swift */; };
 		2DD0937E1FF0904300933610 /* DashboardChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD0937D1FF0904300933610 /* DashboardChart.swift */; };
 		2DD093821FF09C2A00933610 /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD093811FF09C2A00933610 /* ChartViewController.swift */; };
 		2DD093871FF0A1DF00933610 /* DashboardService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD093861FF0A1DF00933610 /* DashboardService.swift */; };
@@ -89,6 +90,7 @@
 		2D50935D1FEE4898000D2999 /* DPE_DashboardUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DPE_DashboardUITests.swift; sourceTree = "<group>"; };
 		2D50935F1FEE4898000D2999 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2D59D6401FF892FD00E18AAA /* DashboardDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardDetail.swift; sourceTree = "<group>"; };
+		2DAF51FF1FFE6A3900D69E49 /* UmurPiutangTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmurPiutangTableViewCell.swift; sourceTree = "<group>"; };
 		2DD0937D1FF0904300933610 /* DashboardChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardChart.swift; sourceTree = "<group>"; };
 		2DD093811FF09C2A00933610 /* ChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
 		2DD093861FF0A1DF00933610 /* DashboardService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardService.swift; sourceTree = "<group>"; };
@@ -250,6 +252,7 @@
 				2DEA27571FFA5933003093FD /* BarChartFormatter.swift */,
 				2D35F01D1FFBC47C00E4770E /* BadTableViewCell.swift */,
 				2DEA84B41FFD14240044BCF2 /* UpChartFormatter.swift */,
+				2DAF51FF1FFE6A3900D69E49 /* UmurPiutangTableViewCell.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -578,6 +581,7 @@
 				2DD0938C1FF0A29500933610 /* UserVar.swift in Sources */,
 				2D35F01E1FFBC47C00E4770E /* BadTableViewCell.swift in Sources */,
 				2DEA84B31FFD13440044BCF2 /* UpData.swift in Sources */,
+				2DAF52001FFE6A3900D69E49 /* UmurPiutangTableViewCell.swift in Sources */,
 				2DD29E601FF7A5E600FD15A7 /* FirstTableViewCell.swift in Sources */,
 				2D406AC61FEE8B43004C1D08 /* LoginViewController.swift in Sources */,
 				2D0832221FF29A8B00925B06 /* Constant.swift in Sources */,

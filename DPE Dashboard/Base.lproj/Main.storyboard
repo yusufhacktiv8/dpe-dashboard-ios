@@ -941,7 +941,7 @@
             <objects>
                 <viewController id="kZp-EX-vt6" customClass="UmurPiutangViewController" customModule="DPE_Dashboard" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="s9b-mO-xuD">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="1012"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Nh-Vn-geg">
@@ -964,11 +964,11 @@
                                     <constraint firstItem="NOf-fE-sKN" firstAttribute="centerX" secondItem="3Nh-Vn-geg" secondAttribute="centerX" id="ZUW-c4-53D"/>
                                 </constraints>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="main_bg" translatesAutoresizingMaskIntoConstraints="NO" id="EMh-Kp-epC">
-                                <rect key="frame" x="0.0" y="99" width="375" height="568"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="main_bg" translatesAutoresizingMaskIntoConstraints="NO" id="EMh-Kp-epC">
+                                <rect key="frame" x="0.0" y="99" width="375" height="913"/>
                             </imageView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aoq-Lx-cHy">
-                                <rect key="frame" x="0.0" y="99" width="375" height="568"/>
+                                <rect key="frame" x="0.0" y="99" width="375" height="913"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hOr-wA-DU1">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="913"/>
@@ -997,13 +997,48 @@
                                                     <constraint firstItem="8yT-X8-DLQ" firstAttribute="top" secondItem="bhg-w4-fNE" secondAttribute="top" id="z3M-xT-9VP"/>
                                                 </constraints>
                                             </scrollView>
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="nSR-T1-MbI">
+                                                <rect key="frame" x="0.0" y="314" width="375" height="599"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <prototypes>
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="UmurPiutangTableViewCell" id="fOZ-H8-Akd" customClass="UmurPiutangTableViewCell" customModule="DPE_Dashboard" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
+                                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fOZ-H8-Akd" id="EHi-hX-Apv">
+                                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7nF-b7-7lu">
+                                                                    <rect key="frame" x="171" y="10" width="33.5" height="21"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                            <constraints>
+                                                                <constraint firstItem="7nF-b7-7lu" firstAttribute="centerX" secondItem="EHi-hX-Apv" secondAttribute="centerX" id="bW0-8w-mOM"/>
+                                                                <constraint firstItem="7nF-b7-7lu" firstAttribute="top" secondItem="EHi-hX-Apv" secondAttribute="top" constant="10" id="z8S-tM-hGJ"/>
+                                                            </constraints>
+                                                        </tableViewCellContentView>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                        <connections>
+                                                            <outlet property="titleLabel" destination="7nF-b7-7lu" id="zgz-g2-8La"/>
+                                                        </connections>
+                                                    </tableViewCell>
+                                                </prototypes>
+                                            </tableView>
                                         </subviews>
                                         <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="nSR-T1-MbI" secondAttribute="bottom" id="0MU-5T-52d"/>
+                                            <constraint firstAttribute="trailing" secondItem="nSR-T1-MbI" secondAttribute="trailing" id="6sN-M3-cnA"/>
+                                            <constraint firstItem="nSR-T1-MbI" firstAttribute="top" secondItem="bhg-w4-fNE" secondAttribute="bottom" constant="4" id="GSY-Bi-1dg"/>
                                             <constraint firstItem="bhg-w4-fNE" firstAttribute="leading" secondItem="hOr-wA-DU1" secondAttribute="leading" id="JPh-rL-NyH"/>
                                             <constraint firstItem="e7J-EB-DxY" firstAttribute="top" secondItem="hOr-wA-DU1" secondAttribute="top" id="Jsf-gp-QFe"/>
                                             <constraint firstAttribute="trailing" secondItem="e7J-EB-DxY" secondAttribute="trailing" id="OeG-WD-MsO"/>
                                             <constraint firstItem="e7J-EB-DxY" firstAttribute="leading" secondItem="hOr-wA-DU1" secondAttribute="leading" id="c3y-eG-hQr"/>
                                             <constraint firstAttribute="trailing" secondItem="bhg-w4-fNE" secondAttribute="trailing" id="ela-fl-jd0"/>
+                                            <constraint firstItem="nSR-T1-MbI" firstAttribute="leading" secondItem="hOr-wA-DU1" secondAttribute="leading" id="fz8-0Y-HXH"/>
                                             <constraint firstAttribute="height" constant="913" id="iqc-yw-mi5"/>
                                             <constraint firstItem="bhg-w4-fNE" firstAttribute="top" secondItem="e7J-EB-DxY" secondAttribute="bottom" id="mpJ-dx-QYI"/>
                                         </constraints>
@@ -1035,10 +1070,12 @@
                         <viewLayoutGuide key="safeArea" id="ugn-ST-K8a"/>
                     </view>
                     <navigationItem key="navigationItem" title="Umur Piutang" id="nYi-Ty-sxP"/>
+                    <size key="freeformSize" width="375" height="1012"/>
                     <connections>
                         <outlet property="monthScrollView" destination="bhg-w4-fNE" id="0Td-Af-nok"/>
                         <outlet property="monthSlider" destination="8yT-X8-DLQ" id="MDH-in-7X2"/>
                         <outlet property="monthYearLabel" destination="NOf-fE-sKN" id="1hL-nZ-5Ak"/>
+                        <outlet property="tableView" destination="nSR-T1-MbI" id="qyr-VS-zdi"/>
                         <outlet property="upChart" destination="e7J-EB-DxY" id="SbQ-Ob-5tj"/>
                         <outlet property="view" destination="s9b-mO-xuD" id="51H-6D-QQb"/>
                         <segue destination="bDZ-Jv-EtI" kind="show" identifier="ShowMonthYearPickerSegue" id="TQf-1M-13q"/>
@@ -1046,7 +1083,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sFe-73-MlX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4110" y="1914"/>
+            <point key="canvasLocation" x="4103" y="2069"/>
         </scene>
     </scenes>
     <resources>
@@ -1057,6 +1094,6 @@
         <image name="widget_background_header" width="345" height="29"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="AQX-Dm-Bvl"/>
+        <segue reference="TQf-1M-13q"/>
     </inferredMetricsTieBreakers>
 </document>

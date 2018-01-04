@@ -9,7 +9,7 @@
 import UIKit
 import Charts
 
-class UmurPiutangViewController: UIViewController, MonthYearPickerDelegate, MonthSliderDelegate {
+class UmurPiutangViewController: UIViewController, MonthYearPickerDelegate, MonthSliderDelegate, UITableViewDelegate, UITableViewDataSource {
     
     var selectedMonth: Int?
     var selectedYear: Int?
@@ -23,10 +23,13 @@ class UmurPiutangViewController: UIViewController, MonthYearPickerDelegate, Mont
     @IBOutlet weak var monthScrollView: UIScrollView!
     @IBOutlet weak var monthSlider: MonthSlider!
     
+    @IBOutlet weak var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initFormatter()
         initMonthSlider(initMonth: self.selectedMonth!)
+        initTableView()
         updateDashboardState()
     }
     
@@ -291,6 +294,33 @@ class UmurPiutangViewController: UIViewController, MonthYearPickerDelegate, Mont
         self.selectedMonth = month
         self.selectedYear = year
         updateDashboardState()
+    }
+    
+    private func initTableView() {
+        tableView.delegate = self
+        tableView.dataSource = self
+    }
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 4
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60.0
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
+        
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "UmurPiutangTableViewCell") as! UmurPiutangTableViewCell
+        
+        return cell
     }
 
 }
