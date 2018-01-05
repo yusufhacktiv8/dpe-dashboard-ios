@@ -17,6 +17,7 @@ public struct DashboardService {
         case DetailsData(year: Int, month: Int)
         case BadData(year: Int, month: Int)
         case UmurPiutangData(year: Int, month: Int)
+        case CashFlow(year: Int, month: Int)
         
         var description: String {
             switch self {
@@ -25,6 +26,7 @@ public struct DashboardService {
             case .DetailsData(let year, let month): return "/dashboard/data/\(year)/\(month)"
             case .BadData(let year, let month): return "/bads/all/\(year)/\(month)"
             case .UmurPiutangData(let year, let month): return "/piutangs/piutang/\(year)/\(month)"
+            case .CashFlow(let year, let month): return "/cashflows/all/\(year)/\(month)"
             }
         }
     }
@@ -149,6 +151,29 @@ public struct DashboardService {
                 }
                 
                 myResponse(upDatas)
+            }
+            
+        }
+    }
+    
+    public static func getCashFlowData(year: Int, month: Int, myResponse: @escaping ([CashFlow]) -> ()) {
+        let urlString = DashboardConstant.BASE_URL + ResourcePath.CashFlow(year: year, month: month).description
+        
+        let headers = ["Authorization": "Basic \(UserVar.token)"]
+        
+        Alamofire.request(urlString, headers: headers).responseJSON { response in
+            if let data = response.result.value {
+                guard let json = (data as? NSArray) as Array<AnyObject>? else {
+                    print("Failed to get expected response from webserver.")
+                    return
+                }
+                
+                var cashFlows = [CashFlow]()
+                for cashFlow in json {
+                    cashFlows.append(JSONParser.parseCashFlow(data: cashFlow))
+                }
+                
+                myResponse(cashFlows)
             }
             
         }

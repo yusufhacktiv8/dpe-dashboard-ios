@@ -8,8 +8,8 @@
 
 import UIKit
 
-class CashFlowViewController: UIViewController {
-
+class CashFlowViewController: UIViewController, MonthYearPickerDelegate {
+    
     @IBOutlet weak var monthYearLabel: UIButton!
     
     var selectedMonth: Int?
@@ -31,6 +31,29 @@ class CashFlowViewController: UIViewController {
     
     private func setMonthYearLabel() {
         self.monthYearLabel.setTitle("\(Constant.months[self.selectedMonth! - 1]), \(self.selectedYear!)", for: .normal)
+    }
+    
+    @IBAction func monthYearLabelDidTouch(_ sender: Any) {
+        showFilter()
+    }
+    
+    func monthYearSelected(month: Int, year: Int) {
+        self.selectedMonth = month
+        self.selectedYear = year
+        updateDashboardState()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == SHOW_MONTH_YEAR_PICKER_SEGUE) {
+            let destinationVC  = segue.destination as? MonthYearPickerViewController
+            destinationVC?.selectedYear = self.selectedYear
+            destinationVC?.selectedMonth = self.selectedMonth
+            destinationVC?.delegate = self
+        }
+    }
+    
+    private func showFilter() {
+        performSegue(withIdentifier: SHOW_MONTH_YEAR_PICKER_SEGUE, sender: self)
     }
     
     private func updateDashboardState() {

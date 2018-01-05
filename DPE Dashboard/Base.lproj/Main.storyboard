@@ -1280,6 +1280,9 @@
                                         <state key="normal" title="Month">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="monthYearLabelDidTouch:" destination="4gc-Qa-UTt" eventType="touchUpInside" id="GjS-jx-D3o"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.22745098039215686" green="0.39215686274509803" blue="0.72941176470588232" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1301,6 +1304,7 @@
                     <navigationItem key="navigationItem" title="Cash Flow" id="JwR-Aj-D8P"/>
                     <connections>
                         <outlet property="monthYearLabel" destination="mA7-qE-4WD" id="cGO-px-jtI"/>
+                        <segue destination="bDZ-Jv-EtI" kind="show" identifier="ShowMonthYearPickerSegue" id="KBH-yV-DrR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RuJ-nl-5TF" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1316,6 +1320,6 @@
         <image name="widget_background_header" width="345" height="29"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="TQf-1M-13q"/>
+        <segue reference="KBH-yV-DrR"/>
     </inferredMetricsTieBreakers>
 </document>

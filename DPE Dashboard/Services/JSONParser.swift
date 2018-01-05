@@ -82,4 +82,50 @@ struct JSONParser {
             piutangRetensi5: piutangRetensi5!
         )
     }
+    
+    static func parseCashFlow(data: AnyObject) -> CashFlow {
+        let cashFlow = data["CashFlow"] as AnyObject
+        let typeCode = cashFlow["typeCode"] as? Int ?? nil
+        var name: String?
+        switch (typeCode!) {
+        case 1:
+            name = "Saldo Awal"
+        case 2:
+            name = "Penerimaan"
+        case 3:
+            name = "Pengeluaran"
+        case 4:
+            name = "Kelebihan / (Kekurangan) Kas"
+        case 5:
+            name = "Setoran / Pinjaman / TTP"
+        case 6:
+            name = "Saldo Kas Akhir Bulan"
+        case 7:
+            name = "Saldo Awal R / K"
+        case 8:
+            name = "Jumlah Mutasi"
+        case 9:
+            name = "Jumlah R / K"
+        case 10:
+            name = "Jumlah Pemakaian Dana"
+        case 11:
+            name = "Total Bunga"
+        case 12:
+            name = "Saldo Akhir Pemakaian Dana"
+        default:
+            name = "-"
+        }
+        let rkap = cashFlow["rkap"] as? Double ?? nil
+        let ra = data["ra"] as? Double ?? nil
+        let prog = data["prog"] as? Double ?? nil
+        let ri = data["ri"] as? Double ?? nil
+
+        return CashFlow(
+            name: name!,
+            rkap: rkap!,
+            rencana: ra!,
+            prognosa: prog!,
+            realisasi: ri!
+        )
+    }
 }
