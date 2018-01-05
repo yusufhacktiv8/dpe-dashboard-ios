@@ -97,6 +97,8 @@ class CashFlowViewController: UIViewController, MonthYearPickerDelegate, UITable
         cell.titleLabel.text = cashFlow.name
         cell.rkapLabel.text = self.decimalFormatter.string(from: NSNumber(value: cashFlow.rkap))
         cell.rencanaLabel.text = self.decimalFormatter.string(from: NSNumber(value: cashFlow.rencana))
+        cell.prognosaLabel.text = self.decimalFormatter.string(from: NSNumber(value: cashFlow.prognosa))
+        cell.realisasiLabel.text = self.decimalFormatter.string(from: NSNumber(value: cashFlow.realisasi))
         return cell
     }
 

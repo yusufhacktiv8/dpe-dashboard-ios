@@ -13,6 +13,8 @@ class CashFlowTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var rkapLabel: UILabel!
     @IBOutlet weak var rencanaLabel: UILabel!
+    @IBOutlet weak var prognosaLabel: UILabel!
+    @IBOutlet weak var realisasiLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
