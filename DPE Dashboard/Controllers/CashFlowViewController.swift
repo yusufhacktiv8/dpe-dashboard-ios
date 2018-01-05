@@ -95,6 +95,8 @@ class CashFlowViewController: UIViewController, MonthYearPickerDelegate, UITable
         let cell = tableView.dequeueReusableCell(withIdentifier: "CashFlowTableViewCell") as! CashFlowTableViewCell
         let cashFlow = self.cashFlows[indexPath.row]
         cell.titleLabel.text = cashFlow.name
+        cell.rkapLabel.text = self.decimalFormatter.string(from: NSNumber(value: cashFlow.rkap))
+        cell.rencanaLabel.text = self.decimalFormatter.string(from: NSNumber(value: cashFlow.rencana))
         return cell
     }
 

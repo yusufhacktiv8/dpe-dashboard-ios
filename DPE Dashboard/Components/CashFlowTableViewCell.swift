@@ -11,6 +11,9 @@ import UIKit
 class CashFlowTableViewCell: UITableViewCell {
 
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var rkapLabel: UILabel!
+    @IBOutlet weak var rencanaLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
