@@ -636,6 +636,7 @@
                         <segue destination="3zN-uq-S8t" kind="show" identifier="BadSegue" id="Q8B-8d-C31"/>
                         <segue destination="kZp-EX-vt6" kind="show" identifier="UmurPiutangSegue" id="m2p-MD-ewy"/>
                         <segue destination="4gc-Qa-UTt" kind="show" identifier="CashFlowSegue" id="wib-mZ-hTt"/>
+                        <segue destination="mLa-b9-YlO" kind="show" id="bpJ-Xj-75i"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xL6-t2-qvH" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1469,6 +1470,49 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RuJ-nl-5TF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5074" y="1914"/>
+        </scene>
+        <!--Prognosa Piutang-->
+        <scene sceneID="VAh-uk-uQK">
+            <objects>
+                <viewController id="mLa-b9-YlO" customClass="PrognosaViewController" customModule="DPE_Dashboard" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fzg-Dw-uns">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lgE-lL-0dg">
+                                <rect key="frame" x="0.0" y="64" width="375" height="35"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Xu-iK-kOx">
+                                        <rect key="frame" x="165" y="2.5" width="44" height="30"/>
+                                        <state key="normal" title="Month">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.22745098039215686" green="0.39215686274509803" blue="0.72941176470588232" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="4Xu-iK-kOx" firstAttribute="centerY" secondItem="lgE-lL-0dg" secondAttribute="centerY" id="4lu-iF-a8s"/>
+                                    <constraint firstItem="4Xu-iK-kOx" firstAttribute="centerX" secondItem="lgE-lL-0dg" secondAttribute="centerX" id="6bq-Zu-R14"/>
+                                    <constraint firstAttribute="height" constant="35" id="HV3-t7-d4q"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="SVN-lo-pjW" firstAttribute="trailing" secondItem="lgE-lL-0dg" secondAttribute="trailing" id="1Fj-hC-8Zm"/>
+                            <constraint firstItem="lgE-lL-0dg" firstAttribute="leading" secondItem="SVN-lo-pjW" secondAttribute="leading" id="QGU-k0-VBY"/>
+                            <constraint firstItem="lgE-lL-0dg" firstAttribute="top" secondItem="SVN-lo-pjW" secondAttribute="top" id="sgT-YP-8nX"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="SVN-lo-pjW"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Prognosa Piutang" id="qQi-b1-MnG"/>
+                    <connections>
+                        <outlet property="monthYearLabel" destination="4Xu-iK-kOx" id="iQO-FN-J1D"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lby-4x-mFt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5999" y="1914"/>
         </scene>
     </scenes>
     <resources>
