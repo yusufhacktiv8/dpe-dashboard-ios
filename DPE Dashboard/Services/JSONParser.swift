@@ -128,4 +128,13 @@ struct JSONParser {
             realisasi: ri!
         )
     }
+    
+    static func parsePrognosaPiutang(data: AnyObject) -> PrognosaPiutang {
+        let pdp = data["pdp"] as? Double ?? nil
+        let tagihanBruto = data["tagihanBruto"] as? Double ?? nil
+        let piutangUsaha = data["piutangUsaha"] as? Double ?? nil
+        let piutangRetensi = data["piutangRetensi"] as? Double ?? nil
+        
+        return PrognosaPiutang(pdp: pdp!, tagihanBruto: tagihanBruto!, piutangUsaha: piutangUsaha!, piutangRetensi: piutangRetensi!)
+    }
 }

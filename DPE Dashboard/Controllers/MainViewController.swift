@@ -103,6 +103,10 @@ class MainViewController: UIViewController, MonthYearPickerDelegate, MonthSlider
             let destinationVC  = segue.destination as? CashFlowViewController
             destinationVC?.selectedYear = self.selectedYear
             destinationVC?.selectedMonth = self.selectedMonth
+        } else if (segue.identifier == PROGNOSA_SEGUE) {
+            let destinationVC  = segue.destination as? PrognosaViewController
+            destinationVC?.selectedYear = self.selectedYear
+            destinationVC?.selectedMonth = self.selectedMonth
         }
     }
     

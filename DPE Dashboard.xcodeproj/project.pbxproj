@@ -41,6 +41,7 @@
 		2DE61E651FFFA1FD007D073E /* CashFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE61E641FFFA1FD007D073E /* CashFlow.swift */; };
 		2DE61E671FFFAEEB007D073E /* CashFlowTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE61E661FFFAEEB007D073E /* CashFlowTableViewCell.swift */; };
 		2DE61E691FFFBB39007D073E /* PrognosaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE61E681FFFBB39007D073E /* PrognosaViewController.swift */; };
+		2DE61E6B1FFFD47A007D073E /* PrognosaPiutang.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE61E6A1FFFD47A007D073E /* PrognosaPiutang.swift */; };
 		2DEA27541FF9EDDC003093FD /* BadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEA27531FF9EDDC003093FD /* BadViewController.swift */; };
 		2DEA27561FFA2FF7003093FD /* BadData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEA27551FFA2FF7003093FD /* BadData.swift */; };
 		2DEA27581FFA5934003093FD /* BarChartFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEA27571FFA5933003093FD /* BarChartFormatter.swift */; };
@@ -112,6 +113,7 @@
 		2DE61E641FFFA1FD007D073E /* CashFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashFlow.swift; sourceTree = "<group>"; };
 		2DE61E661FFFAEEB007D073E /* CashFlowTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashFlowTableViewCell.swift; sourceTree = "<group>"; };
 		2DE61E681FFFBB39007D073E /* PrognosaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrognosaViewController.swift; sourceTree = "<group>"; };
+		2DE61E6A1FFFD47A007D073E /* PrognosaPiutang.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrognosaPiutang.swift; sourceTree = "<group>"; };
 		2DEA27531FF9EDDC003093FD /* BadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadViewController.swift; sourceTree = "<group>"; };
 		2DEA27551FFA2FF7003093FD /* BadData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadData.swift; sourceTree = "<group>"; };
 		2DEA27571FFA5933003093FD /* BarChartFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChartFormatter.swift; sourceTree = "<group>"; };
@@ -289,6 +291,7 @@
 				2DEA27551FFA2FF7003093FD /* BadData.swift */,
 				2DEA84B21FFD13440044BCF2 /* UpData.swift */,
 				2DE61E641FFFA1FD007D073E /* CashFlow.swift */,
+				2DE61E6A1FFFD47A007D073E /* PrognosaPiutang.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -591,6 +594,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2DE61E651FFFA1FD007D073E /* CashFlow.swift in Sources */,
+				2DE61E6B1FFFD47A007D073E /* PrognosaPiutang.swift in Sources */,
 				2DD0938C1FF0A29500933610 /* UserVar.swift in Sources */,
 				2D35F01E1FFBC47C00E4770E /* BadTableViewCell.swift in Sources */,
 				2DEA84B31FFD13440044BCF2 /* UpData.swift in Sources */,

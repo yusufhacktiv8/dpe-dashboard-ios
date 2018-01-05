@@ -1694,6 +1694,12 @@
                     <navigationItem key="navigationItem" title="Prognosa Piutang" id="qQi-b1-MnG"/>
                     <connections>
                         <outlet property="monthYearLabel" destination="4Xu-iK-kOx" id="iQO-FN-J1D"/>
+                        <outlet property="pRetensiLabel" destination="fIm-6e-4ug" id="RsJ-EI-auc"/>
+                        <outlet property="pUsahaLabel" destination="UgD-9f-Yba" id="oIa-Em-HEQ"/>
+                        <outlet property="pdpLabel" destination="shu-NW-tAP" id="t2N-tV-eyT"/>
+                        <outlet property="tagBrutoLabel" destination="j8p-Q5-kCr" id="a5z-jZ-7UO"/>
+                        <outlet property="totalLabel" destination="Cy4-vP-Xf8" id="q8g-K5-hV8"/>
+                        <segue destination="bDZ-Jv-EtI" kind="show" identifier="ShowMonthYearPickerSegue" id="GfU-G2-l0A"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lby-4x-mFt" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1709,6 +1715,6 @@
         <image name="widget_background_header" width="345" height="29"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="KBH-yV-DrR"/>
+        <segue reference="GfU-G2-l0A"/>
     </inferredMetricsTieBreakers>
 </document>

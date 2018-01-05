@@ -11,6 +11,13 @@ import UIKit
 class PrognosaViewController: UIViewController, MonthYearPickerDelegate {
 
     @IBOutlet weak var monthYearLabel: UIButton!
+    
+    @IBOutlet weak var pdpLabel: UILabel!
+    @IBOutlet weak var tagBrutoLabel: UILabel!
+    @IBOutlet weak var pUsahaLabel: UILabel!
+    @IBOutlet weak var pRetensiLabel: UILabel!
+    @IBOutlet weak var totalLabel: UILabel!
+    
     var selectedMonth: Int?
     var selectedYear: Int?
     let SHOW_MONTH_YEAR_PICKER_SEGUE = "ShowMonthYearPickerSegue"
@@ -19,6 +26,7 @@ class PrognosaViewController: UIViewController, MonthYearPickerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         initFormatter()
+        updateDashboardState()
     }
 
     private func initFormatter() {
@@ -47,7 +55,7 @@ class PrognosaViewController: UIViewController, MonthYearPickerDelegate {
     
     private func updateDashboardState() {
         setMonthYearLabel()
-//        updateData()
+        updateData()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -56,6 +64,17 @@ class PrognosaViewController: UIViewController, MonthYearPickerDelegate {
             destinationVC?.selectedYear = self.selectedYear
             destinationVC?.selectedMonth = self.selectedMonth
             destinationVC?.delegate = self
+        }
+    }
+    
+    private func updateData() {
+        DashboardService.getPrognosaPiutangData(year: self.selectedYear!, month: self.selectedMonth!) { prognosa in
+            let total = prognosa.pdp + prognosa.tagihanBruto + prognosa.piutangUsaha + prognosa.piutangRetensi
+            self.pdpLabel.text = self.decimalFormatter.string(from: NSNumber(value: prognosa.pdp))
+            self.tagBrutoLabel.text = self.decimalFormatter.string(from: NSNumber(value: prognosa.tagihanBruto))
+            self.pUsahaLabel.text = self.decimalFormatter.string(from: NSNumber(value: prognosa.piutangUsaha))
+            self.pRetensiLabel.text = self.decimalFormatter.string(from: NSNumber(value: prognosa.piutangRetensi))
+            self.totalLabel.text = self.decimalFormatter.string(from: NSNumber(value: total))
         }
     }
 }

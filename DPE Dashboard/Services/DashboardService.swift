@@ -18,6 +18,7 @@ public struct DashboardService {
         case BadData(year: Int, month: Int)
         case UmurPiutangData(year: Int, month: Int)
         case CashFlow(year: Int, month: Int)
+        case PrognosaPiutang(year: Int, month: Int)
         
         var description: String {
             switch self {
@@ -27,6 +28,7 @@ public struct DashboardService {
             case .BadData(let year, let month): return "/bads/all/\(year)/\(month)"
             case .UmurPiutangData(let year, let month): return "/piutangs/piutang/\(year)/\(month)"
             case .CashFlow(let year, let month): return "/cashflows/all/\(year)/\(month)"
+            case .PrognosaPiutang(let year, let month): return "/projections/proyeksi/\(year)/\(month)"
             }
         }
     }
@@ -174,6 +176,30 @@ public struct DashboardService {
                 }
                 
                 myResponse(cashFlows)
+            }
+            
+        }
+    }
+    
+    public static func getPrognosaPiutangData(year: Int, month: Int, myResponse: @escaping (PrognosaPiutang) -> ()) {
+        let urlString = DashboardConstant.BASE_URL + ResourcePath.PrognosaPiutang(year: year, month: month).description
+        
+        let headers = ["Authorization": "Basic \(UserVar.token)"]
+        
+        Alamofire.request(urlString, headers: headers).responseJSON { response in
+            
+            if let data = response.result.value {
+                guard let json = (data as? NSArray) as Array<AnyObject>? else {
+                    print("Failed to get expected response from webserver.")
+                    return
+                }
+                
+                var prognosa = PrognosaPiutang(pdp: 0.0, tagihanBruto: 0.0, piutangUsaha: 0.0, piutangRetensi: 0.0)
+                for item in json {
+                    prognosa = JSONParser.parsePrognosaPiutang(data: item)
+                }
+                
+                myResponse(prognosa)
             }
             
         }
