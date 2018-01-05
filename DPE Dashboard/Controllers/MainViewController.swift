@@ -16,6 +16,7 @@ class MainViewController: UIViewController, MonthYearPickerDelegate, MonthSlider
     let BAD_SEGUE = "BadSegue"
     let UMUR_PIUTANG_SEGUE = "UmurPiutangSegue"
     let CASH_FLOW_SEGUE = "CashFlowSegue"
+    let PROGNOSA_SEGUE = "PrognosaSegue"
     
     @IBOutlet weak var chartContainer: UIView!
     @IBOutlet weak var scrollPageContainer: UIView!
@@ -300,7 +301,8 @@ class MainViewController: UIViewController, MonthYearPickerDelegate, MonthSlider
     @IBAction func onMenuButtonDidTouch(_ sender: Any) {
 //        performSegue(withIdentifier: "BadSegue", sender: self)
 //        performSegue(withIdentifier: UMUR_PIUTANG_SEGUE, sender: self)
-        performSegue(withIdentifier: CASH_FLOW_SEGUE, sender: self)
+//        performSegue(withIdentifier: CASH_FLOW_SEGUE, sender: self)
+        performSegue(withIdentifier: PROGNOSA_SEGUE, sender: self)
     }
     
 }

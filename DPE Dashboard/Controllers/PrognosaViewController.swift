@@ -8,30 +8,54 @@
 
 import UIKit
 
-class PrognosaViewController: UIViewController {
+class PrognosaViewController: UIViewController, MonthYearPickerDelegate {
 
     @IBOutlet weak var monthYearLabel: UIButton!
+    var selectedMonth: Int?
+    var selectedYear: Int?
+    let SHOW_MONTH_YEAR_PICKER_SEGUE = "ShowMonthYearPickerSegue"
+    let decimalFormatter = NumberFormatter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        initFormatter()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    private func initFormatter() {
+        self.decimalFormatter.numberStyle = NumberFormatter.Style.decimal
+        self.decimalFormatter.minimumFractionDigits = 2
+        self.decimalFormatter.maximumFractionDigits = 2
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    private func setMonthYearLabel() {
+        self.monthYearLabel.setTitle("\(Constant.months[self.selectedMonth! - 1]), \(self.selectedYear!)", for: .normal)
     }
-    */
 
+    @IBAction func monthYearLabelDidTouch(_ sender: Any) {
+        showFilter()
+    }
+    
+    private func showFilter() {
+        performSegue(withIdentifier: SHOW_MONTH_YEAR_PICKER_SEGUE, sender: self)
+    }
+    
+    func monthYearSelected(month: Int, year: Int) {
+        self.selectedMonth = month
+        self.selectedYear = year
+        updateDashboardState()
+    }
+    
+    private func updateDashboardState() {
+        setMonthYearLabel()
+//        updateData()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == SHOW_MONTH_YEAR_PICKER_SEGUE) {
+            let destinationVC  = segue.destination as? MonthYearPickerViewController
+            destinationVC?.selectedYear = self.selectedYear
+            destinationVC?.selectedMonth = self.selectedMonth
+            destinationVC?.delegate = self
+        }
+    }
 }
