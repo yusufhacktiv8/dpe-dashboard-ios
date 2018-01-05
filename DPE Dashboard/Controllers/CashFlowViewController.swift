@@ -8,18 +8,20 @@
 
 import UIKit
 
-class CashFlowViewController: UIViewController, MonthYearPickerDelegate {
+class CashFlowViewController: UIViewController, MonthYearPickerDelegate, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var monthYearLabel: UIButton!
-    
+    @IBOutlet weak var tableView: UITableView!
     var selectedMonth: Int?
     var selectedYear: Int?
     let SHOW_MONTH_YEAR_PICKER_SEGUE = "ShowMonthYearPickerSegue"
+    var cashFlows = [CashFlow]()
     
     let decimalFormatter = NumberFormatter()
     override func viewDidLoad() {
         super.viewDidLoad()
         initFormatter()
+        initTableView()
         updateDashboardState()
     }
 
@@ -58,7 +60,42 @@ class CashFlowViewController: UIViewController, MonthYearPickerDelegate {
     
     private func updateDashboardState() {
         setMonthYearLabel()
-//        updateTableData()
+        updateTableData()
+    }
+    
+    private func updateTableData() {
+        DashboardService.getCashFlowData(year: self.selectedYear!, month: self.selectedMonth!) { cashFlows in
+            self.cashFlows = cashFlows
+            self.tableView.reloadData()
+        }
+    }
+    
+    private func initTableView() {
+        tableView.delegate = self
+        tableView.dataSource = self
+    }
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.cashFlows.count
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 200.0
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
+        
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CashFlowTableViewCell") as! CashFlowTableViewCell
+        let cashFlow = self.cashFlows[indexPath.row]
+        cell.titleLabel.text = cashFlow.name
+        return cell
     }
 
 }

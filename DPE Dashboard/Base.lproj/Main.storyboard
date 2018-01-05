@@ -1272,6 +1272,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="main_bg" translatesAutoresizingMaskIntoConstraints="NO" id="36m-zL-3YG">
+                                <rect key="frame" x="0.0" y="99" width="375" height="568"/>
+                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7xi-mn-45V">
                                 <rect key="frame" x="0.0" y="64" width="375" height="35"/>
                                 <subviews>
@@ -1292,18 +1295,86 @@
                                     <constraint firstAttribute="height" constant="35" id="Q3Y-VH-pov"/>
                                 </constraints>
                             </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zSa-3S-EJ8">
+                                <rect key="frame" x="0.0" y="99" width="375" height="568"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CashFlowTableViewCell" rowHeight="200" id="7bs-IT-Md1" customClass="CashFlowTableViewCell" customModule="DPE_Dashboard" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="200"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7bs-IT-Md1" id="RHe-dx-hIA">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="widget_background" translatesAutoresizingMaskIntoConstraints="NO" id="kTg-Qi-Djj">
+                                                    <rect key="frame" x="8" y="4" width="359" height="192"/>
+                                                </imageView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="arn-33-QnP">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+                                                    <subviews>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jJv-p5-gwo">
+                                                            <rect key="frame" x="0.0" y="0.0" width="375" height="66.5"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uxn-kE-nRj">
+                                                                    <rect key="frame" x="20" y="10" width="42" height="20.5"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                            <constraints>
+                                                                <constraint firstItem="uxn-kE-nRj" firstAttribute="leading" secondItem="jJv-p5-gwo" secondAttribute="leading" constant="20" id="2Xi-yY-lmY"/>
+                                                                <constraint firstItem="uxn-kE-nRj" firstAttribute="top" secondItem="jJv-p5-gwo" secondAttribute="top" constant="10" id="OTJ-j5-Oax"/>
+                                                            </constraints>
+                                                        </view>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pYG-Vh-ODW">
+                                                            <rect key="frame" x="0.0" y="66.5" width="375" height="67"/>
+                                                        </view>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E4n-hb-XnR">
+                                                            <rect key="frame" x="0.0" y="133.5" width="375" height="66.5"/>
+                                                        </view>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="kTg-Qi-Djj" firstAttribute="top" secondItem="RHe-dx-hIA" secondAttribute="top" constant="4" id="CQh-YP-6EH"/>
+                                                <constraint firstAttribute="bottom" secondItem="arn-33-QnP" secondAttribute="bottom" id="D7l-Ti-tXd"/>
+                                                <constraint firstItem="arn-33-QnP" firstAttribute="leading" secondItem="RHe-dx-hIA" secondAttribute="leading" id="Hch-ut-EKq"/>
+                                                <constraint firstAttribute="bottom" secondItem="kTg-Qi-Djj" secondAttribute="bottom" constant="4" id="JGq-r4-CNO"/>
+                                                <constraint firstItem="arn-33-QnP" firstAttribute="top" secondItem="RHe-dx-hIA" secondAttribute="top" id="Swc-Hm-XTL"/>
+                                                <constraint firstItem="kTg-Qi-Djj" firstAttribute="leading" secondItem="RHe-dx-hIA" secondAttribute="leading" constant="8" id="diZ-CC-bf7"/>
+                                                <constraint firstAttribute="trailing" secondItem="arn-33-QnP" secondAttribute="trailing" id="ttD-Bo-2h0"/>
+                                                <constraint firstAttribute="trailing" secondItem="kTg-Qi-Djj" secondAttribute="trailing" constant="8" id="uKU-Ps-sjO"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="titleLabel" destination="uxn-kE-nRj" id="Hh5-M5-MOm"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="36m-zL-3YG" firstAttribute="top" secondItem="7xi-mn-45V" secondAttribute="bottom" id="1Zf-ON-VVl"/>
                             <constraint firstItem="7xi-mn-45V" firstAttribute="top" secondItem="MLa-uN-XDj" secondAttribute="top" id="2ox-Dh-m69"/>
+                            <constraint firstItem="MLa-uN-XDj" firstAttribute="bottom" secondItem="36m-zL-3YG" secondAttribute="bottom" id="CYS-zU-zkd"/>
+                            <constraint firstItem="zSa-3S-EJ8" firstAttribute="leading" secondItem="MLa-uN-XDj" secondAttribute="leading" id="Mtk-A0-d5W"/>
+                            <constraint firstItem="MLa-uN-XDj" firstAttribute="trailing" secondItem="36m-zL-3YG" secondAttribute="trailing" id="Sq5-fv-MOj"/>
+                            <constraint firstItem="MLa-uN-XDj" firstAttribute="bottom" secondItem="zSa-3S-EJ8" secondAttribute="bottom" id="UBC-ln-qPp"/>
+                            <constraint firstItem="MLa-uN-XDj" firstAttribute="trailing" secondItem="zSa-3S-EJ8" secondAttribute="trailing" id="f1r-ag-36b"/>
                             <constraint firstItem="7xi-mn-45V" firstAttribute="leading" secondItem="MLa-uN-XDj" secondAttribute="leading" id="fR7-B8-DRa"/>
                             <constraint firstItem="MLa-uN-XDj" firstAttribute="trailing" secondItem="7xi-mn-45V" secondAttribute="trailing" id="g2l-c1-3UV"/>
+                            <constraint firstItem="zSa-3S-EJ8" firstAttribute="top" secondItem="7xi-mn-45V" secondAttribute="bottom" id="iT5-tH-OPF"/>
+                            <constraint firstItem="36m-zL-3YG" firstAttribute="leading" secondItem="MLa-uN-XDj" secondAttribute="leading" id="tor-fB-rfp"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="MLa-uN-XDj"/>
                     </view>
                     <navigationItem key="navigationItem" title="Cash Flow" id="JwR-Aj-D8P"/>
                     <connections>
                         <outlet property="monthYearLabel" destination="mA7-qE-4WD" id="cGO-px-jtI"/>
+                        <outlet property="tableView" destination="zSa-3S-EJ8" id="aub-Z7-TzM"/>
                         <segue destination="bDZ-Jv-EtI" kind="show" identifier="ShowMonthYearPickerSegue" id="KBH-yV-DrR"/>
                     </connections>
                 </viewController>
