@@ -113,7 +113,7 @@ class BadViewController: UIViewController, MonthYearPickerDelegate, MonthSliderD
             var pdpValues = [Double]()
             var badValues = [Double]()
             for badData in badDatas {
-                projectNames.append(badData.projectName)
+                projectNames.append(badData.projectCode)
                 tagihanBrutoValues.append(badData.tagihanBruto)
                 piutangUsahaValues.append(badData.piutangUsaha)
                 piutangRetensiValues.append(badData.piutangRetensi)
@@ -215,7 +215,7 @@ class BadViewController: UIViewController, MonthYearPickerDelegate, MonthSliderD
         leftAxis.enabled = false
 //        leftAxis.spaceBottom = 1
 //        leftAxis.spaceTop = 30.0
-//        leftAxis.axisMinimum = -0.01
+        leftAxis.axisMinimum = 0.0
 //        leftAxis.valueFormatter = BarChartFormatter()
         
         rightAxis.enabled = false

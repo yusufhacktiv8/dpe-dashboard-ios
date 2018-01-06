@@ -252,7 +252,7 @@ class MainViewController: UIViewController, MonthYearPickerDelegate, MonthSlider
             if (dashboardDetails.count > 4) {
                 dashboardDetail3 = dashboardDetails[4]
             }
-            setDetailLabels(dashboardDetail: dashboardDetail3, cell: cell)
+            setDetailLabels2(dashboardDetail: dashboardDetail3, cell: cell)
             cell.titleLabel.text = "OK Lama"
             return cell
         case 4:
@@ -262,7 +262,7 @@ class MainViewController: UIViewController, MonthYearPickerDelegate, MonthSlider
             if (dashboardDetails.count > 4) {
                 dashboardDetail4 = dashboardDetails[4]
             }
-            setDetailLabels(dashboardDetail: dashboardDetail4, cell: cell)
+            setDetailLabels2(dashboardDetail: dashboardDetail4, cell: cell)
             return cell
         case 5:
             let cell = tableView.dequeueReusableCell(withIdentifier: "SecondTableViewCell") as! SecondTableViewCell
@@ -271,7 +271,7 @@ class MainViewController: UIViewController, MonthYearPickerDelegate, MonthSlider
             if (dashboardDetails.count > 6) {
                 dashboardDetail5 = dashboardDetails[6]
             }
-            setDetailLabels(dashboardDetail: dashboardDetail5, cell: cell)
+            setDetailLabels2(dashboardDetail: dashboardDetail5, cell: cell)
             return cell
         case 6:
             let cell = tableView.dequeueReusableCell(withIdentifier: "SecondTableViewCell") as! SecondTableViewCell
@@ -280,7 +280,7 @@ class MainViewController: UIViewController, MonthYearPickerDelegate, MonthSlider
             if (dashboardDetails.count > 7) {
                 dashboardDetail6 = dashboardDetails[7]
             }
-            setDetailLabels(dashboardDetail: dashboardDetail6, cell: cell)
+            setDetailLabels2(dashboardDetail: dashboardDetail6, cell: cell)
             return cell
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: "SecondTableViewCell") as! SecondTableViewCell
@@ -302,11 +302,26 @@ class MainViewController: UIViewController, MonthYearPickerDelegate, MonthSlider
             cell.lspLabel.text = "-"
         }
     }
+    
+    private func setDetailLabels2(dashboardDetail: DashboardDetail?, cell: SecondTableViewCell) {
+        if let detail = dashboardDetail {
+            let ok = detail.ok
+            let op = detail.op
+            let lsp = detail.lk
+            cell.okLabel.text = decimalFormatter.string(from: NSNumber(value: ok))
+            cell.opLabel.text = decimalFormatter.string(from: NSNumber(value: op))
+            cell.lspLabel.text = decimalFormatter.string(from: NSNumber(value: lsp))
+        } else {
+            cell.okLabel.text = "-"
+            cell.opLabel.text = "-"
+            cell.lspLabel.text = "-"
+        }
+    }
     @IBAction func onMenuButtonDidTouch(_ sender: Any) {
-//        performSegue(withIdentifier: "BadSegue", sender: self)
+        performSegue(withIdentifier: BAD_SEGUE, sender: self)
 //        performSegue(withIdentifier: UMUR_PIUTANG_SEGUE, sender: self)
 //        performSegue(withIdentifier: CASH_FLOW_SEGUE, sender: self)
-        performSegue(withIdentifier: PROGNOSA_SEGUE, sender: self)
+//        performSegue(withIdentifier: PROGNOSA_SEGUE, sender: self)
     }
     
 }

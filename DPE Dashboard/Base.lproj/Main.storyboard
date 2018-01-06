@@ -713,7 +713,7 @@
                                     <constraint firstItem="Kw3-T4-B9U" firstAttribute="centerX" secondItem="d6u-Ic-ZIp" secondAttribute="centerX" id="OuU-Qp-tWq"/>
                                 </constraints>
                             </view>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9dr-U3-vZY">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9dr-U3-vZY">
                                 <rect key="frame" x="0.0" y="99" width="375" height="913"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qWR-y7-rtw">
@@ -743,7 +743,7 @@
                                                     <constraint firstAttribute="bottom" secondItem="sN6-bW-h4c" secondAttribute="bottom" id="stz-iW-nPZ"/>
                                                 </constraints>
                                             </scrollView>
-                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="afk-fk-3UM">
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="afk-fk-3UM">
                                                 <rect key="frame" x="0.0" y="314" width="375" height="599"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <prototypes>
@@ -900,7 +900,6 @@
                                     <constraint firstItem="qWR-y7-rtw" firstAttribute="leading" secondItem="9dr-U3-vZY" secondAttribute="leading" id="8dE-r2-08V"/>
                                     <constraint firstAttribute="trailing" secondItem="qWR-y7-rtw" secondAttribute="trailing" id="EKf-ZB-Kzu"/>
                                     <constraint firstItem="qWR-y7-rtw" firstAttribute="top" secondItem="9dr-U3-vZY" secondAttribute="top" id="mwQ-55-P8p"/>
-                                    <constraint firstItem="qWR-y7-rtw" firstAttribute="height" secondItem="9dr-U3-vZY" secondAttribute="height" id="n9r-tf-zkY"/>
                                     <constraint firstItem="qWR-y7-rtw" firstAttribute="centerX" secondItem="9dr-U3-vZY" secondAttribute="centerX" id="nIW-AY-BRz"/>
                                     <constraint firstAttribute="bottom" secondItem="qWR-y7-rtw" secondAttribute="bottom" id="zNS-iU-K1Y"/>
                                 </constraints>

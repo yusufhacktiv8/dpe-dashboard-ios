@@ -10,28 +10,29 @@ import Foundation
 struct JSONParser {
     static func parseChartDataItem(data: AnyObject) -> ChartDataItem {
         let month = data["month"] as? String ?? ""
-        let plan = data["plan"] as? Double ?? nil
-        let actual = data["actual"] as? Double ?? nil
-        return ChartDataItem(month: month, plan: plan!, actual: actual!)
+        let plan = data["plan"] as? Double ?? 0.0
+        let actual = data["actual"] as? Double ?? 0.0
+        return ChartDataItem(month: month, plan: plan, actual: actual)
     }
     
     static func parseDashboardDetail(data: AnyObject) -> DashboardDetail {
         let ok = data["ok"] as? Double ?? nil
         let op = data["op"] as? Double ?? nil
-        let lsp = data["lsp"] as? Double ?? nil
+        let lsp = data["lsp"] as? Double ?? 0.0
         let lk = data["lk"] as? Double ?? nil
-        return DashboardDetail(ok: ok!, op: op!, lsp: lsp!, lk: lk!)
+        return DashboardDetail(ok: ok!, op: op!, lsp: lsp, lk: lk!)
     }
     
     static func parseBad(data: AnyObject) -> BadData {
         let project = data["Project"] as AnyObject
+        let projectCode = project["code"] as? String ?? ""
         let projectName = project["name"] as? String ?? ""
         let piutangUsaha = data["piutangUsaha"] as? Double ?? nil
         let tagihanBruto = data["tagihanBruto"] as? Double ?? nil
         let piutangRetensi = data["piutangRetensi"] as? Double ?? nil
         let pdp = data["pdp"] as? Double ?? nil
         let bad = data["bad"] as? Double ?? nil
-        return BadData(projectName: projectName, piutangUsaha: piutangUsaha!, tagihanBruto: tagihanBruto!, piutangRetensi: piutangRetensi!, pdp: pdp!, bad: bad!)
+        return BadData(projectCode: projectCode, projectName: projectName, piutangUsaha: piutangUsaha!, tagihanBruto: tagihanBruto!, piutangRetensi: piutangRetensi!, pdp: pdp!, bad: bad!)
     }
     
     static func parseUmurPiutang(data: AnyObject) -> UpData {

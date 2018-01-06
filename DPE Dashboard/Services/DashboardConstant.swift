@@ -8,5 +8,6 @@
 
 import Foundation
 struct DashboardConstant {
-    static let BASE_URL = "http://192.168.1.6:3300/api"
+//    static let BASE_URL = "http://192.168.1.6:3300/api"
+    static let BASE_URL = "http://dashboard-dpe.wika.co.id/api"
 }

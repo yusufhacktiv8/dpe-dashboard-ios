@@ -8,6 +8,7 @@
 
 import Foundation
 public struct BadData {
+    let projectCode: String
     let projectName: String
     let piutangUsaha: Double
     let tagihanBruto: Double
