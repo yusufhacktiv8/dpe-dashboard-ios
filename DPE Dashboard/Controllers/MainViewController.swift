@@ -318,10 +318,49 @@ class MainViewController: UIViewController, MonthYearPickerDelegate, MonthSlider
         }
     }
     @IBAction func onMenuButtonDidTouch(_ sender: Any) {
-        performSegue(withIdentifier: BAD_SEGUE, sender: self)
+//        performSegue(withIdentifier: BAD_SEGUE, sender: self)
 //        performSegue(withIdentifier: UMUR_PIUTANG_SEGUE, sender: self)
 //        performSegue(withIdentifier: CASH_FLOW_SEGUE, sender: self)
 //        performSegue(withIdentifier: PROGNOSA_SEGUE, sender: self)
+        showActionSheet()
+    }
+    
+    private func showActionSheet() {
+        let alertController = UIAlertController(title: "", message: "", preferredStyle: .actionSheet)
+        
+        let firstMenuButton = UIAlertAction(title: "Piutang & BAD", style: .default, handler: { (action) -> Void in
+            self.performSegue(withIdentifier: self.BAD_SEGUE, sender: self)
+        })
+        
+        let secondMenuButton = UIAlertAction(title: "Umur Piutang", style: .default, handler: { (action) -> Void in
+            self.performSegue(withIdentifier: self.UMUR_PIUTANG_SEGUE, sender: self)
+        })
+        
+        let thirdMenuButton = UIAlertAction(title: "Cash Flow RKAP", style: .default, handler: { (action) -> Void in
+            self.performSegue(withIdentifier: self.CASH_FLOW_SEGUE, sender: self)
+        })
+        
+        let fourthMenuButton = UIAlertAction(title: "Prognosa Piutang", style: .default, handler: { (action) -> Void in
+            self.performSegue(withIdentifier: self.PROGNOSA_SEGUE, sender: self)
+        })
+        
+        let  logoutButton = UIAlertAction(title: "Logout", style: .destructive, handler: { (action) -> Void in
+            self.dismiss(animated: true, completion: {})
+        })
+        
+        let cancelButton = UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) -> Void in
+            
+//            print("Cancel button tapped")
+        })
+        
+        alertController.addAction(firstMenuButton)
+        alertController.addAction(secondMenuButton)
+        alertController.addAction(thirdMenuButton)
+        alertController.addAction(fourthMenuButton)
+        alertController.addAction(logoutButton)
+        alertController.addAction(cancelButton)
+        
+        self.navigationController!.present(alertController, animated: true, completion: nil)
     }
     
 }

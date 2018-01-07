@@ -12,7 +12,7 @@ import Alamofire
 public struct LoginService {
     
     public static func login(username: String, password: String, myResponse: @escaping (Int) -> ()) {
-        let urlString = DashboardConstant.BASE_URL + "security/signin"
+        let urlString = DashboardConstant.BASE_URL + "/security/signin"
         let parameters: Parameters = [
             "username": username,
             "password": password

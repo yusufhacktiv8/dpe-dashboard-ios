@@ -80,6 +80,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 SwiftSpinner.hide()
                 
                 if(statusCode == 200 || statusCode == 304){
+                    self.emailTextField.text = ""
+                    self.passwordTextField.text = ""
                     self.performSegue(withIdentifier: "LoginSuccessSegue", sender: self)
                 }else if(statusCode == 403 || statusCode == -6003){
                     let alertView = UIAlertController(title: "Login Problem",
