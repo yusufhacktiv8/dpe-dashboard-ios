@@ -42,7 +42,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         let imageView = UIImageView();
         imageView.frame = CGRect(x: 0, y: 0, width: 40, height: 25)
         imageView.contentMode = .right
-        let image = UIImage(named: "email_blue");
+        let image = UIImage(named: "user");
         imageView.image = image;
         emailTextField.leftView = imageView;
         emailTextField.leftViewMode = UITextFieldViewMode.always

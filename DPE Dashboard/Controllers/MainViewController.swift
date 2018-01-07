@@ -326,7 +326,7 @@ class MainViewController: UIViewController, MonthYearPickerDelegate, MonthSlider
     }
     
     private func showActionSheet() {
-        let alertController = UIAlertController(title: "", message: "", preferredStyle: .actionSheet)
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
         let firstMenuButton = UIAlertAction(title: "Piutang & BAD", style: .default, handler: { (action) -> Void in
             self.performSegue(withIdentifier: self.BAD_SEGUE, sender: self)
