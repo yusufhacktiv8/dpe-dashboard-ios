@@ -156,11 +156,17 @@ class ChartViewController: UIViewController, UIScrollViewDelegate {
         var planValues: [Double] = [Double]()
         var actualValues: [Double] = [Double]()
         
+        var planCumulative: Double = 0.0
+        var actualCumulative: Double = 0.0
+        
         if (chartData.okData.count > 0) {
             for theData in chartData.okData {
+                planCumulative += theData.plan
+                actualCumulative += theData.actual
+                
                 months.append(theData.month)
-                planValues.append(theData.plan)
-                actualValues.append(theData.actual)
+                planValues.append(planCumulative)
+                actualValues.append(actualCumulative)
             }
     
             if(months.count > 0){
@@ -197,11 +203,17 @@ class ChartViewController: UIViewController, UIScrollViewDelegate {
         var planValues: [Double] = [Double]()
         var actualValues: [Double] = [Double]()
         
+        var planCumulative: Double = 0.0
+        var actualCumulative: Double = 0.0
+        
         if (chartData.opData.count > 0) {
             for theData in chartData.opData {
+                planCumulative += theData.plan
+                actualCumulative += theData.actual
+                
                 months.append(theData.month)
-                planValues.append(theData.plan)
-                actualValues.append(theData.actual)
+                planValues.append(planCumulative)
+                actualValues.append(actualCumulative)
             }
             
             if(months.count > 0){
@@ -239,11 +251,17 @@ class ChartViewController: UIViewController, UIScrollViewDelegate {
         var planValues: [Double] = [Double]()
         var actualValues: [Double] = [Double]()
         
+        var planCumulative: Double = 0.0
+        var actualCumulative: Double = 0.0
+        
         if (chartData.lkData.count > 0) {
             for theData in chartData.lkData {
+                planCumulative += theData.plan
+                actualCumulative += theData.actual
+                
                 months.append(theData.month)
-                planValues.append(theData.plan)
-                actualValues.append(theData.actual)
+                planValues.append(planCumulative)
+                actualValues.append(actualCumulative)
             }
             
             if(months.count > 0){
@@ -327,14 +345,15 @@ class ChartViewController: UIViewController, UIScrollViewDelegate {
         }
         let planLineChartDataSet = LineChartDataSet(values: planDataEntries, label: "Plans")
         
-        planLineChartDataSet.mode = LineChartDataSet.Mode.cubicBezier
-//        planLineChartDataSet.mode = LineChartDataSet.Mode.linear
+//        planLineChartDataSet.mode = LineChartDataSet.Mode.cubicBezier
+        planLineChartDataSet.mode = LineChartDataSet.Mode.linear
+        planLineChartDataSet.lineWidth = 6.0
         planLineChartDataSet.drawCirclesEnabled = false
-        planLineChartDataSet.drawFilledEnabled = true
+//        planLineChartDataSet.drawFilledEnabled = true
         
         planLineChartDataSet.drawValuesEnabled = false
-        planLineChartDataSet.fillColor = UIColor(red:0.41, green:0.72, blue:0.87, alpha:1.0)
-        planLineChartDataSet.fillAlpha = 0.5
+//        planLineChartDataSet.fillColor = UIColor(red:0.41, green:0.72, blue:0.87, alpha:1.0)
+//        planLineChartDataSet.fillAlpha = 0.5
         
         var actualDataEntries: [ChartDataEntry] = []
         for i in 0..<months.count {
@@ -346,15 +365,16 @@ class ChartViewController: UIViewController, UIScrollViewDelegate {
         
         let actualLineChartDataSet = LineChartDataSet(values: actualDataEntries, label: "Actuals")
         
-        actualLineChartDataSet.mode = LineChartDataSet.Mode.cubicBezier
-//        actualLineChartDataSet.mode = LineChartDataSet.Mode.linear
+//        actualLineChartDataSet.mode = LineChartDataSet.Mode.cubicBezier
+        actualLineChartDataSet.mode = LineChartDataSet.Mode.linear
+        actualLineChartDataSet.lineWidth = 6.0
+        actualLineChartDataSet.setColor(UIColor(red:0.97, green:0.91, blue:0.11, alpha:1.0))
         actualLineChartDataSet.drawCirclesEnabled = false
-        actualLineChartDataSet.drawFilledEnabled = true
+//        actualLineChartDataSet.drawFilledEnabled = true
         
         actualLineChartDataSet.drawValuesEnabled = false
-        actualLineChartDataSet.fillColor = UIColor(red:0.97, green:0.91, blue:0.11, alpha:1.0)
-        
-        actualLineChartDataSet.fillAlpha = 1.0
+//        actualLineChartDataSet.fillColor = UIColor(red:0.97, green:0.91, blue:0.11, alpha:1.0)
+//        actualLineChartDataSet.fillAlpha = 1.0
         
         var dataSets : [LineChartDataSet] = [LineChartDataSet]()
         dataSets.append(actualLineChartDataSet)

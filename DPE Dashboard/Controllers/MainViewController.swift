@@ -259,8 +259,8 @@ class MainViewController: UIViewController, MonthYearPickerDelegate, MonthSlider
             let cell = tableView.dequeueReusableCell(withIdentifier: "SecondTableViewCell") as! SecondTableViewCell
             cell.titleLabel.text = "OK Baru (Sudah Didapat)"
             var dashboardDetail4: DashboardDetail?
-            if (dashboardDetails.count > 4) {
-                dashboardDetail4 = dashboardDetails[4]
+            if (dashboardDetails.count > 5) {
+                dashboardDetail4 = dashboardDetails[5]
             }
             setDetailLabels2(dashboardDetail: dashboardDetail4, cell: cell)
             return cell
