@@ -22,6 +22,8 @@ class FirstTableViewCell: UITableViewCell {
     @IBOutlet weak var progOpLabel: UILabel!
     @IBOutlet weak var progLspLabel: UILabel!
     
+    var onOkButtonTapped : (() -> Void)? = nil
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -33,4 +35,9 @@ class FirstTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    @IBAction func okButtonDidTouch(_ sender: Any) {
+        if let onOkButtonTapped = self.onOkButtonTapped {
+            onOkButtonTapped()
+        }
+    }
 }

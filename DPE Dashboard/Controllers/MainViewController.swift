@@ -17,6 +17,7 @@ class MainViewController: UIViewController, MonthYearPickerDelegate, MonthSlider
     let UMUR_PIUTANG_SEGUE = "UmurPiutangSegue"
     let CASH_FLOW_SEGUE = "CashFlowSegue"
     let PROGNOSA_SEGUE = "PrognosaSegue"
+    let OK_DETAILS_SEGUE = "OkDetailsSegue"
     
     @IBOutlet weak var chartContainer: UIView!
     @IBOutlet weak var scrollPageContainer: UIView!
@@ -107,6 +108,10 @@ class MainViewController: UIViewController, MonthYearPickerDelegate, MonthSlider
             let destinationVC  = segue.destination as? PrognosaViewController
             destinationVC?.selectedYear = self.selectedYear
             destinationVC?.selectedMonth = self.selectedMonth
+        }  else if (segue.identifier == OK_DETAILS_SEGUE) {
+            let destinationVC  = segue.destination as? OkDetailsViewController
+//            destinationVC?.selectedYear = self.selectedYear
+//            destinationVC?.selectedMonth = self.selectedMonth
         }
     }
     
@@ -220,6 +225,10 @@ class MainViewController: UIViewController, MonthYearPickerDelegate, MonthSlider
                 cell.progOkLabel.text = decimalFormatter.string(from: NSNumber(value: progOk))
                 cell.progOpLabel.text = decimalFormatter.string(from: NSNumber(value: progOp))
                 cell.progLspLabel.text = decimalFormatter.string(from: NSNumber(value: progLsp))
+                
+                cell.onOkButtonTapped = {
+                    self.performSegue(withIdentifier: self.OK_DETAILS_SEGUE, sender: self)
+                }
             } else {
                 cell.rkapOkLabel.text = "-"
                 cell.rkapOpLabel.text = "-"

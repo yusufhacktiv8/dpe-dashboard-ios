@@ -23,6 +23,7 @@
 		2D5093531FEE4898000D2999 /* DPE_DashboardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5093521FEE4898000D2999 /* DPE_DashboardTests.swift */; };
 		2D50935E1FEE4898000D2999 /* DPE_DashboardUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D50935D1FEE4898000D2999 /* DPE_DashboardUITests.swift */; };
 		2D59D6411FF892FD00E18AAA /* DashboardDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D59D6401FF892FD00E18AAA /* DashboardDetail.swift */; };
+		2D87D5012059786D00D3300C /* OkDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D87D5002059786D00D3300C /* OkDetailsViewController.swift */; };
 		2DAF52001FFE6A3900D69E49 /* UmurPiutangTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DAF51FF1FFE6A3900D69E49 /* UmurPiutangTableViewCell.swift */; };
 		2DAF52021FFE9B8100D69E49 /* CashFlowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DAF52011FFE9B8100D69E49 /* CashFlowViewController.swift */; };
 		2DD0937E1FF0904300933610 /* DashboardChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD0937D1FF0904300933610 /* DashboardChart.swift */; };
@@ -95,6 +96,7 @@
 		2D50935D1FEE4898000D2999 /* DPE_DashboardUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DPE_DashboardUITests.swift; sourceTree = "<group>"; };
 		2D50935F1FEE4898000D2999 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2D59D6401FF892FD00E18AAA /* DashboardDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardDetail.swift; sourceTree = "<group>"; };
+		2D87D5002059786D00D3300C /* OkDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OkDetailsViewController.swift; sourceTree = "<group>"; };
 		2DAF51FF1FFE6A3900D69E49 /* UmurPiutangTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmurPiutangTableViewCell.swift; sourceTree = "<group>"; };
 		2DAF52011FFE9B8100D69E49 /* CashFlowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashFlowViewController.swift; sourceTree = "<group>"; };
 		2DD0937D1FF0904300933610 /* DashboardChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardChart.swift; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 				2D35F01F1FFBD3D000E4770E /* UmurPiutangViewController.swift */,
 				2DAF52011FFE9B8100D69E49 /* CashFlowViewController.swift */,
 				2DE61E681FFFBB39007D073E /* PrognosaViewController.swift */,
+				2D87D5002059786D00D3300C /* OkDetailsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -620,6 +623,7 @@
 				2DD29E5C1FF72CAC00FD15A7 /* MonthSlider.swift in Sources */,
 				2D2D7CE01FF167EA00A78299 /* LoginService.swift in Sources */,
 				2DEA27581FFA5934003093FD /* BarChartFormatter.swift in Sources */,
+				2D87D5012059786D00D3300C /* OkDetailsViewController.swift in Sources */,
 				2DEA27561FFA2FF7003093FD /* BadData.swift in Sources */,
 				2D08321E1FF299AC00925B06 /* MonthYearPickerView.swift in Sources */,
 				2DEA84B51FFD14240044BCF2 /* UpChartFormatter.swift in Sources */,
@@ -797,12 +801,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = U48P8SU85A;
 				INFOPLIST_FILE = "DPE Dashboard/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "id.co.wika.DPE-Dashboard";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -814,12 +818,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = U48P8SU85A;
 				INFOPLIST_FILE = "DPE Dashboard/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "id.co.wika.DPE-Dashboard";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
