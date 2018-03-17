@@ -112,6 +112,7 @@ class MainViewController: UIViewController, MonthYearPickerDelegate, MonthSlider
             let destinationVC  = segue.destination as? OkDetailsViewController
             destinationVC?.selectedYear = self.selectedYear
             destinationVC?.selectedMonth = self.selectedMonth
+            destinationVC?.projectType = 1
         }
     }
     

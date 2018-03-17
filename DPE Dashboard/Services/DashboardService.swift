@@ -19,6 +19,7 @@ public struct DashboardService {
         case UmurPiutangData(year: Int, month: Int)
         case CashFlow(year: Int, month: Int)
         case PrognosaPiutang(year: Int, month: Int)
+        case OkProjectDetails(year: Int, month: Int, projectType: Int)
         
         var description: String {
             switch self {
@@ -29,6 +30,7 @@ public struct DashboardService {
             case .UmurPiutangData(let year, let month): return "/piutangs/piutang/\(year)/\(month)"
             case .CashFlow(let year, let month): return "/cashflows/all/\(year)/\(month)"
             case .PrognosaPiutang(let year, let month): return "/projections/proyeksi/\(year)/\(month)"
+            case .OkProjectDetails(let year, let month, let projectType): return "/okdetails/all/\(year)/\(month)/\(projectType)"
             }
         }
     }
@@ -200,6 +202,29 @@ public struct DashboardService {
                 }
                 
                 myResponse(prognosa)
+            }
+            
+        }
+    }
+    
+    public static func getOkProjectDetailsData(year: Int, month: Int, projectType: Int, myResponse: @escaping ([OkProjectDetails]) -> ()) {
+        let urlString = DashboardConstant.BASE_URL + ResourcePath.OkProjectDetails(year: year, month: month, projectType: projectType).description
+        
+        let headers = ["Authorization": "Bearer \(UserVar.token)"]
+        
+        Alamofire.request(urlString, headers: headers).responseJSON { response in
+            if let data = response.result.value {
+                guard let json = (data as? NSArray) as Array<AnyObject>? else {
+                    print("Failed to get expected response from webserver.")
+                    return
+                }
+                
+                var okProjects = [OkProjectDetails]()
+                for okProject in json {
+                    okProjects.append(JSONParser.parseOkProjectDetails(data: okProject))
+                }
+                
+                myResponse(okProjects)
             }
             
         }

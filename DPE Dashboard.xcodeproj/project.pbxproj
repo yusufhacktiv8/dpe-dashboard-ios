@@ -15,6 +15,8 @@
 		2D35F01E1FFBC47C00E4770E /* BadTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D35F01D1FFBC47C00E4770E /* BadTableViewCell.swift */; };
 		2D35F0201FFBD3D000E4770E /* UmurPiutangViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D35F01F1FFBD3D000E4770E /* UmurPiutangViewController.swift */; };
 		2D406AC61FEE8B43004C1D08 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D406AC51FEE8B43004C1D08 /* LoginViewController.swift */; };
+		2D4583F7205D273A005FACF2 /* OkDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D4583F6205D273A005FACF2 /* OkDetailsTableViewCell.swift */; };
+		2D4583F9205D2A53005FACF2 /* OkProjectDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D4583F8205D2A53005FACF2 /* OkProjectDetails.swift */; };
 		2D50933E1FEE4897000D2999 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D50933D1FEE4897000D2999 /* AppDelegate.swift */; };
 		2D5093401FEE4897000D2999 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D50933F1FEE4897000D2999 /* ViewController.swift */; };
 		2D5093431FEE4897000D2999 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D5093411FEE4897000D2999 /* Main.storyboard */; };
@@ -82,6 +84,8 @@
 		2D35F01D1FFBC47C00E4770E /* BadTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadTableViewCell.swift; sourceTree = "<group>"; };
 		2D35F01F1FFBD3D000E4770E /* UmurPiutangViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmurPiutangViewController.swift; sourceTree = "<group>"; };
 		2D406AC51FEE8B43004C1D08 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		2D4583F6205D273A005FACF2 /* OkDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OkDetailsTableViewCell.swift; sourceTree = "<group>"; };
+		2D4583F8205D2A53005FACF2 /* OkProjectDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OkProjectDetails.swift; sourceTree = "<group>"; };
 		2D50933A1FEE4897000D2999 /* DPE Dashboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DPE Dashboard.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D50933D1FEE4897000D2999 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2D50933F1FEE4897000D2999 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -269,6 +273,7 @@
 				2DEA84B41FFD14240044BCF2 /* UpChartFormatter.swift */,
 				2DAF51FF1FFE6A3900D69E49 /* UmurPiutangTableViewCell.swift */,
 				2DE61E661FFFAEEB007D073E /* CashFlowTableViewCell.swift */,
+				2D4583F6205D273A005FACF2 /* OkDetailsTableViewCell.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -295,6 +300,7 @@
 				2DEA84B21FFD13440044BCF2 /* UpData.swift */,
 				2DE61E641FFFA1FD007D073E /* CashFlow.swift */,
 				2DE61E6A1FFFD47A007D073E /* PrognosaPiutang.swift */,
+				2D4583F8205D2A53005FACF2 /* OkProjectDetails.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -602,9 +608,11 @@
 				2D35F01E1FFBC47C00E4770E /* BadTableViewCell.swift in Sources */,
 				2DEA84B31FFD13440044BCF2 /* UpData.swift in Sources */,
 				2DAF52001FFE6A3900D69E49 /* UmurPiutangTableViewCell.swift in Sources */,
+				2D4583F9205D2A53005FACF2 /* OkProjectDetails.swift in Sources */,
 				2DD29E601FF7A5E600FD15A7 /* FirstTableViewCell.swift in Sources */,
 				2D406AC61FEE8B43004C1D08 /* LoginViewController.swift in Sources */,
 				2D0832221FF29A8B00925B06 /* Constant.swift in Sources */,
+				2D4583F7205D273A005FACF2 /* OkDetailsTableViewCell.swift in Sources */,
 				2DD29E5E1FF7992D00FD15A7 /* BalloonMarker.swift in Sources */,
 				2DEA27541FF9EDDC003093FD /* BadViewController.swift in Sources */,
 				2DD0937E1FF0904300933610 /* DashboardChart.swift in Sources */,

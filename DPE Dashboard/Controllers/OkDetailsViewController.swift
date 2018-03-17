@@ -8,14 +8,18 @@
 
 import UIKit
 
-class OkDetailsViewController: UIViewController, MonthYearPickerDelegate {
+class OkDetailsViewController: UIViewController, MonthYearPickerDelegate, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var monthYearLabel: UIButton!
+    @IBOutlet weak var tableView: UITableView!
     
     var selectedMonth: Int?
     var selectedYear: Int?
+    var projectType: Int?
     let SHOW_MONTH_YEAR_PICKER_SEGUE = "ShowMonthYearPickerSegue"
     let decimalFormatter = NumberFormatter()
+    
+    var okProjects = [OkProjectDetails]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +31,11 @@ class OkDetailsViewController: UIViewController, MonthYearPickerDelegate {
         self.decimalFormatter.numberStyle = NumberFormatter.Style.decimal
         self.decimalFormatter.minimumFractionDigits = 2
         self.decimalFormatter.maximumFractionDigits = 2
+    }
+    
+    private func initTableView() {
+        tableView.delegate = self
+        tableView.dataSource = self
     }
     
     @IBAction func monthYearLabelDidTouch(_ sender: Any) {
@@ -61,7 +70,34 @@ class OkDetailsViewController: UIViewController, MonthYearPickerDelegate {
     }
     
     private func updateData() {
+        DashboardService.getOkProjectDetailsData(year: self.selectedYear!, month: self.selectedMonth!, projectType: self.projectType!) { okProjects in
+            self.okProjects = okProjects
+            self.tableView.reloadData()
+        }
+    }
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.okProjects.count
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 200.0
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
         
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "OkDetailsTableViewCell") as! OkDetailsTableViewCell
+        let okProject = self.okProjects[indexPath.row]
+        cell.projectNameLabel.text = okProject.projectName
+        
+        return cell
     }
 
 }

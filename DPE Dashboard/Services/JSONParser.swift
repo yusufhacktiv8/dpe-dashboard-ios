@@ -141,4 +141,17 @@ struct JSONParser {
         
         return PrognosaPiutang(pdp: pdp / divider, tagihanBruto: tagihanBruto / divider, piutangUsaha: piutangUsaha / divider, piutangRetensi: piutangRetensi / divider)
     }
+    
+    static func parseOkProjectDetails(data: AnyObject) -> OkProjectDetails {
+        let projectName = data["projectName"] as? String ?? ""
+        let rkap = data["rkap"] as? Double ?? 0.0
+        let ri = data["ri"] as? Double ?? 0.0
+        let prog = data["prog"] as? Double ?? 0.0
+        return OkProjectDetails(
+            projectName: projectName,
+            rkap: rkap / divider,
+            ri: ri / divider,
+            prog: prog / divider
+        )
+    }
 }

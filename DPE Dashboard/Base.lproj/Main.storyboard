@@ -1719,6 +1719,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="main_bg" translatesAutoresizingMaskIntoConstraints="NO" id="bHi-cp-Y3K">
+                                <rect key="frame" x="0.0" y="99" width="375" height="568"/>
+                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QtF-II-xru">
                                 <rect key="frame" x="0.0" y="64" width="375" height="35"/>
                                 <subviews>
@@ -1740,11 +1743,56 @@
                                     <constraint firstItem="t8i-S9-stx" firstAttribute="centerX" secondItem="QtF-II-xru" secondAttribute="centerX" id="hf6-2W-40g"/>
                                 </constraints>
                             </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vR5-yT-yii">
+                                <rect key="frame" x="0.0" y="99" width="375" height="568"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="OkDetailsTableViewCell" rowHeight="200" id="tAp-Rg-ibg" customClass="OkDetailsTableViewCell" customModule="DPE_Dashboard" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="200"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tAp-Rg-ibg" id="nvR-Fx-XOj">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="widget_background" translatesAutoresizingMaskIntoConstraints="NO" id="Afo-6J-Get">
+                                                    <rect key="frame" x="8" y="4" width="359" height="191.5"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gjy-69-7x1">
+                                                    <rect key="frame" x="20" y="10" width="8" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="Afo-6J-Get" secondAttribute="trailing" constant="8" id="6xu-VU-QR3"/>
+                                                <constraint firstItem="Afo-6J-Get" firstAttribute="leading" secondItem="nvR-Fx-XOj" secondAttribute="leading" constant="8" id="G8p-sp-oGo"/>
+                                                <constraint firstItem="Gjy-69-7x1" firstAttribute="leading" secondItem="nvR-Fx-XOj" secondAttribute="leading" constant="20" id="W3I-Pv-oDC"/>
+                                                <constraint firstAttribute="bottom" secondItem="Afo-6J-Get" secondAttribute="bottom" constant="4" id="eFs-cK-z9o"/>
+                                                <constraint firstItem="Afo-6J-Get" firstAttribute="top" secondItem="nvR-Fx-XOj" secondAttribute="top" constant="4" id="jHD-YE-rH9"/>
+                                                <constraint firstItem="Gjy-69-7x1" firstAttribute="top" secondItem="nvR-Fx-XOj" secondAttribute="top" constant="10" id="wRb-vq-fD4"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="projectNameLabel" destination="Gjy-69-7x1" id="gUc-No-g7M"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="bHi-cp-Y3K" firstAttribute="leading" secondItem="HBx-ZV-MyP" secondAttribute="leading" id="0iw-eb-oKN"/>
                             <constraint firstItem="QtF-II-xru" firstAttribute="top" secondItem="HBx-ZV-MyP" secondAttribute="top" id="3Ui-gX-SP9"/>
+                            <constraint firstItem="vR5-yT-yii" firstAttribute="leading" secondItem="HBx-ZV-MyP" secondAttribute="leading" id="Ph6-Si-aXj"/>
+                            <constraint firstItem="HBx-ZV-MyP" firstAttribute="trailing" secondItem="bHi-cp-Y3K" secondAttribute="trailing" id="V85-fj-y5R"/>
+                            <constraint firstItem="HBx-ZV-MyP" firstAttribute="bottom" secondItem="bHi-cp-Y3K" secondAttribute="bottom" id="ggG-r5-Rrc"/>
+                            <constraint firstItem="bHi-cp-Y3K" firstAttribute="top" secondItem="QtF-II-xru" secondAttribute="bottom" id="lSq-GE-JOB"/>
+                            <constraint firstItem="HBx-ZV-MyP" firstAttribute="trailing" secondItem="vR5-yT-yii" secondAttribute="trailing" id="n9Y-nm-58b"/>
                             <constraint firstItem="QtF-II-xru" firstAttribute="leading" secondItem="HBx-ZV-MyP" secondAttribute="leading" id="ngP-SB-PqX"/>
+                            <constraint firstItem="vR5-yT-yii" firstAttribute="top" secondItem="QtF-II-xru" secondAttribute="bottom" id="rPe-9o-EUa"/>
+                            <constraint firstItem="HBx-ZV-MyP" firstAttribute="bottom" secondItem="vR5-yT-yii" secondAttribute="bottom" id="w9N-6U-8a9"/>
                             <constraint firstItem="QtF-II-xru" firstAttribute="trailing" secondItem="HBx-ZV-MyP" secondAttribute="trailing" id="xHY-5U-os0"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="HBx-ZV-MyP"/>
@@ -1752,6 +1800,7 @@
                     <navigationItem key="navigationItem" title="Details" id="GnC-0K-yub"/>
                     <connections>
                         <outlet property="monthYearLabel" destination="t8i-S9-stx" id="0nZ-PO-QkA"/>
+                        <outlet property="tableView" destination="vR5-yT-yii" id="tlS-Cv-P9y"/>
                         <segue destination="bDZ-Jv-EtI" kind="show" identifier="ShowMonthYearPickerSegue" id="Nev-KA-JZj"/>
                     </connections>
                 </viewController>
