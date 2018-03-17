@@ -36,7 +36,7 @@ public struct DashboardService {
     public static func getChartsData(year: Int, myResponse: @escaping (ChartData) -> ()) {
         let urlString = DashboardConstant.BASE_URL + ResourcePath.ChartData(year: year).description
         
-        let headers = ["Authorization": "Basic \(UserVar.token)"]
+        let headers = ["Authorization": "Bearer \(UserVar.token)"]
         
         Alamofire.request(urlString, headers: headers).responseJSON { response in
             
@@ -86,7 +86,7 @@ public struct DashboardService {
     public static func getDashboardDetailsData(year: Int, month: Int, myResponse: @escaping ([DashboardDetail]) -> ()) {
         let urlString = DashboardConstant.BASE_URL + ResourcePath.DetailsData(year: year, month: month).description
         
-        let headers = ["Authorization": "Basic \(UserVar.token)"]
+        let headers = ["Authorization": "Bearer \(UserVar.token)"]
         
         Alamofire.request(urlString, headers: headers).responseJSON { response in
             
@@ -115,7 +115,7 @@ public struct DashboardService {
     public static func getBadData(year: Int, month: Int, myResponse: @escaping ([BadData]) -> ()) {
         let urlString = DashboardConstant.BASE_URL + ResourcePath.BadData(year: year, month: month).description
         
-        let headers = ["Authorization": "Basic \(UserVar.token)"]
+        let headers = ["Authorization": "Bearer \(UserVar.token)"]
         
         Alamofire.request(urlString, headers: headers).responseJSON { response in
             if let data = response.result.value {
@@ -138,7 +138,7 @@ public struct DashboardService {
     public static func getUmurPiutangData(year: Int, month: Int, myResponse: @escaping ([UpData]) -> ()) {
         let urlString = DashboardConstant.BASE_URL + ResourcePath.UmurPiutangData(year: year, month: month).description
         
-        let headers = ["Authorization": "Basic \(UserVar.token)"]
+        let headers = ["Authorization": "Bearer \(UserVar.token)"]
         
         Alamofire.request(urlString, headers: headers).responseJSON { response in
             if let data = response.result.value {
@@ -161,7 +161,7 @@ public struct DashboardService {
     public static func getCashFlowData(year: Int, month: Int, myResponse: @escaping ([CashFlow]) -> ()) {
         let urlString = DashboardConstant.BASE_URL + ResourcePath.CashFlow(year: year, month: month).description
         
-        let headers = ["Authorization": "Basic \(UserVar.token)"]
+        let headers = ["Authorization": "Bearer \(UserVar.token)"]
         
         Alamofire.request(urlString, headers: headers).responseJSON { response in
             if let data = response.result.value {
@@ -184,7 +184,7 @@ public struct DashboardService {
     public static func getPrognosaPiutangData(year: Int, month: Int, myResponse: @escaping (PrognosaPiutang) -> ()) {
         let urlString = DashboardConstant.BASE_URL + ResourcePath.PrognosaPiutang(year: year, month: month).description
         
-        let headers = ["Authorization": "Basic \(UserVar.token)"]
+        let headers = ["Authorization": "Bearer \(UserVar.token)"]
         
         Alamofire.request(urlString, headers: headers).responseJSON { response in
             

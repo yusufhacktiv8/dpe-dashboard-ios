@@ -110,8 +110,8 @@ class MainViewController: UIViewController, MonthYearPickerDelegate, MonthSlider
             destinationVC?.selectedMonth = self.selectedMonth
         }  else if (segue.identifier == OK_DETAILS_SEGUE) {
             let destinationVC  = segue.destination as? OkDetailsViewController
-//            destinationVC?.selectedYear = self.selectedYear
-//            destinationVC?.selectedMonth = self.selectedMonth
+            destinationVC?.selectedYear = self.selectedYear
+            destinationVC?.selectedMonth = self.selectedMonth
         }
     }
     
@@ -226,7 +226,8 @@ class MainViewController: UIViewController, MonthYearPickerDelegate, MonthSlider
                 cell.progOpLabel.text = decimalFormatter.string(from: NSNumber(value: progOp))
                 cell.progLspLabel.text = decimalFormatter.string(from: NSNumber(value: progLsp))
                 
-                cell.onOkButtonTapped = {
+                cell.onOkButtonTapped = { tag in
+                    print("Tag: ", tag)
                     self.performSegue(withIdentifier: self.OK_DETAILS_SEGUE, sender: self)
                 }
             } else {

@@ -22,7 +22,7 @@ class FirstTableViewCell: UITableViewCell {
     @IBOutlet weak var progOpLabel: UILabel!
     @IBOutlet weak var progLspLabel: UILabel!
     
-    var onOkButtonTapped : (() -> Void)? = nil
+    var onOkButtonTapped : ((_ tag: Int) -> Void)? = nil
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -37,7 +37,7 @@ class FirstTableViewCell: UITableViewCell {
 
     @IBAction func okButtonDidTouch(_ sender: Any) {
         if let onOkButtonTapped = self.onOkButtonTapped {
-            onOkButtonTapped()
+            onOkButtonTapped((sender as! UIButton).tag)
         }
     }
 }
