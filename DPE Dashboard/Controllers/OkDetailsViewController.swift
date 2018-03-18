@@ -12,9 +12,11 @@ class OkDetailsViewController: UIViewController, MonthYearPickerDelegate, UITabl
     
     @IBOutlet weak var monthYearLabel: UIButton!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var pageTitle: UILabel!
     
     var selectedMonth: Int?
     var selectedYear: Int?
+    var dataType: String?
     var projectType: Int?
     let SHOW_MONTH_YEAR_PICKER_SEGUE = "ShowMonthYearPickerSegue"
     let decimalFormatter = NumberFormatter()
@@ -24,6 +26,8 @@ class OkDetailsViewController: UIViewController, MonthYearPickerDelegate, UITabl
     override func viewDidLoad() {
         super.viewDidLoad()
         initFormatter()
+        initPageTitle()
+        initTableView()
         updateDashboardState()
     }
 
@@ -36,6 +40,15 @@ class OkDetailsViewController: UIViewController, MonthYearPickerDelegate, UITabl
     private func initTableView() {
         tableView.delegate = self
         tableView.dataSource = self
+    }
+    
+    private func initPageTitle() {
+        switch (projectType!) {
+        case 1:
+            self.pageTitle.text = "Total - \(dataType!)"
+        default:
+            self.pageTitle.text = "-"
+        }
     }
     
     @IBAction func monthYearLabelDidTouch(_ sender: Any) {
@@ -85,7 +98,7 @@ class OkDetailsViewController: UIViewController, MonthYearPickerDelegate, UITabl
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 200.0
+        return 120.0
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
@@ -96,6 +109,27 @@ class OkDetailsViewController: UIViewController, MonthYearPickerDelegate, UITabl
         let cell = tableView.dequeueReusableCell(withIdentifier: "OkDetailsTableViewCell") as! OkDetailsTableViewCell
         let okProject = self.okProjects[indexPath.row]
         cell.projectNameLabel.text = okProject.projectName
+        
+        switch(self.dataType!) {
+        case "OK":
+            cell.rkapLabel.text = self.decimalFormatter.string(from: NSNumber(value: okProject.rkapOk))
+            cell.riLabel.text = self.decimalFormatter.string(from: NSNumber(value: okProject.realisasiOk))
+            cell.progLabel.text = self.decimalFormatter.string(from: NSNumber(value: okProject.prognosaOk))
+        case "OP":
+            cell.rkapLabel.text = self.decimalFormatter.string(from: NSNumber(value: okProject.rkapOp))
+            cell.riLabel.text = self.decimalFormatter.string(from: NSNumber(value: okProject.realisasiOp))
+            cell.progLabel.text = self.decimalFormatter.string(from: NSNumber(value: okProject.prognosaOp))
+        case "LSP":
+            cell.rkapLabel.text = self.decimalFormatter.string(from: NSNumber(value: okProject.rkapLk))
+            cell.riLabel.text = self.decimalFormatter.string(from: NSNumber(value: okProject.realisasiLk))
+            cell.progLabel.text = self.decimalFormatter.string(from: NSNumber(value: okProject.prognosaLk))
+        default:
+            cell.rkapLabel.text = "-"
+            cell.riLabel.text = "-"
+            cell.progLabel.text = "-"
+            
+        }
+        
         
         return cell
     }

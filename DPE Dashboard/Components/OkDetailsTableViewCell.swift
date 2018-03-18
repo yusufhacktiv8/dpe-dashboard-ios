@@ -12,6 +12,10 @@ class OkDetailsTableViewCell: UITableViewCell {
 
     @IBOutlet weak var projectNameLabel: UILabel!
 
+    @IBOutlet weak var rkapLabel: UILabel!
+    @IBOutlet weak var riLabel: UILabel!
+    @IBOutlet weak var progLabel: UILabel!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

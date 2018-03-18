@@ -12,6 +12,9 @@ class MainViewController: UIViewController, MonthYearPickerDelegate, MonthSlider
     
     var selectedMonth: Int = Constant.defaultMonth
     var selectedYear: Int = Constant.defaultYear
+    
+    var selectedDataType: String?
+    var selectedProjectType: Int?
     let SHOW_MONTH_YEAR_PICKER_SEGUE = "ShowMonthYearPickerSegue"
     let BAD_SEGUE = "BadSegue"
     let UMUR_PIUTANG_SEGUE = "UmurPiutangSegue"
@@ -112,7 +115,8 @@ class MainViewController: UIViewController, MonthYearPickerDelegate, MonthSlider
             let destinationVC  = segue.destination as? OkDetailsViewController
             destinationVC?.selectedYear = self.selectedYear
             destinationVC?.selectedMonth = self.selectedMonth
-            destinationVC?.projectType = 1
+            destinationVC?.projectType = self.selectedProjectType
+            destinationVC?.dataType = self.selectedDataType
         }
     }
     
@@ -198,6 +202,19 @@ class MainViewController: UIViewController, MonthYearPickerDelegate, MonthSlider
     
     }
     
+    func getSelectedDataTypeByTag(tag: Int) -> String {
+        switch (tag) {
+        case 1:
+            return "OK"
+        case 2:
+            return "OP"
+        case 3:
+            return "LSP"
+        default:
+            return ""
+        }
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.row {
         case 0:
@@ -228,7 +245,8 @@ class MainViewController: UIViewController, MonthYearPickerDelegate, MonthSlider
                 cell.progLspLabel.text = decimalFormatter.string(from: NSNumber(value: progLsp))
                 
                 cell.onOkButtonTapped = { tag in
-                    print("Tag: ", tag)
+                    self.selectedDataType = self.getSelectedDataTypeByTag(tag: tag)
+                    self.selectedProjectType = 1
                     self.performSegue(withIdentifier: self.OK_DETAILS_SEGUE, sender: self)
                 }
             } else {

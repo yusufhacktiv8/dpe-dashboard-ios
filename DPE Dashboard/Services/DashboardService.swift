@@ -30,7 +30,7 @@ public struct DashboardService {
             case .UmurPiutangData(let year, let month): return "/piutangs/piutang/\(year)/\(month)"
             case .CashFlow(let year, let month): return "/cashflows/all/\(year)/\(month)"
             case .PrognosaPiutang(let year, let month): return "/projections/proyeksi/\(year)/\(month)"
-            case .OkProjectDetails(let year, let month, let projectType): return "/okdetails/all/\(year)/\(month)/\(projectType)"
+            case .OkProjectDetails(let year, let month, let projectType): return "/okdetails/\(year)/\(month)/\(projectType)"
             }
         }
     }

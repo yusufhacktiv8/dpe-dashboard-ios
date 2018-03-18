@@ -9,8 +9,14 @@
 import Foundation
 public struct OkProjectDetails {
     let projectName: String
-    let rkap: Double
-    let ri: Double
-    let prog: Double
-    
+    let projectType: Int
+    let prognosaLk: Double
+    let prognosaOk: Double
+    let prognosaOp: Double
+    let realisasiLk: Double
+    let realisasiOk: Double
+    let realisasiOp: Double
+    let rkapLk: Double
+    let rkapOk: Double
+    let rkapOp: Double
 }
