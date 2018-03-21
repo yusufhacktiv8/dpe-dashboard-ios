@@ -11,7 +11,6 @@ import UIKit
 class OkDetailsSisaTableViewCell: UITableViewCell {
 
     @IBOutlet weak var projectNameLabel: UILabel!
-    @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var valueLabel: UILabel!
     
     override func awakeFromNib() {

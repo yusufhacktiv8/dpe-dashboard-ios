@@ -282,6 +282,11 @@ class MainViewController: UIViewController, MonthYearPickerDelegate, MonthSlider
             return cell
         case 3:
             let cell = tableView.dequeueReusableCell(withIdentifier: "SecondTableViewCell") as! SecondTableViewCell
+            cell.onOkButtonTapped = { tag in
+                self.selectedDataType = self.getSelectedDataTypeByTag(tag: tag)
+                self.selectedProjectType = 3
+                self.performSegue(withIdentifier: self.OK_DETAILS_SEGUE, sender: self)
+            }
             var dashboardDetail3: DashboardDetail?
             if (dashboardDetails.count > 4) {
                 dashboardDetail3 = dashboardDetails[4]

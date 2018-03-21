@@ -46,6 +46,10 @@ class OkDetailsViewController: UIViewController, MonthYearPickerDelegate, UITabl
         switch (projectType!) {
         case 1:
             self.pageTitle.text = "Total - \(dataType!)"
+        case 2:
+            self.pageTitle.text = "Sisa - \(dataType!)"
+        case 3:
+            self.pageTitle.text = "OK Lama - \(dataType!)"
         default:
             self.pageTitle.text = "-"
         }
@@ -84,7 +88,18 @@ class OkDetailsViewController: UIViewController, MonthYearPickerDelegate, UITabl
     
     private func updateData() {
         DashboardService.getOkProjectDetailsData(year: self.selectedYear!, month: self.selectedMonth!, projectType: self.projectType!) { okProjects in
-            self.okProjects = okProjects
+            self.okProjects = []
+            for okProject in okProjects {
+                if (self.projectType! == 3) {
+                    if (okProject.projectType == 1 || okProject.projectType == 2) {
+                        self.okProjects.append(okProject)
+                    }
+                } else {
+                    self.okProjects.append(okProject)
+                }
+                
+            }
+//            self.okProjects = okProjects
             self.tableView.reloadData()
         }
     }
@@ -98,7 +113,16 @@ class OkDetailsViewController: UIViewController, MonthYearPickerDelegate, UITabl
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 120.0
+        switch self.projectType! {
+        case 1:
+            return 120.0
+        case 2:
+            return 90.0
+        case 3:
+            return 90.0
+        default:
+            return 120.0
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
@@ -131,11 +155,10 @@ class OkDetailsViewController: UIViewController, MonthYearPickerDelegate, UITabl
                 cell.progLabel.text = "-"
             }
             return cell
-        case 2:
+        case 2, 3:
             let cell = tableView.dequeueReusableCell(withIdentifier: "OkDetailsSisaTableViewCell") as! OkDetailsSisaTableViewCell
             let okProject = self.okProjects[indexPath.row]
             cell.projectNameLabel.text = okProject.projectName
-            cell.descriptionLabel.text = "Sisa"
             switch(self.dataType!) {
             case "OK":
                 cell.valueLabel.text = self.decimalFormatter.string(from: NSNumber(value: okProject.prognosaOk - okProject.realisasiOk))
