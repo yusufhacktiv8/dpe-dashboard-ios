@@ -106,32 +106,50 @@ class OkDetailsViewController: UIViewController, MonthYearPickerDelegate, UITabl
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "OkDetailsTableViewCell") as! OkDetailsTableViewCell
-        let okProject = self.okProjects[indexPath.row]
-        cell.projectNameLabel.text = okProject.projectName
-        
-        switch(self.dataType!) {
-        case "OK":
-            cell.rkapLabel.text = self.decimalFormatter.string(from: NSNumber(value: okProject.rkapOk))
-            cell.riLabel.text = self.decimalFormatter.string(from: NSNumber(value: okProject.realisasiOk))
-            cell.progLabel.text = self.decimalFormatter.string(from: NSNumber(value: okProject.prognosaOk))
-        case "OP":
-            cell.rkapLabel.text = self.decimalFormatter.string(from: NSNumber(value: okProject.rkapOp))
-            cell.riLabel.text = self.decimalFormatter.string(from: NSNumber(value: okProject.realisasiOp))
-            cell.progLabel.text = self.decimalFormatter.string(from: NSNumber(value: okProject.prognosaOp))
-        case "LSP":
-            cell.rkapLabel.text = self.decimalFormatter.string(from: NSNumber(value: okProject.rkapLk))
-            cell.riLabel.text = self.decimalFormatter.string(from: NSNumber(value: okProject.realisasiLk))
-            cell.progLabel.text = self.decimalFormatter.string(from: NSNumber(value: okProject.prognosaLk))
-        default:
-            cell.rkapLabel.text = "-"
-            cell.riLabel.text = "-"
-            cell.progLabel.text = "-"
+        switch self.projectType! {
+        case 1:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "OkDetailsTableViewCell") as! OkDetailsTableViewCell
+            let okProject = self.okProjects[indexPath.row]
+            cell.projectNameLabel.text = okProject.projectName
             
+            switch(self.dataType!) {
+            case "OK":
+                cell.rkapLabel.text = self.decimalFormatter.string(from: NSNumber(value: okProject.rkapOk))
+                cell.riLabel.text = self.decimalFormatter.string(from: NSNumber(value: okProject.realisasiOk))
+                cell.progLabel.text = self.decimalFormatter.string(from: NSNumber(value: okProject.prognosaOk))
+            case "OP":
+                cell.rkapLabel.text = self.decimalFormatter.string(from: NSNumber(value: okProject.rkapOp))
+                cell.riLabel.text = self.decimalFormatter.string(from: NSNumber(value: okProject.realisasiOp))
+                cell.progLabel.text = self.decimalFormatter.string(from: NSNumber(value: okProject.prognosaOp))
+            case "LSP":
+                cell.rkapLabel.text = self.decimalFormatter.string(from: NSNumber(value: okProject.rkapLk))
+                cell.riLabel.text = self.decimalFormatter.string(from: NSNumber(value: okProject.realisasiLk))
+                cell.progLabel.text = self.decimalFormatter.string(from: NSNumber(value: okProject.prognosaLk))
+            default:
+                cell.rkapLabel.text = "-"
+                cell.riLabel.text = "-"
+                cell.progLabel.text = "-"
+            }
+            return cell
+        case 2:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "OkDetailsSisaTableViewCell") as! OkDetailsSisaTableViewCell
+            let okProject = self.okProjects[indexPath.row]
+            cell.projectNameLabel.text = okProject.projectName
+            cell.descriptionLabel.text = "Sisa"
+            switch(self.dataType!) {
+            case "OK":
+                cell.valueLabel.text = self.decimalFormatter.string(from: NSNumber(value: okProject.prognosaOk - okProject.realisasiOk))
+            case "OP":
+                cell.valueLabel.text = self.decimalFormatter.string(from: NSNumber(value: okProject.prognosaOp - okProject.realisasiOp))
+            case "LSP":
+                cell.valueLabel.text = self.decimalFormatter.string(from: NSNumber(value: okProject.prognosaLk - okProject.realisasiLk))
+            default:
+                cell.valueLabel.text = "-"
+            }
+            return cell
+        default:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "OkDetailsTableViewCell") as! OkDetailsTableViewCell
+            return cell
         }
-        
-        
-        return cell
     }
-
 }

@@ -11,6 +11,7 @@
 		2D0832201FF29A5B00925B06 /* MonthYearPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D08321F1FF29A5B00925B06 /* MonthYearPickerViewController.swift */; };
 		2D0832221FF29A8B00925B06 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0832211FF29A8B00925B06 /* Constant.swift */; };
 		2D0832241FF29CF800925B06 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0832231FF29CF800925B06 /* MainViewController.swift */; };
+		2D14CCF620628E6000996A92 /* OkDetailsSisaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D14CCF520628E6000996A92 /* OkDetailsSisaTableViewCell.swift */; };
 		2D2D7CE01FF167EA00A78299 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D2D7CDF1FF167EA00A78299 /* LoginService.swift */; };
 		2D35F01E1FFBC47C00E4770E /* BadTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D35F01D1FFBC47C00E4770E /* BadTableViewCell.swift */; };
 		2D35F0201FFBD3D000E4770E /* UmurPiutangViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D35F01F1FFBD3D000E4770E /* UmurPiutangViewController.swift */; };
@@ -80,6 +81,7 @@
 		2D08321F1FF29A5B00925B06 /* MonthYearPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthYearPickerViewController.swift; sourceTree = "<group>"; };
 		2D0832211FF29A8B00925B06 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		2D0832231FF29CF800925B06 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		2D14CCF520628E6000996A92 /* OkDetailsSisaTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OkDetailsSisaTableViewCell.swift; sourceTree = "<group>"; };
 		2D2D7CDF1FF167EA00A78299 /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		2D35F01D1FFBC47C00E4770E /* BadTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadTableViewCell.swift; sourceTree = "<group>"; };
 		2D35F01F1FFBD3D000E4770E /* UmurPiutangViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmurPiutangViewController.swift; sourceTree = "<group>"; };
@@ -274,6 +276,7 @@
 				2DAF51FF1FFE6A3900D69E49 /* UmurPiutangTableViewCell.swift */,
 				2DE61E661FFFAEEB007D073E /* CashFlowTableViewCell.swift */,
 				2D4583F6205D273A005FACF2 /* OkDetailsTableViewCell.swift */,
+				2D14CCF520628E6000996A92 /* OkDetailsSisaTableViewCell.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -606,6 +609,7 @@
 				2DE61E6B1FFFD47A007D073E /* PrognosaPiutang.swift in Sources */,
 				2DD0938C1FF0A29500933610 /* UserVar.swift in Sources */,
 				2D35F01E1FFBC47C00E4770E /* BadTableViewCell.swift in Sources */,
+				2D14CCF620628E6000996A92 /* OkDetailsSisaTableViewCell.swift in Sources */,
 				2DEA84B31FFD13440044BCF2 /* UpData.swift in Sources */,
 				2DAF52001FFE6A3900D69E49 /* UmurPiutangTableViewCell.swift in Sources */,
 				2D4583F9205D2A53005FACF2 /* OkProjectDetails.swift in Sources */,

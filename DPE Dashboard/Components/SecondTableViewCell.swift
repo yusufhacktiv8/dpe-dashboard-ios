@@ -15,6 +15,8 @@ class SecondTableViewCell: UITableViewCell {
     @IBOutlet weak var opLabel: UILabel!
     @IBOutlet weak var lspLabel: UILabel!
     
+    var onOkButtonTapped : ((_ tag: Int) -> Void)? = nil
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -26,4 +28,9 @@ class SecondTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    @IBAction func okButtonDidTouch(_ sender: Any) {
+        if let onOkButtonTapped = self.onOkButtonTapped {
+            onOkButtonTapped((sender as! UIButton).tag)
+        }
+    }
 }
