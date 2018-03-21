@@ -296,6 +296,11 @@ class MainViewController: UIViewController, MonthYearPickerDelegate, MonthSlider
             return cell
         case 4:
             let cell = tableView.dequeueReusableCell(withIdentifier: "SecondTableViewCell") as! SecondTableViewCell
+            cell.onOkButtonTapped = { tag in
+                self.selectedDataType = self.getSelectedDataTypeByTag(tag: tag)
+                self.selectedProjectType = 4
+                self.performSegue(withIdentifier: self.OK_DETAILS_SEGUE, sender: self)
+            }
             cell.titleLabel.text = "OK Baru (Sudah Didapat)"
             var dashboardDetail4: DashboardDetail?
             if (dashboardDetails.count > 5) {
@@ -305,6 +310,11 @@ class MainViewController: UIViewController, MonthYearPickerDelegate, MonthSlider
             return cell
         case 5:
             let cell = tableView.dequeueReusableCell(withIdentifier: "SecondTableViewCell") as! SecondTableViewCell
+            cell.onOkButtonTapped = { tag in
+                self.selectedDataType = self.getSelectedDataTypeByTag(tag: tag)
+                self.selectedProjectType = 5
+                self.performSegue(withIdentifier: self.OK_DETAILS_SEGUE, sender: self)
+            }
             cell.titleLabel.text = "OK Baru (Dalam Pengusahaan)"
             var dashboardDetail5: DashboardDetail?
             if (dashboardDetails.count > 6) {

@@ -50,6 +50,10 @@ class OkDetailsViewController: UIViewController, MonthYearPickerDelegate, UITabl
             self.pageTitle.text = "Sisa - \(dataType!)"
         case 3:
             self.pageTitle.text = "OK Lama - \(dataType!)"
+        case 4:
+            self.pageTitle.text = "OK Baru (Sudah Didapat) - \(dataType!)"
+        case 5:
+            self.pageTitle.text = "OK Baru (Dalam Pengusahaan) - \(dataType!)"
         default:
             self.pageTitle.text = "-"
         }
@@ -94,6 +98,14 @@ class OkDetailsViewController: UIViewController, MonthYearPickerDelegate, UITabl
                     if (okProject.projectType == 1 || okProject.projectType == 2) {
                         self.okProjects.append(okProject)
                     }
+                } else if (self.projectType! == 4) {
+                    if (okProject.projectType == 3 || okProject.projectType == 4) {
+                        self.okProjects.append(okProject)
+                    }
+                } else if (self.projectType! == 5) {
+                    if (okProject.projectType == 5 || okProject.projectType == 6 || okProject.projectType == 7) {
+                        self.okProjects.append(okProject)
+                    }
                 } else {
                     self.okProjects.append(okProject)
                 }
@@ -116,9 +128,7 @@ class OkDetailsViewController: UIViewController, MonthYearPickerDelegate, UITabl
         switch self.projectType! {
         case 1:
             return 120.0
-        case 2:
-            return 90.0
-        case 3:
+        case 2, 3, 4, 5:
             return 90.0
         default:
             return 120.0
@@ -155,7 +165,7 @@ class OkDetailsViewController: UIViewController, MonthYearPickerDelegate, UITabl
                 cell.progLabel.text = "-"
             }
             return cell
-        case 2, 3:
+        case 2, 3, 4, 5:
             let cell = tableView.dequeueReusableCell(withIdentifier: "OkDetailsSisaTableViewCell") as! OkDetailsSisaTableViewCell
             let okProject = self.okProjects[indexPath.row]
             cell.projectNameLabel.text = okProject.projectName
