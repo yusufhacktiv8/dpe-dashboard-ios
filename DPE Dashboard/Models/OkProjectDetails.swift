@@ -8,6 +8,7 @@
 
 import Foundation
 public struct OkProjectDetails {
+    let projectCode: String
     let projectName: String
     let projectType: Int
     let prognosaLk: Double

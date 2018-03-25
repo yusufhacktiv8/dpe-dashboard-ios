@@ -324,7 +324,12 @@ class MainViewController: UIViewController, MonthYearPickerDelegate, MonthSlider
             return cell
         case 6:
             let cell = tableView.dequeueReusableCell(withIdentifier: "SecondTableViewCell") as! SecondTableViewCell
-            cell.titleLabel.text = "Lain - lain"
+            cell.onOkButtonTapped = { tag in
+                self.selectedDataType = self.getSelectedDataTypeByTag(tag: tag)
+                self.selectedProjectType = 6
+                self.performSegue(withIdentifier: self.OK_DETAILS_SEGUE, sender: self)
+            }
+            cell.titleLabel.text = "Klaim"
             var dashboardDetail6: DashboardDetail?
             if (dashboardDetails.count > 7) {
                 dashboardDetail6 = dashboardDetails[7]

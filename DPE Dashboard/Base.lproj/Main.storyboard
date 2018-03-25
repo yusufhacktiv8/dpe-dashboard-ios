@@ -398,10 +398,9 @@
                                                                 <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W9V-fU-QwT">
                                                                     <rect key="frame" x="20" y="109" width="30" height="32"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                                    <state key="normal" title="LSP"/>
-                                                                    <connections>
-                                                                        <action selector="okButtonDidTouch:" destination="XRJ-dn-0uj" eventType="touchUpInside" id="jKX-BW-oqg"/>
-                                                                    </connections>
+                                                                    <state key="normal" title="LSP">
+                                                                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    </state>
                                                                 </button>
                                                             </subviews>
                                                             <constraints>
@@ -516,10 +515,9 @@
                                                                 <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3U2-IH-hbU">
                                                                     <rect key="frame" x="15" y="109" width="30" height="32"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                                    <state key="normal" title="LSP"/>
-                                                                    <connections>
-                                                                        <action selector="okButtonDidTouch:" destination="Lly-cb-2S2" eventType="touchUpInside" id="7W7-NN-oXm"/>
-                                                                    </connections>
+                                                                    <state key="normal" title="LSP">
+                                                                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    </state>
                                                                 </button>
                                                             </subviews>
                                                             <constraints>
@@ -1938,6 +1936,6 @@
         <image name="widget_background_header" width="345" height="29"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Nev-KA-JZj"/>
+        <segue reference="6cJ-NS-bGP"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -143,6 +143,7 @@ struct JSONParser {
     }
     
     static func parseOkProjectDetails(data: AnyObject) -> OkProjectDetails {
+        let projectCode = data["projectCode"] as? String ?? ""
         let projectName = data["projectName"] as? String ?? ""
         let projectType = data["projectType"] as? Int ?? 0
         let prognosaLk = data["prognosaLk"] as? Double ?? 0.0
@@ -155,6 +156,7 @@ struct JSONParser {
         let rkapOk = data["rkapOk"] as? Double ?? 0.0
         let rkapOp = data["rkapOp"] as? Double ?? 0.0
         return OkProjectDetails(
+            projectCode: projectCode,
             projectName: projectName,
             projectType: projectType,
             prognosaLk: prognosaLk / divider,

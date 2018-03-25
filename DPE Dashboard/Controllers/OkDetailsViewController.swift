@@ -54,6 +54,8 @@ class OkDetailsViewController: UIViewController, MonthYearPickerDelegate, UITabl
             self.pageTitle.text = "OK Baru (Sudah Didapat) - \(dataType!)"
         case 5:
             self.pageTitle.text = "OK Baru (Dalam Pengusahaan) - \(dataType!)"
+        case 6:
+            self.pageTitle.text = "Klaim - \(dataType!)"
         default:
             self.pageTitle.text = "-"
         }
@@ -95,15 +97,19 @@ class OkDetailsViewController: UIViewController, MonthYearPickerDelegate, UITabl
             self.okProjects = []
             for okProject in okProjects {
                 if (self.projectType! == 3) {
-                    if (okProject.projectType == 1 || okProject.projectType == 2) {
+                    if (okProject.projectType == 1 || okProject.projectType == 2 || okProject.projectType == 3) {
                         self.okProjects.append(okProject)
                     }
                 } else if (self.projectType! == 4) {
-                    if (okProject.projectType == 3 || okProject.projectType == 4) {
+                    if (okProject.projectType == 4 || okProject.projectType == 5 || okProject.projectType == 6) {
                         self.okProjects.append(okProject)
                     }
                 } else if (self.projectType! == 5) {
-                    if (okProject.projectType == 5 || okProject.projectType == 6 || okProject.projectType == 7) {
+                    if (okProject.projectType == 7 || okProject.projectType == 8 || okProject.projectType == 9) {
+                        self.okProjects.append(okProject)
+                    }
+                } else if (self.projectType! == 6) {
+                    if (okProject.projectCode == "851E03") {
                         self.okProjects.append(okProject)
                     }
                 } else {
@@ -128,7 +134,7 @@ class OkDetailsViewController: UIViewController, MonthYearPickerDelegate, UITabl
         switch self.projectType! {
         case 1:
             return 120.0
-        case 2, 3, 4, 5:
+        case 2, 3, 4, 5, 6:
             return 90.0
         default:
             return 120.0
@@ -165,7 +171,7 @@ class OkDetailsViewController: UIViewController, MonthYearPickerDelegate, UITabl
                 cell.progLabel.text = "-"
             }
             return cell
-        case 2, 3, 4, 5:
+        case 2, 3, 4, 5, 6:
             let cell = tableView.dequeueReusableCell(withIdentifier: "OkDetailsSisaTableViewCell") as! OkDetailsSisaTableViewCell
             let okProject = self.okProjects[indexPath.row]
             cell.projectNameLabel.text = okProject.projectName
