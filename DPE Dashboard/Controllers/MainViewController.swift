@@ -195,7 +195,7 @@ class MainViewController: UIViewController, MonthYearPickerDelegate, MonthSlider
         if (indexPath.row == 2) {
             return 48.0
         }
-        return 150.0
+        return 190.0
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
@@ -209,6 +209,8 @@ class MainViewController: UIViewController, MonthYearPickerDelegate, MonthSlider
         case 2:
             return "OP"
         case 3:
+            return "LK"
+        case 4:
             return "LSP"
         default:
             return ""
@@ -223,25 +225,31 @@ class MainViewController: UIViewController, MonthYearPickerDelegate, MonthSlider
                 var dashboardDetail1 = dashboardDetails[0]
                 let rkapOk = dashboardDetail1.ok
                 let rkapOp = dashboardDetail1.op
+                let rkapLk = dashboardDetail1.lk
                 let rkapLsp = dashboardDetail1.lsp
                 cell.rkapOkLabel.text = decimalFormatter.string(from: NSNumber(value: rkapOk))
                 cell.rkapOpLabel.text = decimalFormatter.string(from: NSNumber(value: rkapOp))
+                cell.rkapLkLabel.text = decimalFormatter.string(from: NSNumber(value: rkapLk))
                 cell.rkapLspLabel.text = decimalFormatter.string(from: NSNumber(value: rkapLsp))
                 
                 dashboardDetail1 = dashboardDetails[1]
                 let riOk = dashboardDetail1.ok
                 let riOp = dashboardDetail1.op
+                let riLk = dashboardDetail1.lk
                 let riLsp = dashboardDetail1.lsp
                 cell.riOkLabel.text = decimalFormatter.string(from: NSNumber(value: riOk))
                 cell.riOpLabel.text = decimalFormatter.string(from: NSNumber(value: riOp))
+                cell.riLkLabel.text = decimalFormatter.string(from: NSNumber(value: riLk))
                 cell.riLspLabel.text = decimalFormatter.string(from: NSNumber(value: riLsp))
                 
                 dashboardDetail1 = dashboardDetails[2]
                 let progOk = dashboardDetail1.ok
                 let progOp = dashboardDetail1.op
+                let progLk = dashboardDetail1.lk
                 let progLsp = dashboardDetail1.lsp
                 cell.progOkLabel.text = decimalFormatter.string(from: NSNumber(value: progOk))
                 cell.progOpLabel.text = decimalFormatter.string(from: NSNumber(value: progOp))
+                cell.progLkLabel.text = decimalFormatter.string(from: NSNumber(value: progLk))
                 cell.progLspLabel.text = decimalFormatter.string(from: NSNumber(value: progLsp))
                 
                 cell.onOkButtonTapped = { tag in
@@ -252,14 +260,17 @@ class MainViewController: UIViewController, MonthYearPickerDelegate, MonthSlider
             } else {
                 cell.rkapOkLabel.text = "-"
                 cell.rkapOpLabel.text = "-"
+                cell.rkapLkLabel.text = "-"
                 cell.rkapLspLabel.text = "-"
                 
                 cell.riOkLabel.text = "-"
                 cell.riOpLabel.text = "-"
+                cell.riLkLabel.text = "-"
                 cell.riLspLabel.text = "-"
                 
                 cell.progOkLabel.text = "-"
                 cell.progOpLabel.text = "-"
+                cell.progLkLabel.text = "-"
                 cell.progLspLabel.text = "-"
             }
             return cell
