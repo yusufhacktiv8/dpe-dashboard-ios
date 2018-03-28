@@ -102,7 +102,7 @@ import Charts
     private func setupLabels() {
         setupValueLabel()
         setupTitleLabel()
-        setupButton()
+//        setupButton()
         setupLegend1Label()
         setupLegend1Circle()
         setupLegend2Label()
