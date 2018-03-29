@@ -357,13 +357,16 @@ class MainViewController: UIViewController, MonthYearPickerDelegate, MonthSlider
         if let detail = dashboardDetail {
             let ok = detail.ok
             let op = detail.op
+            let lk = detail.lk
             let lsp = detail.lsp
             cell.okLabel.text = decimalFormatter.string(from: NSNumber(value: ok))
             cell.opLabel.text = decimalFormatter.string(from: NSNumber(value: op))
+            cell.lkLabel.text = decimalFormatter.string(from: NSNumber(value: lk))
             cell.lspLabel.text = decimalFormatter.string(from: NSNumber(value: lsp))
         } else {
             cell.okLabel.text = "-"
             cell.opLabel.text = "-"
+            cell.lkLabel.text = "-"
             cell.lspLabel.text = "-"
         }
     }
@@ -372,13 +375,16 @@ class MainViewController: UIViewController, MonthYearPickerDelegate, MonthSlider
         if let detail = dashboardDetail {
             let ok = detail.ok
             let op = detail.op
-            let lsp = detail.lk
+            let lk = detail.lk
+            let lsp = detail.lsp
             cell.okLabel.text = decimalFormatter.string(from: NSNumber(value: ok))
             cell.opLabel.text = decimalFormatter.string(from: NSNumber(value: op))
+            cell.lkLabel.text = decimalFormatter.string(from: NSNumber(value: lk))
             cell.lspLabel.text = decimalFormatter.string(from: NSNumber(value: lsp))
         } else {
             cell.okLabel.text = "-"
             cell.opLabel.text = "-"
+            cell.lkLabel.text = "-"
             cell.lspLabel.text = "-"
         }
     }

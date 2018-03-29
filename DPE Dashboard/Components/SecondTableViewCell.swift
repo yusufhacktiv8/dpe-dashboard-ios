@@ -13,6 +13,7 @@ class SecondTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var okLabel: UILabel!
     @IBOutlet weak var opLabel: UILabel!
+    @IBOutlet weak var lkLabel: UILabel!
     @IBOutlet weak var lspLabel: UILabel!
     
     var onOkButtonTapped : ((_ tag: Int) -> Void)? = nil

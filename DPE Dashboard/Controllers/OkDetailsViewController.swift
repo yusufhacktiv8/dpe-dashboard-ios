@@ -161,6 +161,10 @@ class OkDetailsViewController: UIViewController, MonthYearPickerDelegate, UITabl
                 cell.rkapLabel.text = self.decimalFormatter.string(from: NSNumber(value: okProject.rkapOp))
                 cell.riLabel.text = self.decimalFormatter.string(from: NSNumber(value: okProject.realisasiOp))
                 cell.progLabel.text = self.decimalFormatter.string(from: NSNumber(value: okProject.prognosaOp))
+            case "LK":
+                cell.rkapLabel.text = self.decimalFormatter.string(from: NSNumber(value: okProject.rkapLk))
+                cell.riLabel.text = self.decimalFormatter.string(from: NSNumber(value: okProject.realisasiLk))
+                cell.progLabel.text = self.decimalFormatter.string(from: NSNumber(value: okProject.prognosaLk))
             case "LSP":
                 cell.rkapLabel.text = self.decimalFormatter.string(from: NSNumber(value: okProject.rkapLk))
                 cell.riLabel.text = self.decimalFormatter.string(from: NSNumber(value: okProject.realisasiLk))
@@ -180,6 +184,8 @@ class OkDetailsViewController: UIViewController, MonthYearPickerDelegate, UITabl
                 cell.valueLabel.text = self.decimalFormatter.string(from: NSNumber(value: okProject.prognosaOk - okProject.realisasiOk))
             case "OP":
                 cell.valueLabel.text = self.decimalFormatter.string(from: NSNumber(value: okProject.prognosaOp - okProject.realisasiOp))
+            case "LK":
+                cell.valueLabel.text = self.decimalFormatter.string(from: NSNumber(value: okProject.prognosaLk - okProject.realisasiLk))
             case "LSP":
                 cell.valueLabel.text = self.decimalFormatter.string(from: NSNumber(value: okProject.prognosaLk - okProject.realisasiLk))
             default:
