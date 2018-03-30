@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftSpinner
 
 class MainViewController: UIViewController, MonthYearPickerDelegate, MonthSliderDelegate, UITableViewDelegate, UITableViewDataSource {
     
@@ -189,11 +190,17 @@ class MainViewController: UIViewController, MonthYearPickerDelegate, MonthSlider
     
     private func updateDashboardDetails() {
         
+        SwiftSpinner.show("Loading data...").addTapHandler({
+            SwiftSpinner.hide()
+        }, subtitle: "")
+        
         self.dashboardDetails.removeAll()
         self.tableView.reloadData()
         
         DashboardService.getDashboardDetailsData(year: self.selectedYear, month: self.selectedMonth) { dashboardDetails in
-            self.dashboardDetails.removeAll()
+            
+            SwiftSpinner.hide()
+            
             self.dashboardDetails = dashboardDetails
             self.tableView.reloadData()
         }

@@ -8,6 +8,7 @@
 
 import UIKit
 import Charts
+import SwiftSpinner
 
 class ChartViewController: UIViewController, UIScrollViewDelegate {
     
@@ -148,12 +149,29 @@ class ChartViewController: UIViewController, UIScrollViewDelegate {
         self.fillChart3(chartData: emptyChartData, month: month)
         self.fillChart4(chartData: emptyChartData, month: month)
         
-        DashboardService.getChartsData(year: year) { chartData in
-            self.chartData = chartData
-            self.fillChart1(chartData: chartData, month: month)
-            self.fillChart2(chartData: chartData, month: month)
-            self.fillChart3(chartData: chartData, month: month)
-            self.fillChart4(chartData: chartData, month: month)
+        DashboardService.getChartsData(year: year) { status, optChartData in
+            if (status == 403) {
+                let alertView = UIAlertController(title: "Fetch data error",
+                                                  message: "Session expired" as String, preferredStyle:.alert)
+                SwiftSpinner.hide()
+                let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                alertView.addAction(okAction)
+                self.present(alertView, animated: true, completion: nil)
+            } else if (status == -1) {
+                let alertView = UIAlertController(title: "Fetch data error",
+                                                  message: "Connection error" as String, preferredStyle:.alert)
+                SwiftSpinner.hide()
+                let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                alertView.addAction(okAction)
+                self.present(alertView, animated: true, completion: nil)
+            }
+            if let chartData = optChartData {
+                self.chartData = chartData
+                self.fillChart1(chartData: chartData, month: month)
+                self.fillChart2(chartData: chartData, month: month)
+                self.fillChart3(chartData: chartData, month: month)
+                self.fillChart4(chartData: chartData, month: month)
+            }
         }
         
     }
@@ -202,6 +220,7 @@ class ChartViewController: UIViewController, UIScrollViewDelegate {
             self.omzetChartView!.setValueCaption(caption: decimalFormatter.string(from: NSNumber(value: actualValues[month]))!)
         } else {
             self.omzetChartView!.clearChartData()
+            self.omzetChartView!.setValueCaption(caption: "-")
         }
     }
     
@@ -250,6 +269,7 @@ class ChartViewController: UIViewController, UIScrollViewDelegate {
             self.penjualanChartView!.setValueCaption(caption: decimalFormatter.string(from: NSNumber(value: actualValues[month]))!)
         } else {
             self.penjualanChartView!.clearChartData()
+            self.penjualanChartView!.setValueCaption(caption: "-")
         }
     }
     
@@ -297,6 +317,7 @@ class ChartViewController: UIViewController, UIScrollViewDelegate {
             self.labaKotorChartView!.setValueCaption(caption: decimalFormatter.string(from: NSNumber(value: actualValues[month]))!)
         } else {
             self.labaKotorChartView!.clearChartData()
+            self.labaKotorChartView!.setValueCaption(caption: "-")
         }
     }
     
@@ -338,9 +359,8 @@ class ChartViewController: UIViewController, UIScrollViewDelegate {
             self.lspChartView!.setValueCaption(caption: decimalFormatter.string(from: NSNumber(value: actualValues[month]))!)
         } else {
             self.lspChartView!.clearChartData()
+            self.lspChartView!.setValueCaption(caption: "-")
         }
-        
-        
     }
     
     private func setDataChart(months: [String], plans: [Double], actuals: [Double], dashboardChart: DashboardChart) {

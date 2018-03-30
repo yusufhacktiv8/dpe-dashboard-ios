@@ -35,53 +35,61 @@ public struct DashboardService {
         }
     }
     
-    public static func getChartsData(year: Int, myResponse: @escaping (ChartData) -> ()) {
+    public static func getChartsData(year: Int, myResponse: @escaping (Int, ChartData?) -> ()) {
         let urlString = DashboardConstant.BASE_URL + ResourcePath.ChartData(year: year).description
         
         let headers = ["Authorization": "Bearer \(UserVar.token)"]
         
         Alamofire.request(urlString, headers: headers).responseJSON { response in
             
-            if let data = response.result.value {
-                
-                var okData: [ChartDataItem] = [ChartDataItem]()
-                var opData: [ChartDataItem] = [ChartDataItem]()
-                var lkData: [ChartDataItem] = [ChartDataItem]()
-                var lspData: [ChartDataItem] = [ChartDataItem]()
-                
-                guard let json = data as? [String : AnyObject] else {
-                    print("Failed to get expected response from webserver.")
-                    return
+            if let statusCode = response.response?.statusCode {
+                if (statusCode == 403) {
+                    myResponse(statusCode, nil)
                 }
                 
-                let okDataJSONArray = (json["okData"] as! NSArray) as Array
-                let opDataJSONArray = (json["opData"] as! NSArray) as Array
-                let lkDataJSONArray = (json["lkData"] as! NSArray) as Array
-                let lspDataJSONArray = (json["lspData"] as! NSArray) as Array
-                
-                for itemArray in okDataJSONArray {
-                    let chartDataItem = JSONParser.parseChartDataItem(data: itemArray)
-                    okData.append(chartDataItem)
+                if let data = response.result.value {
+                    
+                    var okData: [ChartDataItem] = [ChartDataItem]()
+                    var opData: [ChartDataItem] = [ChartDataItem]()
+                    var lkData: [ChartDataItem] = [ChartDataItem]()
+                    var lspData: [ChartDataItem] = [ChartDataItem]()
+                    
+                    guard let json = data as? [String : AnyObject] else {
+                        print("Failed to get expected response from webserver.")
+                        return
+                    }
+                    
+                    let okDataJSONArray = (json["okData"] as! NSArray) as Array
+                    let opDataJSONArray = (json["opData"] as! NSArray) as Array
+                    let lkDataJSONArray = (json["lkData"] as! NSArray) as Array
+                    let lspDataJSONArray = (json["lspData"] as! NSArray) as Array
+                    
+                    for itemArray in okDataJSONArray {
+                        let chartDataItem = JSONParser.parseChartDataItem(data: itemArray)
+                        okData.append(chartDataItem)
+                    }
+                    
+                    for itemArray in opDataJSONArray {
+                        let chartDataItem = JSONParser.parseChartDataItem(data: itemArray)
+                        opData.append(chartDataItem)
+                    }
+                    
+                    for itemArray in lkDataJSONArray {
+                        let chartDataItem = JSONParser.parseChartDataItem(data: itemArray)
+                        lkData.append(chartDataItem)
+                    }
+                    
+                    for itemArray in lspDataJSONArray {
+                        let chartDataItem = JSONParser.parseChartDataItem(data: itemArray)
+                        lspData.append(chartDataItem)
+                    }
+                    
+                    myResponse(200, ChartData(okData: okData, opData: opData, lkData: lkData, lspData: lspData))
                 }
                 
-                for itemArray in opDataJSONArray {
-                    let chartDataItem = JSONParser.parseChartDataItem(data: itemArray)
-                    opData.append(chartDataItem)
-                }
-                
-                for itemArray in lkDataJSONArray {
-                    let chartDataItem = JSONParser.parseChartDataItem(data: itemArray)
-                    lkData.append(chartDataItem)
-                }
-                
-                for itemArray in lspDataJSONArray {
-                    let chartDataItem = JSONParser.parseChartDataItem(data: itemArray)
-                    lspData.append(chartDataItem)
-                }
-                
-                myResponse(ChartData(okData: okData, opData: opData, lkData: lkData, lspData: lspData))
+            } else {
+                myResponse(-1, nil)
             }
-            
         }
     }
     
