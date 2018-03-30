@@ -33,7 +33,13 @@ public struct LoginService {
                         UserVar.token = token
                     }
                 }
-                myResponse(statusCode!)
+                
+                if let tempStatusCode = statusCode {
+                    myResponse(tempStatusCode)
+                } else {
+                    myResponse(-1)
+                }
+                
 //                let headers = ["Authorization": "Basic \(token)"]
                 
         }

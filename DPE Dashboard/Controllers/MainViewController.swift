@@ -188,6 +188,10 @@ class MainViewController: UIViewController, MonthYearPickerDelegate, MonthSlider
     }
     
     private func updateDashboardDetails() {
+        
+        self.dashboardDetails.removeAll()
+        self.tableView.reloadData()
+        
         DashboardService.getDashboardDetailsData(year: self.selectedYear, month: self.selectedMonth) { dashboardDetails in
             self.dashboardDetails.removeAll()
             self.dashboardDetails = dashboardDetails

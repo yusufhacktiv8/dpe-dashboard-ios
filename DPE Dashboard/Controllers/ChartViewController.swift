@@ -140,6 +140,14 @@ class ChartViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func loadData(year: Int, month: Int) -> Void{
+        
+        let emptyChartData = ChartData(okData: [], opData: [], lkData: [], lspData: [])
+        self.chartData = emptyChartData
+        self.fillChart1(chartData: emptyChartData, month: month)
+        self.fillChart2(chartData: emptyChartData, month: month)
+        self.fillChart3(chartData: emptyChartData, month: month)
+        self.fillChart4(chartData: emptyChartData, month: month)
+        
         DashboardService.getChartsData(year: year) { chartData in
             self.chartData = chartData
             self.fillChart1(chartData: chartData, month: month)
