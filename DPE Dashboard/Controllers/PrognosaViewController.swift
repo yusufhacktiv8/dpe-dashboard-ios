@@ -17,7 +17,7 @@ class PrognosaViewController: UIViewController, MonthYearPickerDelegate {
     @IBOutlet weak var pUsahaLabel: UILabel!
     @IBOutlet weak var pRetensiLabel: UILabel!
     @IBOutlet weak var totalLabel: UILabel!
-    
+    @IBOutlet weak var mainBackground: UIImageView!
     var selectedMonth: Int?
     var selectedYear: Int?
     let SHOW_MONTH_YEAR_PICKER_SEGUE = "ShowMonthYearPickerSegue"
@@ -27,6 +27,23 @@ class PrognosaViewController: UIViewController, MonthYearPickerDelegate {
         super.viewDidLoad()
         initFormatter()
         updateDashboardState()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        initLoginBackground()
+    }
+    
+    private func initLoginBackground() {
+        let url = URL(string: DashboardConstant.BASE_URL + "/images/view/BACKGROUND")
+        
+        DispatchQueue.global().async {
+            let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
+            DispatchQueue.main.async {
+                if let tempData = data {
+                    self.mainBackground.image = UIImage(data: tempData)
+                }
+            }
+        }
     }
 
     private func initFormatter() {

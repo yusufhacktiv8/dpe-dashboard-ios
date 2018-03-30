@@ -13,7 +13,7 @@ class OkDetailsViewController: UIViewController, MonthYearPickerDelegate, UITabl
     @IBOutlet weak var monthYearLabel: UIButton!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var pageTitle: UILabel!
-    
+    @IBOutlet weak var mainBackground: UIImageView!
     var selectedMonth: Int?
     var selectedYear: Int?
     var dataType: String?
@@ -29,6 +29,23 @@ class OkDetailsViewController: UIViewController, MonthYearPickerDelegate, UITabl
         initPageTitle()
         initTableView()
         updateDashboardState()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        initLoginBackground()
+    }
+    
+    private func initLoginBackground() {
+        let url = URL(string: DashboardConstant.BASE_URL + "/images/view/BACKGROUND")
+        
+        DispatchQueue.global().async {
+            let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
+            DispatchQueue.main.async {
+                if let tempData = data {
+                    self.mainBackground.image = UIImage(data: tempData)
+                }
+            }
+        }
     }
 
     private func initFormatter() {

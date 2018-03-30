@@ -706,6 +706,7 @@
                     <size key="freeformSize" width="375" height="1500"/>
                     <connections>
                         <outlet property="chartContainer" destination="952-r1-7ha" id="WIY-Dp-vdl"/>
+                        <outlet property="mainBackground" destination="7sF-79-Tgv" id="4xF-xr-TbQ"/>
                         <outlet property="monthScrollView" destination="ZW4-Dr-CGa" id="g3H-84-m2q"/>
                         <outlet property="monthSlider" destination="678-Aa-pxl" id="FOW-CZ-0wP"/>
                         <outlet property="monthYearLabel" destination="Lhc-xU-Vix" id="4dm-Kb-2YX"/>
@@ -1006,6 +1007,7 @@
                     <connections>
                         <outlet property="badChart" destination="5qQ-GM-G1s" id="cYz-8N-2eq"/>
                         <outlet property="badTableView" destination="afk-fk-3UM" id="WP1-Y1-dap"/>
+                        <outlet property="mainBackground" destination="DBR-gj-WGG" id="5tt-3x-C2Y"/>
                         <outlet property="monthScrollView" destination="Xlt-MF-HMo" id="xqw-1d-3Sp"/>
                         <outlet property="monthSlider" destination="sN6-bW-h4c" id="iBK-bZ-oAr"/>
                         <outlet property="monthYearLabel" destination="Kw3-T4-B9U" id="Opv-uy-aUQ"/>
@@ -1331,6 +1333,7 @@
                     <navigationItem key="navigationItem" title="Umur Piutang" id="nYi-Ty-sxP"/>
                     <size key="freeformSize" width="375" height="1312"/>
                     <connections>
+                        <outlet property="mainBackground" destination="EMh-Kp-epC" id="kl3-Nk-Xs6"/>
                         <outlet property="monthScrollView" destination="bhg-w4-fNE" id="0Td-Af-nok"/>
                         <outlet property="monthSlider" destination="8yT-X8-DLQ" id="MDH-in-7X2"/>
                         <outlet property="monthYearLabel" destination="NOf-fE-sKN" id="1hL-nZ-5Ak"/>
@@ -1541,6 +1544,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Cash Flow" id="JwR-Aj-D8P"/>
                     <connections>
+                        <outlet property="mainBackground" destination="36m-zL-3YG" id="qng-Nz-AuH"/>
                         <outlet property="monthYearLabel" destination="mA7-qE-4WD" id="cGO-px-jtI"/>
                         <outlet property="tableView" destination="zSa-3S-EJ8" id="aub-Z7-TzM"/>
                         <segue destination="bDZ-Jv-EtI" kind="show" identifier="ShowMonthYearPickerSegue" id="KBH-yV-DrR"/>
@@ -1772,6 +1776,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Prognosa Piutang" id="qQi-b1-MnG"/>
                     <connections>
+                        <outlet property="mainBackground" destination="Ug4-Sc-sBx" id="YfC-lz-syr"/>
                         <outlet property="monthYearLabel" destination="4Xu-iK-kOx" id="iQO-FN-J1D"/>
                         <outlet property="pRetensiLabel" destination="fIm-6e-4ug" id="RsJ-EI-auc"/>
                         <outlet property="pUsahaLabel" destination="UgD-9f-Yba" id="oIa-Em-HEQ"/>
@@ -1987,6 +1992,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Details" id="GnC-0K-yub"/>
                     <connections>
+                        <outlet property="mainBackground" destination="bHi-cp-Y3K" id="nFc-GJ-WGC"/>
                         <outlet property="monthYearLabel" destination="t8i-S9-stx" id="0nZ-PO-QkA"/>
                         <outlet property="pageTitle" destination="1PR-cZ-eJj" id="Dr9-V7-UNu"/>
                         <outlet property="tableView" destination="vR5-yT-yii" id="tlS-Cv-P9y"/>
@@ -2006,6 +2012,6 @@
         <image name="widget_background_header" width="345" height="29"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="6cJ-NS-bGP"/>
+        <segue reference="Nev-KA-JZj"/>
     </inferredMetricsTieBreakers>
 </document>

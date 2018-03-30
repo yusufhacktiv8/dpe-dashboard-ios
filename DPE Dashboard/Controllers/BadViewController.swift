@@ -22,7 +22,7 @@ class BadViewController: UIViewController, MonthYearPickerDelegate, MonthSliderD
     @IBOutlet weak var scrollPageContainer: UIView!
     @IBOutlet weak var monthScrollView: UIScrollView!
     @IBOutlet weak var monthSlider: MonthSlider!
-    
+    @IBOutlet weak var mainBackground: UIImageView!
     @IBOutlet weak var badTableView: UITableView!
     var bads = [BadData]()
     
@@ -33,6 +33,23 @@ class BadViewController: UIViewController, MonthYearPickerDelegate, MonthSliderD
         initChart()
         initTableView()
         updateDashboardState()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        initLoginBackground()
+    }
+    
+    private func initLoginBackground() {
+        let url = URL(string: DashboardConstant.BASE_URL + "/images/view/BACKGROUND")
+        
+        DispatchQueue.global().async {
+            let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
+            DispatchQueue.main.async {
+                if let tempData = data {
+                    self.mainBackground.image = UIImage(data: tempData)
+                }
+            }
+        }
     }
 
     private func showFilter() {
