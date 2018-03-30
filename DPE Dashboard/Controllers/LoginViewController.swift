@@ -21,6 +21,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         initTextFieldsStyling()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        initLoginBackground()
+    }
+    
     private func initKeyboard() {
         NotificationCenter.default.addObserver(self, selector: #selector(LoginViewController.keyboardWillShow(sender:)), name:NSNotification.Name.UIKeyboardWillShow, object: nil);
         NotificationCenter.default.addObserver(self, selector: #selector(LoginViewController.keyboardWillHide(sender:)), name:NSNotification.Name.UIKeyboardWillHide, object: nil);
@@ -62,6 +66,18 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         passwordTextField.isSecureTextEntry = true
     }
     
+    private func initLoginBackground() {
+        let url = URL(string: DashboardConstant.BASE_URL + "/images/view/LOGIN")
+        
+        DispatchQueue.global().async {
+            let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
+            DispatchQueue.main.async {
+                if let tempData = data {
+                    self.loginBackground.image = UIImage(data: tempData)
+                }
+            }
+        }
+    }
     
     @IBAction func onSignInButtonDidTouch(_ sender: Any) {
         if (self.emailTextField.text! == "" || self.passwordTextField.text! == "") {
