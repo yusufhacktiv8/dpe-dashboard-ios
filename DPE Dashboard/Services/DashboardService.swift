@@ -122,25 +122,36 @@ public struct DashboardService {
         }
     }
     
-    public static func getBadData(year: Int, month: Int, myResponse: @escaping ([BadData]) -> ()) {
+    public static func getBadData(year: Int, month: Int, myResponse: @escaping (Int, [BadData]?) -> ()) {
         let urlString = DashboardConstant.BASE_URL + ResourcePath.BadData(year: year, month: month).description
         
         let headers = ["Authorization": "Bearer \(UserVar.token)"]
         
         Alamofire.request(urlString, headers: headers).responseJSON { response in
-            if let data = response.result.value {
-                guard let json = (data as? NSArray) as Array<AnyObject>? else {
-                    print("Failed to get expected response from webserver.")
-                    return
+            
+            if let statusCode = response.response?.statusCode {
+                if (statusCode == 403) {
+                    myResponse(statusCode, nil)
                 }
                 
-                var badDatas = [BadData]()
-                for badData in json {
-                    badDatas.append(JSONParser.parseBad(data: badData))
+                if let data = response.result.value {
+                    guard let json = (data as? NSArray) as Array<AnyObject>? else {
+                        print("Failed to get expected response from webserver.")
+                        return
+                    }
+                    
+                    var badDatas = [BadData]()
+                    for badData in json {
+                        badDatas.append(JSONParser.parseBad(data: badData))
+                    }
+                    
+                    myResponse(200, badDatas)
                 }
-                
-                myResponse(badDatas)
+                myResponse(-2, nil)
+            } else {
+                myResponse(-1, nil)
             }
+            
 
         }
     }

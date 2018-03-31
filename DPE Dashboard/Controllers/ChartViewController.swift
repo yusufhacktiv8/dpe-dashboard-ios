@@ -164,7 +164,7 @@ class ChartViewController: UIViewController, UIScrollViewDelegate {
                 let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
                 alertView.addAction(okAction)
                 self.present(alertView, animated: true, completion: nil)
-            }
+            } 
             if let chartData = optChartData {
                 self.chartData = chartData
                 self.fillChart1(chartData: chartData, month: month)

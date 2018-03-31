@@ -8,6 +8,7 @@
 
 import UIKit
 import Charts
+import SwiftSpinner
 
 class BadViewController: UIViewController, MonthYearPickerDelegate, MonthSliderDelegate, UITableViewDelegate, UITableViewDataSource {
     
@@ -119,26 +120,53 @@ class BadViewController: UIViewController, MonthYearPickerDelegate, MonthSliderD
     }
     
     private func updateChartData() {
-        DashboardService.getBadData(year: self.selectedYear!, month: self.selectedMonth!) { badDatas in
+        SwiftSpinner.show("Loading data...").addTapHandler({
+            SwiftSpinner.hide()
+        }, subtitle: "")
+        
+        self.bads = []
+        self.badTableView.reloadData()
+        
+        badChart.clear()
+        
+        DashboardService.getBadData(year: self.selectedYear!, month: self.selectedMonth!) { status, badDatas in
             
-            self.bads = badDatas
-            self.badTableView.reloadData()
-            var projectNames = [String]()
-            var tagihanBrutoValues = [Double]()
-            var piutangUsahaValues = [Double]()
-            var piutangRetensiValues = [Double]()
-            var pdpValues = [Double]()
-            var badValues = [Double]()
-            for badData in badDatas {
-                projectNames.append(badData.projectCode)
-                tagihanBrutoValues.append(badData.tagihanBruto)
-                piutangUsahaValues.append(badData.piutangUsaha)
-                piutangRetensiValues.append(badData.piutangRetensi)
-                pdpValues.append(badData.pdp)
-                badValues.append(badData.bad)
+            SwiftSpinner.hide()
+            
+            if (status == 403) {
+                let alertView = UIAlertController(title: "Fetch data error",
+                                                  message: "Session expired" as String, preferredStyle:.alert)
+                SwiftSpinner.hide()
+                let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                alertView.addAction(okAction)
+                self.present(alertView, animated: true, completion: nil)
+            } else if (status == -1) {
+                let alertView = UIAlertController(title: "Fetch data error",
+                                                  message: "Connection error" as String, preferredStyle:.alert)
+                SwiftSpinner.hide()
+                let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                alertView.addAction(okAction)
+                self.present(alertView, animated: true, completion: nil)
+            } else if (status == 200) {
+                self.bads = badDatas!
+                self.badTableView.reloadData()
+                var projectNames = [String]()
+                var tagihanBrutoValues = [Double]()
+                var piutangUsahaValues = [Double]()
+                var piutangRetensiValues = [Double]()
+                var pdpValues = [Double]()
+                var badValues = [Double]()
+                for badData in badDatas! {
+                    projectNames.append(badData.projectCode)
+                    tagihanBrutoValues.append(badData.tagihanBruto)
+                    piutangUsahaValues.append(badData.piutangUsaha)
+                    piutangRetensiValues.append(badData.piutangRetensi)
+                    pdpValues.append(badData.pdp)
+                    badValues.append(badData.bad)
+                }
+                
+                self.setDataChart(months: Constant.months, projectNames: projectNames, tagihanBrutoValues: tagihanBrutoValues, piutangUsahaValues: piutangUsahaValues, piutangRetensiValues: piutangRetensiValues, pdpValues: pdpValues, badValues: badValues)
             }
-            
-            self.setDataChart(months: Constant.months, projectNames: projectNames, tagihanBrutoValues: tagihanBrutoValues, piutangUsahaValues: piutangUsahaValues, piutangRetensiValues: piutangRetensiValues, pdpValues: pdpValues, badValues: badValues)
         }
     }
     
