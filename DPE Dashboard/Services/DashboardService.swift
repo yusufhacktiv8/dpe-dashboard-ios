@@ -85,6 +85,8 @@ public struct DashboardService {
                     }
                     
                     myResponse(200, ChartData(okData: okData, opData: opData, lkData: lkData, lspData: lspData))
+                } else {
+                    myResponse(-2, nil)
                 }
                 
             } else {
@@ -93,32 +95,41 @@ public struct DashboardService {
         }
     }
     
-    public static func getDashboardDetailsData(year: Int, month: Int, myResponse: @escaping ([DashboardDetail]) -> ()) {
+    public static func getDashboardDetailsData(year: Int, month: Int, myResponse: @escaping (Int, [DashboardDetail]?) -> ()) {
         let urlString = DashboardConstant.BASE_URL + ResourcePath.DetailsData(year: year, month: month).description
         
         let headers = ["Authorization": "Bearer \(UserVar.token)"]
         
         Alamofire.request(urlString, headers: headers).responseJSON { response in
             
-            if let data = response.result.value {
-                guard let json = data as? [String : AnyObject] else {
-                    print("Failed to get expected response from webserver.")
-                    return
+            if let statusCode = response.response?.statusCode {
+                if (statusCode == 403 || statusCode == 404) {
+                    myResponse(statusCode, nil)
                 }
-            
-                var dashboardDetails = [DashboardDetail]()
-                dashboardDetails.append(JSONParser.parseDashboardDetail(data: json["data1"]!))
-                dashboardDetails.append(JSONParser.parseDashboardDetail(data: json["data2"]!))
-                dashboardDetails.append(JSONParser.parseDashboardDetail(data: json["data3"]!))
-                dashboardDetails.append(JSONParser.parseDashboardDetail(data: json["data4"]!))
-                dashboardDetails.append(JSONParser.parseDashboardDetail(data: json["data5"]!))
-                dashboardDetails.append(JSONParser.parseDashboardDetail(data: json["data6"]!))
-                dashboardDetails.append(JSONParser.parseDashboardDetail(data: json["data7"]!))
-                dashboardDetails.append(JSONParser.parseDashboardDetail(data: json["data8"]!))
                 
-                myResponse(dashboardDetails)
+                if let data = response.result.value {
+                    guard let json = data as? [String : AnyObject] else {
+                        print("Failed to get expected response from webserver.")
+                        return
+                    }
+                    
+                    var dashboardDetails = [DashboardDetail]()
+                    dashboardDetails.append(JSONParser.parseDashboardDetail(data: json["data1"]!))
+                    dashboardDetails.append(JSONParser.parseDashboardDetail(data: json["data2"]!))
+                    dashboardDetails.append(JSONParser.parseDashboardDetail(data: json["data3"]!))
+                    dashboardDetails.append(JSONParser.parseDashboardDetail(data: json["data4"]!))
+                    dashboardDetails.append(JSONParser.parseDashboardDetail(data: json["data5"]!))
+                    dashboardDetails.append(JSONParser.parseDashboardDetail(data: json["data6"]!))
+                    dashboardDetails.append(JSONParser.parseDashboardDetail(data: json["data7"]!))
+                    dashboardDetails.append(JSONParser.parseDashboardDetail(data: json["data8"]!))
+                    
+                    myResponse(200, dashboardDetails)
+                } else {
+                    myResponse(-2, nil)
+                }
+            } else {
+                myResponse(-1, nil)
             }
-            
         }
     }
     

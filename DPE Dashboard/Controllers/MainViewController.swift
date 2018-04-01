@@ -143,14 +143,14 @@ class MainViewController: UIViewController, MonthYearPickerDelegate, MonthSlider
     }
     
     private func initMonthYear() {
-        let date = Date()
+        let date = Calendar.current.date(byAdding: .month, value: -1, to: Date())
         let calendar = Calendar.current
         
-        let year = calendar.component(.year, from: date)
-        let month = calendar.component(.month, from: date)
+        let year = calendar.component(.year, from: date!)
+        let month = calendar.component(.month, from: date!)
         
-        self.selectedMonth = 11 // month
-        self.selectedYear = 2017 // year
+        self.selectedMonth = month
+        self.selectedYear = year
     }
     
     private func initMonthSlider(initMonth: Int) {
@@ -197,12 +197,26 @@ class MainViewController: UIViewController, MonthYearPickerDelegate, MonthSlider
         self.dashboardDetails.removeAll()
         self.tableView.reloadData()
         
-        DashboardService.getDashboardDetailsData(year: self.selectedYear, month: self.selectedMonth) { dashboardDetails in
+        DashboardService.getDashboardDetailsData(year: self.selectedYear, month: self.selectedMonth) { status, dashboardDetails in
             
             SwiftSpinner.hide()
             
-            self.dashboardDetails = dashboardDetails
-            self.tableView.reloadData()
+            if (status == 403) {
+                let alertView = UIAlertController(title: "Fetch data error",
+                                                  message: "Session expired" as String, preferredStyle:.alert)
+                let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                alertView.addAction(okAction)
+                self.present(alertView, animated: true, completion: nil)
+            } else if (status == -1) {
+                let alertView = UIAlertController(title: "Fetch data error",
+                                                  message: "Connection error" as String, preferredStyle:.alert)
+                let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                alertView.addAction(okAction)
+                self.present(alertView, animated: true, completion: nil)
+            } else if (status == 200) {
+                self.dashboardDetails = dashboardDetails!
+                self.tableView.reloadData()
+            }
         }
     }
     
