@@ -8,6 +8,7 @@
 
 import UIKit
 import Charts
+import SwiftSpinner
 
 class UmurPiutangViewController: UIViewController, MonthYearPickerDelegate, MonthSliderDelegate, UITableViewDelegate, UITableViewDataSource {
     
@@ -26,6 +27,8 @@ class UmurPiutangViewController: UIViewController, MonthYearPickerDelegate, Mont
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var mainBackground: UIImageView!
+    
+    var totalRow = 0
     
     var totalPdp1 = 0.0
     var totalPdp2 = 0.0
@@ -124,120 +127,144 @@ class UmurPiutangViewController: UIViewController, MonthYearPickerDelegate, Mont
     }
     
     private func updateChartData() {
-        DashboardService.getUmurPiutangData(year: self.selectedYear!, month: self.selectedMonth!) { upDatas in
+        
+        SwiftSpinner.show("Loading data...").addTapHandler({
+            SwiftSpinner.hide()
+        }, subtitle: "")
+        
+        totalRow = 0
+        self.tableView.reloadData()
+        upChart.clear()
+        
+        DashboardService.getUmurPiutangData(year: self.selectedYear!, month: self.selectedMonth!) { status, upDatas in
             
-//            self.bads = upDatas
-//            self.badTableView.reloadData()
-            var firstDataEntries = [Double]()
-            var secondDataEntries = [Double]()
-            var thirdDataEntries = [Double]()
-            var fourthDataEntries = [Double]()
+            SwiftSpinner.hide()
             
-            var totalPdp1 = 0.0
-            var totalPdp2 = 0.0
-            var totalPdp3 = 0.0
-            var totalPdp4 = 0.0
-            var totalPdp5 = 0.0
-            
-            var totalTagihanBruto1 = 0.0
-            var totalTagihanBruto2 = 0.0
-            var totalTagihanBruto3 = 0.0
-            var totalTagihanBruto4 = 0.0
-            var totalTagihanBruto5 = 0.0
-            
-            var totalPiutangUsaha1 = 0.0
-            var totalPiutangUsaha2 = 0.0
-            var totalPiutangUsaha3 = 0.0
-            var totalPiutangUsaha4 = 0.0
-            var totalPiutangUsaha5 = 0.0
-            
-            var totalPiutangRetensi1 = 0.0
-            var totalPiutangRetensi2 = 0.0
-            var totalPiutangRetensi3 = 0.0
-            var totalPiutangRetensi4 = 0.0
-            var totalPiutangRetensi5 = 0.0
-            
-            for upData in upDatas {
-                totalPdp1 += upData.pdp1
-                totalPdp2 += upData.pdp2
-                totalPdp3 += upData.pdp3
-                totalPdp4 += upData.pdp4
-                totalPdp5 += upData.pdp5
+            if (status == 403) {
+                let alertView = UIAlertController(title: "Fetch data error",
+                                                  message: "Session expired" as String, preferredStyle:.alert)
+                let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                alertView.addAction(okAction)
+                self.present(alertView, animated: true, completion: nil)
+            } else if (status == -1) {
+                let alertView = UIAlertController(title: "Fetch data error",
+                                                  message: "Connection error" as String, preferredStyle:.alert)
+                let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                alertView.addAction(okAction)
+                self.present(alertView, animated: true, completion: nil)
+            } else if (status == 200) {
+                self.totalRow = 4
+                var firstDataEntries = [Double]()
+                var secondDataEntries = [Double]()
+                var thirdDataEntries = [Double]()
+                var fourthDataEntries = [Double]()
                 
-                totalTagihanBruto1 += upData.tagihanBruto1
-                totalTagihanBruto2 += upData.tagihanBruto2
-                totalTagihanBruto3 += upData.tagihanBruto3
-                totalTagihanBruto4 += upData.tagihanBruto4
-                totalTagihanBruto5 += upData.tagihanBruto5
+                var totalPdp1 = 0.0
+                var totalPdp2 = 0.0
+                var totalPdp3 = 0.0
+                var totalPdp4 = 0.0
+                var totalPdp5 = 0.0
                 
-                totalPiutangUsaha1 += upData.piutangUsaha1
-                totalPiutangUsaha2 += upData.piutangUsaha2
-                totalPiutangUsaha3 += upData.piutangUsaha3
-                totalPiutangUsaha4 += upData.piutangUsaha4
-                totalPiutangUsaha5 += upData.piutangUsaha5
+                var totalTagihanBruto1 = 0.0
+                var totalTagihanBruto2 = 0.0
+                var totalTagihanBruto3 = 0.0
+                var totalTagihanBruto4 = 0.0
+                var totalTagihanBruto5 = 0.0
                 
-                totalPiutangRetensi1 += upData.piutangRetensi1
-                totalPiutangRetensi2 += upData.piutangRetensi2
-                totalPiutangRetensi3 += upData.piutangRetensi3
-                totalPiutangRetensi4 += upData.piutangRetensi4
-                totalPiutangRetensi5 += upData.piutangRetensi5
+                var totalPiutangUsaha1 = 0.0
+                var totalPiutangUsaha2 = 0.0
+                var totalPiutangUsaha3 = 0.0
+                var totalPiutangUsaha4 = 0.0
+                var totalPiutangUsaha5 = 0.0
+                
+                var totalPiutangRetensi1 = 0.0
+                var totalPiutangRetensi2 = 0.0
+                var totalPiutangRetensi3 = 0.0
+                var totalPiutangRetensi4 = 0.0
+                var totalPiutangRetensi5 = 0.0
+                
+                for upData in upDatas! {
+                    totalPdp1 += upData.pdp1
+                    totalPdp2 += upData.pdp2
+                    totalPdp3 += upData.pdp3
+                    totalPdp4 += upData.pdp4
+                    totalPdp5 += upData.pdp5
+                    
+                    totalTagihanBruto1 += upData.tagihanBruto1
+                    totalTagihanBruto2 += upData.tagihanBruto2
+                    totalTagihanBruto3 += upData.tagihanBruto3
+                    totalTagihanBruto4 += upData.tagihanBruto4
+                    totalTagihanBruto5 += upData.tagihanBruto5
+                    
+                    totalPiutangUsaha1 += upData.piutangUsaha1
+                    totalPiutangUsaha2 += upData.piutangUsaha2
+                    totalPiutangUsaha3 += upData.piutangUsaha3
+                    totalPiutangUsaha4 += upData.piutangUsaha4
+                    totalPiutangUsaha5 += upData.piutangUsaha5
+                    
+                    totalPiutangRetensi1 += upData.piutangRetensi1
+                    totalPiutangRetensi2 += upData.piutangRetensi2
+                    totalPiutangRetensi3 += upData.piutangRetensi3
+                    totalPiutangRetensi4 += upData.piutangRetensi4
+                    totalPiutangRetensi5 += upData.piutangRetensi5
+                }
+                
+                self.totalPdp1 = totalPdp1
+                self.totalPdp2 = totalPdp2
+                self.totalPdp3 = totalPdp3
+                self.totalPdp4 = totalPdp4
+                self.totalPdp5 = totalPdp5
+                
+                self.totalTagihanBruto1 = totalTagihanBruto1
+                self.totalTagihanBruto2 = totalTagihanBruto2
+                self.totalTagihanBruto3 = totalTagihanBruto3
+                self.totalTagihanBruto4 = totalTagihanBruto4
+                self.totalTagihanBruto5 = totalTagihanBruto5
+                
+                self.totalPiutangUsaha1 = totalPiutangUsaha1
+                self.totalPiutangUsaha2 = totalPiutangUsaha2
+                self.totalPiutangUsaha3 = totalPiutangUsaha3
+                self.totalPiutangUsaha4 = totalPiutangUsaha4
+                self.totalPiutangUsaha5 = totalPiutangUsaha5
+                
+                self.totalPiutangRetensi1 = totalPiutangRetensi1
+                self.totalPiutangRetensi2 = totalPiutangRetensi2
+                self.totalPiutangRetensi3 = totalPiutangRetensi3
+                self.totalPiutangRetensi4 = totalPiutangRetensi4
+                self.totalPiutangRetensi5 = totalPiutangRetensi5
+                self.tableView.reloadData()
+                
+                firstDataEntries.append(totalPdp1)
+                firstDataEntries.append(totalPdp2)
+                firstDataEntries.append(totalPdp3)
+                firstDataEntries.append(totalPdp4)
+                firstDataEntries.append(totalPdp5)
+                
+                secondDataEntries.append(totalTagihanBruto1)
+                secondDataEntries.append(totalTagihanBruto2)
+                secondDataEntries.append(totalTagihanBruto3)
+                secondDataEntries.append(totalTagihanBruto4)
+                secondDataEntries.append(totalTagihanBruto5)
+                
+                thirdDataEntries.append(totalPiutangUsaha1)
+                thirdDataEntries.append(totalPiutangUsaha2)
+                thirdDataEntries.append(totalPiutangUsaha3)
+                thirdDataEntries.append(totalPiutangUsaha4)
+                thirdDataEntries.append(totalPiutangUsaha5)
+                
+                fourthDataEntries.append(totalPiutangRetensi1)
+                fourthDataEntries.append(totalPiutangRetensi2)
+                fourthDataEntries.append(totalPiutangRetensi3)
+                fourthDataEntries.append(totalPiutangRetensi4)
+                fourthDataEntries.append(totalPiutangRetensi5)
+                
+                self.setDataChart(
+                    firstDataValues: firstDataEntries,
+                    secondDataValues: secondDataEntries,
+                    thirdDataValues: thirdDataEntries,
+                    fourthDataValues: fourthDataEntries
+                )
             }
-            
-            self.totalPdp1 = totalPdp1
-            self.totalPdp2 = totalPdp2
-            self.totalPdp3 = totalPdp3
-            self.totalPdp4 = totalPdp4
-            self.totalPdp5 = totalPdp5
-            
-            self.totalTagihanBruto1 = totalTagihanBruto1
-            self.totalTagihanBruto2 = totalTagihanBruto2
-            self.totalTagihanBruto3 = totalTagihanBruto3
-            self.totalTagihanBruto4 = totalTagihanBruto4
-            self.totalTagihanBruto5 = totalTagihanBruto5
-            
-            self.totalPiutangUsaha1 = totalPiutangUsaha1
-            self.totalPiutangUsaha2 = totalPiutangUsaha2
-            self.totalPiutangUsaha3 = totalPiutangUsaha3
-            self.totalPiutangUsaha4 = totalPiutangUsaha4
-            self.totalPiutangUsaha5 = totalPiutangUsaha5
-            
-            self.totalPiutangRetensi1 = totalPiutangRetensi1
-            self.totalPiutangRetensi2 = totalPiutangRetensi2
-            self.totalPiutangRetensi3 = totalPiutangRetensi3
-            self.totalPiutangRetensi4 = totalPiutangRetensi4
-            self.totalPiutangRetensi5 = totalPiutangRetensi5
-            self.tableView.reloadData()
-            
-            firstDataEntries.append(totalPdp1)
-            firstDataEntries.append(totalPdp2)
-            firstDataEntries.append(totalPdp3)
-            firstDataEntries.append(totalPdp4)
-            firstDataEntries.append(totalPdp5)
-            
-            secondDataEntries.append(totalTagihanBruto1)
-            secondDataEntries.append(totalTagihanBruto2)
-            secondDataEntries.append(totalTagihanBruto3)
-            secondDataEntries.append(totalTagihanBruto4)
-            secondDataEntries.append(totalTagihanBruto5)
-            
-            thirdDataEntries.append(totalPiutangUsaha1)
-            thirdDataEntries.append(totalPiutangUsaha2)
-            thirdDataEntries.append(totalPiutangUsaha3)
-            thirdDataEntries.append(totalPiutangUsaha4)
-            thirdDataEntries.append(totalPiutangUsaha5)
-            
-            fourthDataEntries.append(totalPiutangRetensi1)
-            fourthDataEntries.append(totalPiutangRetensi2)
-            fourthDataEntries.append(totalPiutangRetensi3)
-            fourthDataEntries.append(totalPiutangRetensi4)
-            fourthDataEntries.append(totalPiutangRetensi5)
-            
-            self.setDataChart(
-                firstDataValues: firstDataEntries,
-                secondDataValues: secondDataEntries,
-                thirdDataValues: thirdDataEntries,
-                fourthDataValues: fourthDataEntries
-            )
         }
     }
     
@@ -374,7 +401,7 @@ class UmurPiutangViewController: UIViewController, MonthYearPickerDelegate, Mont
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return self.totalRow
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

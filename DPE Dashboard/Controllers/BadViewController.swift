@@ -136,14 +136,12 @@ class BadViewController: UIViewController, MonthYearPickerDelegate, MonthSliderD
             if (status == 403) {
                 let alertView = UIAlertController(title: "Fetch data error",
                                                   message: "Session expired" as String, preferredStyle:.alert)
-                SwiftSpinner.hide()
                 let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
                 alertView.addAction(okAction)
                 self.present(alertView, animated: true, completion: nil)
             } else if (status == -1) {
                 let alertView = UIAlertController(title: "Fetch data error",
                                                   message: "Connection error" as String, preferredStyle:.alert)
-                SwiftSpinner.hide()
                 let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
                 alertView.addAction(okAction)
                 self.present(alertView, animated: true, completion: nil)

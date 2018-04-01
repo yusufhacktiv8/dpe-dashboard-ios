@@ -146,8 +146,10 @@ public struct DashboardService {
                     }
                     
                     myResponse(200, badDatas)
+                } else {
+                    myResponse(-2, nil)
                 }
-                myResponse(-2, nil)
+                
             } else {
                 myResponse(-1, nil)
             }
@@ -156,95 +158,136 @@ public struct DashboardService {
         }
     }
     
-    public static func getUmurPiutangData(year: Int, month: Int, myResponse: @escaping ([UpData]) -> ()) {
+    public static func getUmurPiutangData(year: Int, month: Int, myResponse: @escaping (Int, [UpData]?) -> ()) {
         let urlString = DashboardConstant.BASE_URL + ResourcePath.UmurPiutangData(year: year, month: month).description
         
         let headers = ["Authorization": "Bearer \(UserVar.token)"]
         
         Alamofire.request(urlString, headers: headers).responseJSON { response in
-            if let data = response.result.value {
-                guard let json = (data as? NSArray) as Array<AnyObject>? else {
-                    print("Failed to get expected response from webserver.")
-                    return
+            if let statusCode = response.response?.statusCode {
+                if (statusCode == 403) {
+                    myResponse(statusCode, nil)
                 }
-                
-                var upDatas = [UpData]()
-                for upData in json {
-                    upDatas.append(JSONParser.parseUmurPiutang(data: upData))
+                if let data = response.result.value {
+                    guard let json = (data as? NSArray) as Array<AnyObject>? else {
+                        print("Failed to get expected response from webserver.")
+                        return
+                    }
+                    
+                    var upDatas = [UpData]()
+                    for upData in json {
+                        upDatas.append(JSONParser.parseUmurPiutang(data: upData))
+                    }
+                    
+                    myResponse(200, upDatas)
+                } else {
+                    myResponse(-2, nil)
                 }
-                
-                myResponse(upDatas)
+            } else {
+                myResponse(-1, nil)
             }
+            
             
         }
     }
     
-    public static func getCashFlowData(year: Int, month: Int, myResponse: @escaping ([CashFlow]) -> ()) {
+    public static func getCashFlowData(year: Int, month: Int, myResponse: @escaping (Int, [CashFlow]?) -> ()) {
         let urlString = DashboardConstant.BASE_URL + ResourcePath.CashFlow(year: year, month: month).description
         
         let headers = ["Authorization": "Bearer \(UserVar.token)"]
         
         Alamofire.request(urlString, headers: headers).responseJSON { response in
-            if let data = response.result.value {
-                guard let json = (data as? NSArray) as Array<AnyObject>? else {
-                    print("Failed to get expected response from webserver.")
-                    return
+            
+            if let statusCode = response.response?.statusCode {
+                if (statusCode == 403) {
+                    myResponse(statusCode, nil)
                 }
                 
-                var cashFlows = [CashFlow]()
-                for cashFlow in json {
-                    cashFlows.append(JSONParser.parseCashFlow(data: cashFlow))
+                if let data = response.result.value {
+                    guard let json = (data as? NSArray) as Array<AnyObject>? else {
+                        print("Failed to get expected response from webserver.")
+                        return
+                    }
+                    
+                    var cashFlows = [CashFlow]()
+                    for cashFlow in json {
+                        cashFlows.append(JSONParser.parseCashFlow(data: cashFlow))
+                    }
+                    
+                    myResponse(200, cashFlows)
+                } else {
+                    myResponse(-2, nil)
                 }
-                
-                myResponse(cashFlows)
+            } else {
+                myResponse(-1, nil)
             }
+            
             
         }
     }
     
-    public static func getPrognosaPiutangData(year: Int, month: Int, myResponse: @escaping (PrognosaPiutang) -> ()) {
+    public static func getPrognosaPiutangData(year: Int, month: Int, myResponse: @escaping (Int, PrognosaPiutang?) -> ()) {
         let urlString = DashboardConstant.BASE_URL + ResourcePath.PrognosaPiutang(year: year, month: month).description
         
         let headers = ["Authorization": "Bearer \(UserVar.token)"]
         
         Alamofire.request(urlString, headers: headers).responseJSON { response in
             
-            if let data = response.result.value {
-                guard let json = (data as? NSArray) as Array<AnyObject>? else {
-                    print("Failed to get expected response from webserver.")
-                    return
+            if let statusCode = response.response?.statusCode {
+                if (statusCode == 403) {
+                    myResponse(statusCode, nil)
                 }
                 
-                var prognosa = PrognosaPiutang(pdp: 0.0, tagihanBruto: 0.0, piutangUsaha: 0.0, piutangRetensi: 0.0)
-                for item in json {
-                    prognosa = JSONParser.parsePrognosaPiutang(data: item)
+                if let data = response.result.value {
+                    guard let json = (data as? NSArray) as Array<AnyObject>? else {
+                        print("Failed to get expected response from webserver.")
+                        return
+                    }
+                    
+                    var prognosa = PrognosaPiutang(pdp: 0.0, tagihanBruto: 0.0, piutangUsaha: 0.0, piutangRetensi: 0.0)
+                    for item in json {
+                        prognosa = JSONParser.parsePrognosaPiutang(data: item)
+                    }
+                    
+                    myResponse(200, prognosa)
+                } else {
+                    myResponse(-2, nil)
                 }
-                
-                myResponse(prognosa)
+            } else {
+                myResponse(-1, nil)
             }
-            
         }
     }
     
-    public static func getOkProjectDetailsData(year: Int, month: Int, projectType: Int, myResponse: @escaping ([OkProjectDetails]) -> ()) {
+    public static func getOkProjectDetailsData(year: Int, month: Int, projectType: Int, myResponse: @escaping (Int, [OkProjectDetails]?) -> ()) {
         let urlString = DashboardConstant.BASE_URL + ResourcePath.OkProjectDetails(year: year, month: month, projectType: projectType).description
         
         let headers = ["Authorization": "Bearer \(UserVar.token)"]
         
         Alamofire.request(urlString, headers: headers).responseJSON { response in
-            if let data = response.result.value {
-                guard let json = (data as? NSArray) as Array<AnyObject>? else {
-                    print("Failed to get expected response from webserver.")
-                    return
+            if let statusCode = response.response?.statusCode {
+                if (statusCode == 403) {
+                    myResponse(statusCode, nil)
                 }
-                
-                var okProjects = [OkProjectDetails]()
-                for okProject in json {
-                    okProjects.append(JSONParser.parseOkProjectDetails(data: okProject))
+                if let data = response.result.value {
+                    guard let json = (data as? NSArray) as Array<AnyObject>? else {
+                        print("Failed to get expected response from webserver.")
+                        return
+                    }
+                    
+                    var okProjects = [OkProjectDetails]()
+                    for okProject in json {
+                        okProjects.append(JSONParser.parseOkProjectDetails(data: okProject))
+                    }
+                    
+                    myResponse(200, okProjects)
+                } else {
+                    myResponse(-2, nil)
                 }
-                
-                myResponse(okProjects)
+            } else {
+                myResponse(-1, nil)
             }
+            
             
         }
     }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftSpinner
 
 class OkDetailsViewController: UIViewController, MonthYearPickerDelegate, UITableViewDelegate, UITableViewDataSource {
     
@@ -110,32 +111,56 @@ class OkDetailsViewController: UIViewController, MonthYearPickerDelegate, UITabl
     }
     
     private func updateData() {
-        DashboardService.getOkProjectDetailsData(year: self.selectedYear!, month: self.selectedMonth!, projectType: self.projectType!) { okProjects in
-            self.okProjects = []
-            for okProject in okProjects {
-                if (self.projectType! == 3) {
-                    if (okProject.projectType == 1 || okProject.projectType == 2 || okProject.projectType == 3) {
+        
+        SwiftSpinner.show("Loading data...").addTapHandler({
+            SwiftSpinner.hide()
+        }, subtitle: "")
+        
+        self.okProjects = []
+        self.tableView.reloadData()
+        
+        DashboardService.getOkProjectDetailsData(year: self.selectedYear!, month: self.selectedMonth!, projectType: self.projectType!) { status, okProjects in
+            
+            SwiftSpinner.hide()
+            
+            if (status == 403) {
+                let alertView = UIAlertController(title: "Fetch data error",
+                                                  message: "Session expired" as String, preferredStyle:.alert)
+                let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                alertView.addAction(okAction)
+                self.present(alertView, animated: true, completion: nil)
+            } else if (status == -1) {
+                let alertView = UIAlertController(title: "Fetch data error",
+                                                  message: "Connection error" as String, preferredStyle:.alert)
+                let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                alertView.addAction(okAction)
+                self.present(alertView, animated: true, completion: nil)
+            } else if (status == 200) {
+                self.okProjects = []
+                for okProject in okProjects! {
+                    if (self.projectType! == 3) {
+                        if (okProject.projectType == 1 || okProject.projectType == 2 || okProject.projectType == 3) {
+                            self.okProjects.append(okProject)
+                        }
+                    } else if (self.projectType! == 4) {
+                        if (okProject.projectType == 4 || okProject.projectType == 5 || okProject.projectType == 6) {
+                            self.okProjects.append(okProject)
+                        }
+                    } else if (self.projectType! == 5) {
+                        if (okProject.projectType == 7 || okProject.projectType == 8 || okProject.projectType == 9) {
+                            self.okProjects.append(okProject)
+                        }
+                    } else if (self.projectType! == 6) {
+                        if (okProject.projectCode == "851E03") {
+                            self.okProjects.append(okProject)
+                        }
+                    } else {
                         self.okProjects.append(okProject)
                     }
-                } else if (self.projectType! == 4) {
-                    if (okProject.projectType == 4 || okProject.projectType == 5 || okProject.projectType == 6) {
-                        self.okProjects.append(okProject)
-                    }
-                } else if (self.projectType! == 5) {
-                    if (okProject.projectType == 7 || okProject.projectType == 8 || okProject.projectType == 9) {
-                        self.okProjects.append(okProject)
-                    }
-                } else if (self.projectType! == 6) {
-                    if (okProject.projectCode == "851E03") {
-                        self.okProjects.append(okProject)
-                    }
-                } else {
-                    self.okProjects.append(okProject)
+                    
                 }
-                
+                self.tableView.reloadData()
             }
-//            self.okProjects = okProjects
-            self.tableView.reloadData()
         }
     }
     

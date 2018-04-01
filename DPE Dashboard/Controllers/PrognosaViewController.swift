@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftSpinner
 
 class PrognosaViewController: UIViewController, MonthYearPickerDelegate {
 
@@ -85,13 +86,42 @@ class PrognosaViewController: UIViewController, MonthYearPickerDelegate {
     }
     
     private func updateData() {
-        DashboardService.getPrognosaPiutangData(year: self.selectedYear!, month: self.selectedMonth!) { prognosa in
-            let total = prognosa.pdp + prognosa.tagihanBruto + prognosa.piutangUsaha + prognosa.piutangRetensi
-            self.pdpLabel.text = self.decimalFormatter.string(from: NSNumber(value: prognosa.pdp))
-            self.tagBrutoLabel.text = self.decimalFormatter.string(from: NSNumber(value: prognosa.tagihanBruto))
-            self.pUsahaLabel.text = self.decimalFormatter.string(from: NSNumber(value: prognosa.piutangUsaha))
-            self.pRetensiLabel.text = self.decimalFormatter.string(from: NSNumber(value: prognosa.piutangRetensi))
-            self.totalLabel.text = self.decimalFormatter.string(from: NSNumber(value: total))
+        SwiftSpinner.show("Loading data...").addTapHandler({
+            SwiftSpinner.hide()
+        }, subtitle: "")
+        
+        self.pdpLabel.text = "-"
+        self.tagBrutoLabel.text = "-"
+        self.pUsahaLabel.text = "-"
+        self.pRetensiLabel.text = "-"
+        self.totalLabel.text = "-"
+        
+        DashboardService.getPrognosaPiutangData(year: self.selectedYear!, month: self.selectedMonth!) { status, prognosaOpt in
+            
+            SwiftSpinner.hide()
+            
+            if (status == 403) {
+                let alertView = UIAlertController(title: "Fetch data error",
+                                                  message: "Session expired" as String, preferredStyle:.alert)
+                let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                alertView.addAction(okAction)
+                self.present(alertView, animated: true, completion: nil)
+            } else if (status == -1) {
+                let alertView = UIAlertController(title: "Fetch data error",
+                                                  message: "Connection error" as String, preferredStyle:.alert)
+                let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                alertView.addAction(okAction)
+                self.present(alertView, animated: true, completion: nil)
+            } else if (status == 200) {
+                if let prognosa = prognosaOpt {
+                    let total = prognosa.pdp + prognosa.tagihanBruto + prognosa.piutangUsaha + prognosa.piutangRetensi
+                    self.pdpLabel.text = self.decimalFormatter.string(from: NSNumber(value: prognosa.pdp))
+                    self.tagBrutoLabel.text = self.decimalFormatter.string(from: NSNumber(value: prognosa.tagihanBruto))
+                    self.pUsahaLabel.text = self.decimalFormatter.string(from: NSNumber(value: prognosa.piutangUsaha))
+                    self.pRetensiLabel.text = self.decimalFormatter.string(from: NSNumber(value: prognosa.piutangRetensi))
+                    self.totalLabel.text = self.decimalFormatter.string(from: NSNumber(value: total))
+                }
+            }
         }
     }
 }
