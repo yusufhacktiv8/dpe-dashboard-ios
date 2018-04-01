@@ -304,7 +304,8 @@ class MainViewController: UIViewController, MonthYearPickerDelegate, MonthSlider
             return cell
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "SecondTableViewCell") as! SecondTableViewCell
-            cell.titleLabel.text = "Sisa"
+            cell.titleLabel.text = "Sisa Hasil Usaha"
+            cell.titleLabel.textColor = UIColor.red
             cell.onOkButtonTapped = { tag in
                 self.selectedDataType = self.getSelectedDataTypeByTag(tag: tag)
                 self.selectedProjectType = 2
