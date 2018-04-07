@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -241,7 +240,7 @@
                                 <rect key="frame" x="0.0" y="99" width="375" height="1401"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="weR-g1-bMK" userLabel="Scroll Page Container">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1516"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1356"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="952-r1-7ha">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="280"/>
@@ -268,7 +267,7 @@
                                                 </constraints>
                                             </scrollView>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="oKj-Zp-92X">
-                                                <rect key="frame" x="0.0" y="324" width="375" height="1192"/>
+                                                <rect key="frame" x="0.0" y="324" width="375" height="1032"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <prototypes>
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FirstTableViewCell" rowHeight="190" id="XRJ-dn-0uj" customClass="FirstTableViewCell" customModule="DPE_Dashboard" customModuleProvider="target">
@@ -660,7 +659,7 @@
                                             <constraint firstItem="oKj-Zp-92X" firstAttribute="leading" secondItem="weR-g1-bMK" secondAttribute="leading" id="UIc-4y-aRz"/>
                                             <constraint firstAttribute="trailing" secondItem="952-r1-7ha" secondAttribute="trailing" id="WLg-aD-JNY"/>
                                             <constraint firstAttribute="trailing" secondItem="ZW4-Dr-CGa" secondAttribute="trailing" id="bv3-xy-wVk"/>
-                                            <constraint firstAttribute="height" constant="1516" id="npO-pb-DtH"/>
+                                            <constraint firstAttribute="height" constant="1356" id="npO-pb-DtH"/>
                                             <constraint firstAttribute="bottom" secondItem="oKj-Zp-92X" secondAttribute="bottom" id="q3R-4H-9bq"/>
                                             <constraint firstItem="ZW4-Dr-CGa" firstAttribute="leading" secondItem="weR-g1-bMK" secondAttribute="leading" id="shX-nh-gq2"/>
                                         </constraints>
@@ -2013,6 +2012,6 @@
         <image name="widget_background_header" width="345" height="29"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="AQX-Dm-Bvl"/>
+        <segue reference="6cJ-NS-bGP"/>
     </inferredMetricsTieBreakers>
 </document>

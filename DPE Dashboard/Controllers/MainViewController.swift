@@ -236,6 +236,8 @@ class MainViewController: UIViewController, MonthYearPickerDelegate, MonthSlider
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if (indexPath.row == 2) {
             return 48.0
+        } else if (indexPath.row >= 3) {
+            return 150.0
         }
         return 190.0
     }
